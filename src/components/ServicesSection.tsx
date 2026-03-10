@@ -42,7 +42,7 @@ const services = [
 ];
 
 const ServicesSection = () => (
-  <section id="services" className="py-20 md:py-28 gradient-brand-subtle">
+  <section id="services" className="py-20 md:py-28 bg-muted/50">
     <div className="container mx-auto px-4">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -69,7 +69,7 @@ const ServicesSection = () => (
             transition={{ delay: i * 0.1, duration: 0.5 }}
             className="bg-card rounded-xl p-7 border border-border shadow-card hover:shadow-elevated transition-shadow group"
           >
-            <div className="w-12 h-12 rounded-lg gradient-brand flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+            <div className="w-12 h-12 rounded-lg bg-primary flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
               <s.icon className="text-primary-foreground" size={22} />
             </div>
             <h3 className="text-lg font-bold text-foreground mb-3 font-body">{s.title}</h3>

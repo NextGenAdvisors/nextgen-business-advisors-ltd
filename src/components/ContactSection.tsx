@@ -47,7 +47,7 @@ const ContactSection = () => {
             className="lg:col-span-2 space-y-8"
           >
             <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-lg gradient-brand flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center shrink-0">
                 <MapPin className="text-primary-foreground" size={18} />
               </div>
               <div>
@@ -56,7 +56,7 @@ const ContactSection = () => {
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-lg gradient-brand flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center shrink-0">
                 <Mail className="text-primary-foreground" size={18} />
               </div>
               <div>
@@ -67,13 +67,23 @@ const ContactSection = () => {
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-lg gradient-brand flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center shrink-0">
                 <Phone className="text-primary-foreground" size={18} />
               </div>
               <div>
                 <h4 className="font-semibold text-foreground font-body mb-1">Phone</h4>
                 <p className="text-sm text-muted-foreground">+234</p>
               </div>
+            </div>
+
+            {/* Consulting image */}
+            <div className="rounded-xl overflow-hidden shadow-card hidden lg:block">
+              <img
+                src="/images/consulting.jpg"
+                alt="Business consultation"
+                className="w-full h-48 object-cover"
+                loading="lazy"
+              />
             </div>
 
             <div className="pt-4 border-t border-border">
@@ -113,7 +123,7 @@ const ContactSection = () => {
               </SelectContent>
             </Select>
             <Textarea placeholder="Your Message" rows={4} className="bg-background resize-none" />
-            <Button type="submit" variant="hero" size="lg" className="w-full" disabled={loading}>
+            <Button type="submit" size="lg" className="w-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90" disabled={loading}>
               {loading ? "Sending..." : (
                 <>Send Message <Send size={16} className="ml-1" /></>
               )}
