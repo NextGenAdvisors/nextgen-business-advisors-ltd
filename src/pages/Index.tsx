@@ -4,6 +4,7 @@ import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import BackToTop from "@/components/BackToTop";
 
 const Index = () => (
   <>
@@ -13,6 +14,7 @@ const Index = () => (
     <ServicesSection />
     <ContactSection />
     <Footer />
+    <BackToTop />
   </>
 );
 
