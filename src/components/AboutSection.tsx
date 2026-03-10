@@ -1,65 +1,6 @@
 import { motion } from "framer-motion";
-import {
-  CheckCircle,
-  Target,
-  Eye,
-  Heart,
-  ShieldCheck,
-  TrendingUp,
-  Handshake,
-  Lightbulb,
-} from "lucide-react";
-
-/* ---------- Data ---------- */
-const whyChooseUs = [
-  {
-    icon: ShieldCheck,
-    title: "Regulatory Expertise",
-    desc: "Deep knowledge of Nigerian business regulations, tax laws, and compliance frameworks.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Growth Strategy",
-    desc: "Sustainable financial structuring and investment readiness advisory.",
-  },
-  {
-    icon: Handshake,
-    title: "Cross-Border Experience",
-    desc: "Facilitating diaspora investment and foreign corporation market entry.",
-  },
-  {
-    icon: Lightbulb,
-    title: "Institutional-Grade",
-    desc: "Led by a licensed ICAN member with CFO and C-suite advisory experience.",
-  },
-];
-
-const coreValues = [
-  {
-    title: "Integrity",
-    desc: "Highest ethical standards in all advisory services.",
-  },
-  {
-    title: "Excellence",
-    desc: "Top-quality, accurate, and actionable solutions.",
-  },
-  {
-    title: "Innovation",
-    desc: "Creative and practical strategies for sustainable growth.",
-  },
-  {
-    title: "Client-Centricity",
-    desc: "Every strategy designed for the client's success.",
-  },
-  {
-    title: "Collaboration",
-    desc: "Multidisciplinary expertise and holistic solutions.",
-  },
-  {
-    title: "Sustainability",
-    desc: "Lasting structures that grow responsibly.",
-  },
-];
+import { CheckCircle, Target, Eye, Heart } from "lucide-react";
+import { siteConfig } from "@/config/site";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -87,7 +28,7 @@ const AboutSection = () => (
             <div className="relative">
               <div className="rounded-2xl overflow-hidden shadow-elevated">
                 <img
-                  src="/images/team-meeting.jpg"
+                  src={siteConfig.about.whyChooseUs.images.main}
                   alt="Professional team meeting"
                   className="w-full h-[420px] object-cover"
                   loading="lazy"
@@ -95,7 +36,7 @@ const AboutSection = () => (
               </div>
               <div className="absolute -bottom-6 -right-6 w-44 h-44 rounded-xl overflow-hidden shadow-card border-4 border-background">
                 <img
-                  src="/images/office-work.jpg"
+                  src={siteConfig.about.whyChooseUs.images.sub}
                   alt="Office collaboration"
                   className="w-full h-full object-cover"
                   loading="lazy"
@@ -103,9 +44,9 @@ const AboutSection = () => (
               </div>
               {/* Floating count */}
               <div className="absolute top-6 -left-4 bg-primary text-primary-foreground rounded-xl px-5 py-3 shadow-elevated text-center">
-                <p className="text-xl font-bold leading-none">500+</p>
+                <p className="text-xl font-bold leading-none">{siteConfig.about.whyChooseUs.floatingBadge.number}</p>
                 <p className="text-[10px] uppercase tracking-wider mt-0.5 opacity-80">
-                  Clients
+                  {siteConfig.about.whyChooseUs.floatingBadge.label}
                 </p>
               </div>
             </div>
@@ -118,27 +59,25 @@ const AboutSection = () => (
               custom={0}
               className="inline-block text-sm font-semibold text-secondary uppercase tracking-wider mb-3"
             >
-              Why Choose Us
+              {siteConfig.about.whyChooseUs.badge}
             </motion.span>
             <motion.h2
               variants={fadeUp}
               custom={1}
               className="text-3xl md:text-4xl font-bold text-foreground mb-4"
             >
-              The Only Source of Knowledge is Experience
+              {siteConfig.about.whyChooseUs.heading}
             </motion.h2>
             <motion.p
               variants={fadeUp}
               custom={2}
               className="text-muted-foreground leading-relaxed mb-8"
             >
-              With decades of combined experience in finance, regulation, and
-              cross-border advisory, NextGen Business Advisors delivers
-              institutional-level expertise to every engagement.
+              {siteConfig.about.whyChooseUs.description}
             </motion.p>
 
             <div className="grid sm:grid-cols-2 gap-5">
-              {whyChooseUs.map((item, i) => (
+              {siteConfig.about.whyChooseUs.features.map((item, i) => (
                 <motion.div
                   key={item.title}
                   variants={fadeUp}
@@ -177,12 +116,10 @@ const AboutSection = () => (
             <Eye className="text-primary-foreground" size={22} />
           </div>
           <h3 className="text-xl font-bold text-foreground mb-3">
-            Our Vision
+            {siteConfig.about.vision.title}
           </h3>
           <p className="text-muted-foreground text-sm leading-relaxed">
-            To be the most trusted and innovative advisory partner in Nigeria
-            for diaspora investors, foreign corporations, and entrepreneurs,
-            enabling sustainable, compliant, and growth-oriented businesses.
+            {siteConfig.about.vision.description}
           </p>
         </motion.div>
         <motion.div
@@ -196,29 +133,15 @@ const AboutSection = () => (
             <Target className="text-secondary-foreground" size={22} />
           </div>
           <h3 className="text-xl font-bold text-foreground mb-3">
-            Our Mission
+            {siteConfig.about.mission.title}
           </h3>
           <ul className="text-muted-foreground text-sm leading-relaxed space-y-2">
-            <li className="flex items-start gap-2">
-              <CheckCircle className="text-primary mt-0.5 shrink-0" size={14} />
-              Deliver exceptional market entry, regulatory, and financial
-              advisory services.
-            </li>
-            <li className="flex items-start gap-2">
-              <CheckCircle className="text-primary mt-0.5 shrink-0" size={14} />
-              Empower SMEs, foreign investors, and entrepreneurs to achieve
-              sustainable growth.
-            </li>
-            <li className="flex items-start gap-2">
-              <CheckCircle className="text-primary mt-0.5 shrink-0" size={14} />
-              Facilitate compliance, transparency, and efficiency in every
-              business we support.
-            </li>
-            <li className="flex items-start gap-2">
-              <CheckCircle className="text-primary mt-0.5 shrink-0" size={14} />
-              Build institutional trust through professional integrity and
-              global best practices.
-            </li>
+            {siteConfig.about.mission.points.map((point) => (
+              <li key={point} className="flex items-start gap-2">
+                <CheckCircle className="text-primary mt-0.5 shrink-0" size={14} />
+                {point}
+              </li>
+            ))}
           </ul>
         </motion.div>
       </div>
@@ -232,14 +155,14 @@ const AboutSection = () => (
       >
         <motion.div variants={fadeUp} custom={0} className="text-center mb-12">
           <span className="inline-block text-sm font-semibold text-secondary uppercase tracking-wider mb-3">
-            What Drives Us
+            {siteConfig.about.coreValues.badge}
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Core Values
+            {siteConfig.about.coreValues.heading}
           </h2>
         </motion.div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {coreValues.map((v, i) => (
+          {siteConfig.about.coreValues.values.map((v, i) => (
             <motion.div
               key={v.title}
               variants={fadeUp}

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { siteConfig } from "@/config/site";
 
 const CTABanner = () => (
   <section className="py-16 gradient-cta relative overflow-hidden">
@@ -18,11 +19,10 @@ const CTABanner = () => (
         className="text-center max-w-3xl mx-auto"
       >
         <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-          Ready to Build a Structured and Compliant Business in Nigeria?
+          {siteConfig.ctaBanner.heading}
         </h2>
         <p className="text-lg text-white/80 mb-8">
-          Let our expert team guide you from setup to sustainable growth. Book
-          your free consultation today.
+          {siteConfig.ctaBanner.description}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button
@@ -30,8 +30,8 @@ const CTABanner = () => (
             className="bg-white text-primary font-semibold text-base px-8 py-6 hover:bg-white/90 shadow-elevated"
             asChild
           >
-            <a href="#contact">
-              Get Started Today <ArrowRight className="ml-1" size={18} />
+            <a href={siteConfig.ctaBanner.primaryButtonLink}>
+              {siteConfig.ctaBanner.primaryButtonText} <ArrowRight className="ml-1" size={18} />
             </a>
           </Button>
           <Button
@@ -40,7 +40,7 @@ const CTABanner = () => (
             className="border-white/40 text-white font-semibold text-base px-8 py-6 hover:bg-white/10"
             asChild
           >
-            <a href="#services">Explore Our Services</a>
+            <a href={siteConfig.ctaBanner.secondaryButtonLink}>{siteConfig.ctaBanner.secondaryButtonText}</a>
           </Button>
         </div>
       </motion.div>

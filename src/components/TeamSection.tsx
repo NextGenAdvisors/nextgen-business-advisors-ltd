@@ -1,33 +1,6 @@
 import { motion } from "framer-motion";
 import { Linkedin, Mail } from "lucide-react";
-
-interface TeamMember {
-  name: string;
-  role: string;
-  photo: string;
-  bio: string;
-}
-
-const team: TeamMember[] = [
-  {
-    name: "Joy Ozua",
-    role: "Managing Director / Lead Consultant",
-    photo: "/images/team-lead.png",
-    bio: "Licensed ICAN member, former CFO & Acting DG of the Nigerian-German Chamber of Commerce.",
-  },
-  {
-    name: "Adeyemi Oladipo",
-    role: "Tax & Compliance Officer",
-    photo: "/images/team-member-2.png",
-    bio: "Specialist in Nigerian tax regulation, corporate compliance, and audit governance.",
-  },
-  {
-    name: "Chinelo Nwosu",
-    role: "Financial Analyst",
-    photo: "/images/team-member-3.png",
-    bio: "Expert in cash-flow modelling, investment readiness, and financial structuring for SMEs.",
-  },
-];
+import { siteConfig } from "@/config/site";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -48,13 +21,13 @@ const TeamSection = () => (
         className="text-center mb-16"
       >
         <span className="inline-block text-sm font-semibold text-secondary uppercase tracking-wider mb-3">
-          Our People
+          {siteConfig.team.badge}
         </span>
         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-          Meet The Expert Team Members
+          {siteConfig.team.heading}
         </h2>
         <p className="text-muted-foreground max-w-2xl mx-auto">
-          A multidisciplinary team with deep expertise in accounting, tax, finance, and cross-border business advisory.
+          {siteConfig.team.description}
         </p>
       </motion.div>
 
@@ -64,7 +37,7 @@ const TeamSection = () => (
         viewport={{ once: true, margin: "-80px" }}
         className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto"
       >
-        {team.map((m, i) => (
+        {siteConfig.team.members.map((m, i) => (
           <motion.div
             key={m.name}
             variants={fadeUp}

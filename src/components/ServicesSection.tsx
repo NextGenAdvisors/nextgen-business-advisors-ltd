@@ -8,64 +8,7 @@ import {
   RefreshCw,
   ArrowRight,
 } from "lucide-react";
-
-const services = [
-  {
-    icon: Building2,
-    title: "Business Setup & Market Entry",
-    items: [
-      "Company registration and branch setup",
-      "Market research and feasibility support",
-      "Regulatory guidance",
-    ],
-  },
-  {
-    icon: FileCheck,
-    title: "Tax & Compliance Advisory",
-    items: [
-      "Tax registration and advisory",
-      "Compliance with Nigerian regulations",
-      "Ongoing monitoring support",
-    ],
-  },
-  {
-    icon: Calculator,
-    title: "Accounting & Financial Structuring",
-    items: [
-      "Accounting system setup",
-      "Cash flow management",
-      "Internal controls for sustainable operations",
-    ],
-  },
-  {
-    icon: Landmark,
-    title: "Loan & Investment Facilitation",
-    items: [
-      "Business proposals and funding documents",
-      "Cash flow projections and feasibility studies",
-      "Bank-ready financial documentation",
-      "Advisory for institutional financing",
-    ],
-  },
-  {
-    icon: Building,
-    title: "Banking & Institutional Liaison",
-    items: [
-      "Corporate banking setup support",
-      "Liaison with regulatory institutions",
-    ],
-  },
-  {
-    icon: RefreshCw,
-    title: "Ongoing Advisory & Retainer Services",
-    items: [
-      "Monthly compliance oversight",
-      "Financial health review",
-      "Strategic advisory support",
-      "Governance strengthening",
-    ],
-  },
-];
+import { siteConfig } from "@/config/site";
 
 const ServicesSection = () => (
   <>
@@ -90,7 +33,7 @@ const ServicesSection = () => (
           >
             <div className="rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10">
               <img
-                src="/images/business-team.png"
+                src={siteConfig.services.featureBand.image}
                 alt="Our qualified team"
                 className="w-full h-[380px] object-cover"
                 loading="lazy"
@@ -105,23 +48,16 @@ const ServicesSection = () => (
             viewport={{ once: true }}
           >
             <span className="inline-block text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">
-              Why Our Clients Trust Us
+              {siteConfig.services.featureBand.badge}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              We Are Qualified In Every Department
+              {siteConfig.services.featureBand.heading}
             </h2>
             <p className="text-white/70 leading-relaxed mb-6">
-              From regulatory compliance and financial governance to cross-border
-              advisory, our multidisciplinary team brings institutional-grade
-              expertise to every engagement.
+              {siteConfig.services.featureBand.description}
             </p>
             <div className="grid sm:grid-cols-2 gap-4">
-              {[
-                "Chartered Accountants (ICAN)",
-                "Tax & Regulatory Specialists",
-                "Banking & Investment Experts",
-                "Cross-Border Advisory",
-              ].map((item) => (
+              {siteConfig.services.featureBand.items.map((item) => (
                 <div key={item} className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-primary shrink-0" />
                   <span className="text-sm text-white/80">{item}</span>
@@ -143,19 +79,18 @@ const ServicesSection = () => (
           className="text-center mb-16"
         >
           <span className="inline-block text-sm font-semibold text-secondary uppercase tracking-wider mb-3">
-            What We Do
+            {siteConfig.services.main.badge}
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Our Services
+            {siteConfig.services.main.heading}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Comprehensive advisory solutions designed to help you establish,
-            grow, and sustain your business in Nigeria.
+            {siteConfig.services.main.description}
           </p>
         </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {services.map((s, i) => (
+          {siteConfig.services.main.servicesList.map((s, i) => (
             <motion.div
               key={s.title}
               initial={{ opacity: 0, y: 30 }}

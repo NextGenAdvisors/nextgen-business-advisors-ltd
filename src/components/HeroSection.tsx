@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Phone, Users, Globe, Award, Clock } from "lucide-react";
+import { ArrowRight, Phone } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
+import { siteConfig } from "@/config/site";
 
 /* ---------- Animated Counter ---------- */
 interface CounterProps {
@@ -58,14 +59,6 @@ const Counter = ({ end, suffix = "", label, icon: Icon }: CounterProps) => {
   );
 };
 
-/* ---------- Stats ---------- */
-const stats: CounterProps[] = [
-  { end: 500, suffix: "+", label: "Clients Served", icon: Users },
-  { end: 15, suffix: "+", label: "Countries Represented", icon: Globe },
-  { end: 98, suffix: "%", label: "Client Satisfaction", icon: Award },
-  { end: 20, suffix: "+", label: "Years of Experience", icon: Clock },
-];
-
 /* ---------- Hero Section ---------- */
 const HeroSection = () => (
   <section className="relative">
@@ -86,21 +79,18 @@ const HeroSection = () => (
             transition={{ duration: 0.7 }}
           >
             <span className="inline-block bg-primary/10 text-primary-foreground/80 text-xs font-semibold tracking-wider uppercase px-4 py-1.5 rounded-full mb-6 border border-primary-foreground/10">
-              Business Growth &amp; Strategy
+              {siteConfig.hero.badge}
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-6">
-              Structured, Compliant, Business Solutions{" "}
+              {siteConfig.hero.headingMain}{" "}
               <span className="text-primary-light block">
-                in Nigeria</span>
+                {siteConfig.hero.headingHighlight}</span>
             </h1>
             <p className="text-lg md:text-xl text-primary-foreground/70 mb-4 max-w-2xl">
-              Helping Diaspora Investors, Foreign Corporations, and
-              Entrepreneurs Build Sustainable and Compliant Businesses.
+              {siteConfig.hero.description1}
             </p>
             <p className="text-base text-primary-foreground/60 mb-8 max-w-2xl">
-              NextGen Business Advisors Ltd delivers expert advisory services
-              for business setup, regulatory compliance, financial structuring,
-              and investment readiness in Nigeria.
+              {siteConfig.hero.description2}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
@@ -109,7 +99,7 @@ const HeroSection = () => (
                 asChild
               >
                 <a href="#contact">
-                  Book a Consultation <ArrowRight className="ml-1" size={18} />
+                  {siteConfig.hero.ctaMain} <ArrowRight className="ml-1" size={18} />
                 </a>
               </Button>
               <Button
@@ -119,7 +109,7 @@ const HeroSection = () => (
                 asChild
               >
                 <a href="#contact">
-                  <Phone className="mr-1" size={18} /> Speak With Our Advisors
+                  <Phone className="mr-1" size={18} /> {siteConfig.hero.ctaSecondary}
                 </a>
               </Button>
             </div>
@@ -135,7 +125,7 @@ const HeroSection = () => (
             <div className="relative">
               <div className="rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10">
                 <img
-                  src="/images/hero-skyline.jpg"
+                  src={siteConfig.hero.images.main}
                   alt="Modern corporate skyline"
                   className="w-full h-[440px] object-cover"
                   loading="lazy"
@@ -143,7 +133,7 @@ const HeroSection = () => (
               </div>
               <div className="absolute -bottom-8 -left-8 w-52 h-52 rounded-2xl overflow-hidden shadow-xl border-4 border-card">
                 <img
-                  src="/images/consulting.jpg"
+                  src={siteConfig.hero.images.sub}
                   alt="Business consulting session"
                   className="w-full h-full object-cover"
                   loading="lazy"
@@ -151,9 +141,9 @@ const HeroSection = () => (
               </div>
               {/* Floating accent badge */}
               <div className="absolute -top-4 -right-4 bg-primary text-primary-foreground rounded-xl px-5 py-3 shadow-elevated text-center">
-                <p className="text-2xl font-bold leading-none">20+</p>
+                <p className="text-2xl font-bold leading-none">{siteConfig.hero.floatingBadge.number}</p>
                 <p className="text-[10px] uppercase tracking-wider mt-0.5 opacity-80">
-                  Years
+                  {siteConfig.hero.floatingBadge.label}
                 </p>
               </div>
             </div>
@@ -166,7 +156,7 @@ const HeroSection = () => (
     <div className="gradient-dark-band py-10">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          {stats.map((s) => (
+          {siteConfig.hero.stats.map((s) => (
             <Counter key={s.label} {...s} />
           ))}
         </div>

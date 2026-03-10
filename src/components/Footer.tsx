@@ -1,22 +1,6 @@
 import logo from "@/assets/logo.png";
 import { MapPin, Mail, Phone, ArrowRight } from "lucide-react";
-
-const quickLinks = [
-  { label: "Home", href: "#" },
-  { label: "About Us", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Our Team", href: "#team" },
-  { label: "Contact", href: "#contact" },
-];
-
-const serviceLinks = [
-  { label: "Business Setup", href: "#services" },
-  { label: "Tax & Compliance", href: "#services" },
-  { label: "Accounting", href: "#services" },
-  { label: "Loan Facilitation", href: "#services" },
-  { label: "Banking Liaison", href: "#services" },
-  { label: "Advisory Services", href: "#services" },
-];
+import { siteConfig } from "@/config/site";
 
 const Footer = () => (
   <footer className="gradient-hero pt-16 pb-8">
@@ -28,13 +12,12 @@ const Footer = () => (
           <a href="#" className="inline-block mb-5">
             <img
               src={logo}
-              alt="NextGen Business Advisors"
+              alt={siteConfig.global.name}
               className="h-14 w-auto brightness-200"
             />
           </a>
           <p className="text-sm text-primary-foreground/60 leading-relaxed mb-4">
-            Helping businesses establish strong, compliant, and sustainable
-            operations in Nigeria.
+            {siteConfig.footer.description}
           </p>
         </div>
 
@@ -44,7 +27,7 @@ const Footer = () => (
             Quick Links
           </h4>
           <ul className="space-y-3">
-            {quickLinks.map((l) => (
+            {siteConfig.footer.quickLinks.map((l) => (
               <li key={l.label}>
                 <a
                   href={l.href}
@@ -67,7 +50,7 @@ const Footer = () => (
             Our Services
           </h4>
           <ul className="space-y-3">
-            {serviceLinks.map((l) => (
+            {siteConfig.footer.serviceLinks.map((l) => (
               <li key={l.label}>
                 <a
                   href={l.href}
@@ -96,7 +79,7 @@ const Footer = () => (
                 className="text-primary-light mt-0.5 shrink-0"
               />
               <span className="text-sm text-primary-foreground/60">
-                Lagos, Nigeria
+                {siteConfig.global.location}
               </span>
             </li>
             <li className="flex items-start gap-3">
@@ -105,10 +88,10 @@ const Footer = () => (
                 className="text-primary-light mt-0.5 shrink-0"
               />
               <a
-                href="mailto:info@nextgenadvisors.com"
+                href={`mailto:${siteConfig.global.email}`}
                 className="text-sm text-primary-foreground/60 hover:text-primary-foreground/90 transition-colors"
               >
-                info@nextgenadvisors.com
+                {siteConfig.global.email}
               </a>
             </li>
             <li className="flex items-start gap-3">
@@ -116,7 +99,7 @@ const Footer = () => (
                 size={16}
                 className="text-primary-light mt-0.5 shrink-0"
               />
-              <span className="text-sm text-primary-foreground/60">+234</span>
+              <span className="text-sm text-primary-foreground/60">{siteConfig.global.phone}</span>
             </li>
           </ul>
         </div>
@@ -125,22 +108,19 @@ const Footer = () => (
       {/* Divider */}
       <div className="border-t border-primary-foreground/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
         <p className="text-xs text-primary-foreground/40">
-          © {new Date().getFullYear()} NextGen Business Advisors Ltd. All rights
+          © {new Date().getFullYear()} {siteConfig.global.name}. All rights
           reserved.
         </p>
         <div className="flex gap-6">
-          <a
-            href="#"
-            className="text-xs text-primary-foreground/40 hover:text-primary-foreground/70 transition-colors"
-          >
-            Privacy Policy
-          </a>
-          <a
-            href="#"
-            className="text-xs text-primary-foreground/40 hover:text-primary-foreground/70 transition-colors"
-          >
-            Terms of Service
-          </a>
+          {siteConfig.footer.legalLinks.map((l) => (
+            <a
+              key={l.label}
+              href={l.href}
+              className="text-xs text-primary-foreground/40 hover:text-primary-foreground/70 transition-colors"
+            >
+              {l.label}
+            </a>
+          ))}
         </div>
       </div>
     </div>
