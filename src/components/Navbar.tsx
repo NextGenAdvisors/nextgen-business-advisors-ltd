@@ -1,12 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
-
-const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Contact", href: "#contact" },
-];
+import { siteConfig } from "@/config/site";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -18,7 +13,7 @@ const Navbar = () => {
           <img src={logo} alt="NextGen Business Advisors" className="h-14 w-auto" />
         </a>
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((l) => (
+          {siteConfig.nav.links.map((l) => (
             <a
               key={l.href}
               href={l.href}
@@ -31,7 +26,7 @@ const Navbar = () => {
             href="#contact"
             className="bg-primary text-primary-foreground text-sm font-semibold px-5 py-2.5 rounded-lg hover:bg-primary/90 transition-colors"
           >
-            Book a Consultation
+            {siteConfig.nav.cta}
           </a>
         </div>
         <button className="md:hidden text-foreground" onClick={() => setOpen(!open)}>
@@ -40,7 +35,7 @@ const Navbar = () => {
       </div>
       {open && (
         <div className="md:hidden bg-card border-b border-border px-4 pb-4 space-y-3">
-          {navLinks.map((l) => (
+          {siteConfig.nav.links.map((l) => (
             <a
               key={l.href}
               href={l.href}
@@ -55,7 +50,7 @@ const Navbar = () => {
             onClick={() => setOpen(false)}
             className="block bg-primary text-primary-foreground text-sm font-semibold px-5 py-2.5 rounded-lg text-center hover:bg-primary/90 transition-colors"
           >
-            Book a Consultation
+            {siteConfig.nav.cta}
           </a>
         </div>
       )}

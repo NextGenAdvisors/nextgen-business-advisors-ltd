@@ -40,6 +40,8 @@
     --gradient-brand: linear-gradient(135deg, hsl(210 65% 45%), hsl(350 65% 42%));
     --gradient-brand-subtle: linear-gradient(135deg, hsl(210 65% 45% / 0.08), hsl(350 65% 42% / 0.08));
     --gradient-hero: linear-gradient(160deg, hsl(215 30% 12%), hsl(215 35% 18%), hsl(210 40% 22%));
+    --gradient-dark-band: linear-gradient(160deg, hsl(215 35% 14%), hsl(215 40% 20%));
+    --gradient-cta: linear-gradient(135deg, hsl(210 65% 45%), hsl(210 70% 55%));
     --shadow-card: 0 4px 24px -4px hsl(210 65% 45% / 0.10);
     --shadow-elevated: 0 12px 40px -8px hsl(210 65% 45% / 0.15);
 
@@ -91,5 +93,11 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+  .gradient-dark-band {
+    background: var(--gradient-dark-band);
+  }
+  .gradient-cta {
+    background: var(--gradient-cta);
   }
 }

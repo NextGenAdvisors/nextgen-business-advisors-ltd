@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { MapPin, Mail, Phone, Send } from "lucide-react";
 import { toast } from "sonner";
+import { siteConfig } from "@/config/site";
 
 const ContactSection = () => {
   const [loading, setLoading] = useState(false);
@@ -30,11 +31,11 @@ const ContactSection = () => {
           className="text-center mb-16"
         >
           <span className="inline-block text-sm font-semibold text-secondary uppercase tracking-wider mb-3">
-            Let's Talk
+            {siteConfig.contact.badge}
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Get in Touch</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{siteConfig.contact.heading}</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            We help diaspora investors, foreign corporations, and entrepreneurs build compliant, structured, and growth-ready businesses in Nigeria.
+            {siteConfig.contact.description}
           </p>
         </motion.div>
 
@@ -52,7 +53,7 @@ const ContactSection = () => {
               </div>
               <div>
                 <h4 className="font-semibold text-foreground font-body mb-1">Office Location</h4>
-                <p className="text-sm text-muted-foreground">Lagos, Nigeria</p>
+                <p className="text-sm text-muted-foreground">{siteConfig.global.location}</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -61,8 +62,8 @@ const ContactSection = () => {
               </div>
               <div>
                 <h4 className="font-semibold text-foreground font-body mb-1">Email</h4>
-                <a href="mailto:info@nextgenadvisors.com" className="text-sm text-primary hover:underline">
-                  info@nextgenadvisors.com
+                <a href={`mailto:${siteConfig.global.email}`} className="text-sm text-primary hover:underline">
+                  {siteConfig.global.email}
                 </a>
               </div>
             </div>
@@ -72,14 +73,14 @@ const ContactSection = () => {
               </div>
               <div>
                 <h4 className="font-semibold text-foreground font-body mb-1">Phone</h4>
-                <p className="text-sm text-muted-foreground">+234</p>
+                <p className="text-sm text-muted-foreground">{siteConfig.global.phone}</p>
               </div>
             </div>
 
             {/* Consulting image */}
             <div className="rounded-xl overflow-hidden shadow-card hidden lg:block">
               <img
-                src="/images/consulting.jpg"
+                src={siteConfig.contact.image}
                 alt="Business consultation"
                 className="w-full h-48 object-cover"
                 loading="lazy"
@@ -88,7 +89,7 @@ const ContactSection = () => {
 
             <div className="pt-4 border-t border-border">
               <p className="text-sm text-muted-foreground italic">
-                "Structured businesses attract sustainable success — let us help you build yours the right way."
+                {siteConfig.contact.quote}
               </p>
             </div>
           </motion.div>
@@ -114,12 +115,9 @@ const ContactSection = () => {
                 <SelectValue placeholder="Service Required" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="setup">Business Setup</SelectItem>
-                <SelectItem value="tax">Tax & Compliance</SelectItem>
-                <SelectItem value="accounting">Accounting</SelectItem>
-                <SelectItem value="loan">Loan Facilitation</SelectItem>
-                <SelectItem value="banking">Banking & Liaison</SelectItem>
-                <SelectItem value="other">Other</SelectItem>
+                {siteConfig.contact.formServices.map(s => (
+                  <SelectItem key={s.value} value={s.value}>{s.label}</SelectItem>
+                ))}
               </SelectContent>
             </Select>
             <Textarea placeholder="Your Message" rows={4} className="bg-background resize-none" />
