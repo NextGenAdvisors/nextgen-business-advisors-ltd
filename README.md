@@ -1,73 +1,133 @@
-# Welcome to your Lovable project
+# NextGen Business Advisors Ltd
 
-## Project info
+A modern, responsive corporate website for **NextGen Business Advisors Ltd** — a Nigerian business advisory firm delivering expert services in business setup, regulatory compliance, financial structuring, and investment readiness.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+Built by [Kavara Digital Global](https://kavaradigital.online).
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## ✨ Features
 
-**Use Lovable**
+- **Hero Section** — Bold, animated landing area introducing the company's mission
+- **About Section** — Company background, values, and leadership overview
+- **Services Section** — Detailed breakdown of advisory service offerings
+- **Contact Section** — Contact form and company information
+- **Responsive Navbar** — Mobile-friendly navigation with smooth scroll links
+- **Back to Top** — Quick-scroll button for improved UX
+- **Dark-Mode Ready** — Theming via HSL design tokens and `next-themes`
+- **Animations** — Smooth transitions and micro-interactions powered by Framer Motion
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🛠 Tech Stack
 
-**Use your preferred IDE**
+| Layer         | Technology                                          |
+| ------------- | --------------------------------------------------- |
+| **Framework** | [React 18](https://react.dev)                       |
+| **Bundler**   | [Vite](https://vitejs.dev)                          |
+| **Language**  | [TypeScript](https://www.typescriptlang.org)        |
+| **Styling**   | [Tailwind CSS](https://tailwindcss.com)             |
+| **UI Kit**    | [shadcn/ui](https://ui.shadcn.com) (Radix primitives) |
+| **Animation** | [Framer Motion](https://www.framer.com/motion)      |
+| **Routing**   | [React Router v6](https://reactrouter.com)          |
+| **Forms**     | [React Hook Form](https://react-hook-form.com) + [Zod](https://zod.dev) |
+| **Data**      | [TanStack Query v5](https://tanstack.com/query)     |
+| **Charts**    | [Recharts](https://recharts.org)                    |
+| **Testing**   | [Vitest](https://vitest.dev) + [Playwright](https://playwright.dev) |
+| **Package Mgr** | [Bun](https://bun.sh)                            |
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 📁 Project Structure
 
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```text
+├── public/               # Static assets
+├── src/
+│   ├── components/       # Reusable React components
+│   │   ├── ui/           # shadcn/ui primitives
+│   │   ├── HeroSection.tsx
+│   │   ├── AboutSection.tsx
+│   │   ├── ServicesSection.tsx
+│   │   ├── ContactSection.tsx
+│   │   ├── Navbar.tsx
+│   │   ├── Footer.tsx
+│   │   └── BackToTop.tsx
+│   ├── hooks/            # Custom React hooks
+│   ├── lib/              # Utility functions (cn, etc.)
+│   ├── pages/            # Route-level page components
+│   ├── test/             # Unit and integration tests
+│   ├── App.tsx           # Root application component
+│   ├── main.tsx          # Application entry point
+│   └── index.css         # Global styles and Tailwind directives
+├── index.html            # HTML shell
+├── tailwind.config.ts    # Tailwind configuration
+├── vite.config.ts        # Vite configuration
+├── tsconfig.json         # TypeScript configuration
+└── package.json
 ```
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🚀 Getting Started
 
-**Use GitHub Codespaces**
+### Prerequisites
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- [Bun](https://bun.sh) (recommended) or [Node.js ≥ 18](https://nodejs.org)
 
-## What technologies are used for this project?
+### Installation
 
-This project is built with:
+```bash
+# Clone the repository
+git clone https://github.com/your-org/nextgen-business-advisors-ltd.git
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+# Navigate into the project
+cd nextgen-business-advisors-ltd
 
-## How can I deploy this project?
+# Install dependencies
+bun install
+```
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+### Development
 
-## Can I connect a custom domain to my Lovable project?
+```bash
+# Start the dev server (default: http://localhost:8080)
+bun run dev
+```
 
-Yes, you can!
+### Build for Production
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+```bash
+bun run build
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+### Preview Production Build
+
+```bash
+bun run preview
+```
+
+---
+
+## 🧪 Testing
+
+```bash
+# Run unit tests
+bun run test
+
+# Run unit tests in watch mode
+bun run test:watch
+```
+
+---
+
+## 🧹 Linting
+
+```bash
+bun run lint
+```
+
+---
+
+## 📄 License
+
+This project is proprietary software developed by **Kavara Digital Global** for **NextGen Business Advisors Ltd**. All rights reserved.
