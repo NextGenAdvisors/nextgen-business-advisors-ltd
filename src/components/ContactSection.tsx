@@ -33,7 +33,9 @@ const ContactSection = () => {
           <span className="inline-block text-sm font-semibold text-secondary uppercase tracking-wider mb-3">
             {siteConfig.contact.badge}
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{siteConfig.contact.heading}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            {siteConfig.contact.heading}
+          </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             {siteConfig.contact.description}
           </p>
@@ -52,8 +54,12 @@ const ContactSection = () => {
                 <MapPin className="text-primary-foreground" size={18} />
               </div>
               <div>
-                <h4 className="font-semibold text-foreground font-body mb-1">Office Location</h4>
-                <p className="text-sm text-muted-foreground">{siteConfig.global.location}</p>
+                <h4 className="font-semibold text-foreground font-body mb-1">
+                  Office Location
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  {siteConfig.global.location}
+                </p>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -61,8 +67,14 @@ const ContactSection = () => {
                 <Mail className="text-primary-foreground" size={18} />
               </div>
               <div>
-                <h4 className="font-semibold text-foreground font-body mb-1">Email</h4>
-                <a href={`mailto:${siteConfig.global.email}`} className="text-sm text-primary hover:underline">
+                <h4 className="font-semibold text-foreground font-body mb-1">
+                  Email
+                </h4>
+                <a
+                  href={`mailto:${siteConfig.global.email}`}
+                  className="text-sm text-primary hover:underline"
+                  target="_blank"
+                >
                   {siteConfig.global.email}
                 </a>
               </div>
@@ -72,8 +84,16 @@ const ContactSection = () => {
                 <Phone className="text-primary-foreground" size={18} />
               </div>
               <div>
-                <h4 className="font-semibold text-foreground font-body mb-1">Phone</h4>
-                <p className="text-sm text-muted-foreground">{siteConfig.global.phone}</p>
+                <h4 className="font-semibold text-foreground font-body mb-1">
+                  Phone
+                </h4>
+                <a
+                  className="text-sm text-foreground"
+                  href={`tel:${siteConfig.global.phone}`}
+                  target="_blank"
+                >
+                  {siteConfig.global.phone}
+                </a>
               </div>
             </div>
 
@@ -103,34 +123,65 @@ const ContactSection = () => {
             className="lg:col-span-3 bg-card rounded-xl p-8 border border-border shadow-card space-y-5"
           >
             <div className="grid sm:grid-cols-2 gap-4">
-              <Input placeholder="Full Name *" required className="bg-background" />
-              <Input placeholder="Company Name (optional)" className="bg-background" />
+              <Input
+                placeholder="Full Name *"
+                required
+                className="bg-background"
+              />
+              <Input
+                placeholder="Company Name (optional)"
+                className="bg-background"
+              />
             </div>
             <div className="grid sm:grid-cols-2 gap-4">
-              <Input type="email" placeholder="Email Address *" required className="bg-background" />
-              <Input type="tel" placeholder="Phone Number" className="bg-background" />
+              <Input
+                type="email"
+                placeholder="Email Address *"
+                required
+                className="bg-background"
+              />
+              <Input
+                type="tel"
+                placeholder="Phone Number"
+                className="bg-background"
+              />
             </div>
             <Select>
               <SelectTrigger className="bg-background">
                 <SelectValue placeholder="Service Required" />
               </SelectTrigger>
               <SelectContent>
-                {siteConfig.contact.formServices.map(s => (
-                  <SelectItem key={s.value} value={s.value}>{s.label}</SelectItem>
+                {siteConfig.contact.formServices.map((s) => (
+                  <SelectItem key={s.value} value={s.value}>
+                    {s.label}
+                  </SelectItem>
                 ))}
               </SelectContent>
             </Select>
-            <Textarea placeholder="Your Message" rows={4} className="bg-background resize-none" />
-            <Button type="submit" size="lg" className="w-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90" disabled={loading}>
-              {loading ? "Sending..." : (
-                <>Send Message <Send size={16} className="ml-1" /></>
+            <Textarea
+              placeholder="Your Message"
+              rows={4}
+              className="bg-background resize-none"
+            />
+            <Button
+              type="submit"
+              size="lg"
+              className="w-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90"
+              disabled={loading}
+            >
+              {loading ? (
+                'Sending...'
+              ) : (
+                <>
+                  Send Message <Send size={16} className="ml-1" />
+                </>
               )}
             </Button>
           </motion.form>
         </div>
       </div>
     </section>
-  );
+  )
 };
 
 export default ContactSection;

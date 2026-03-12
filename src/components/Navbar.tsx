@@ -8,9 +8,13 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-lg border-b border-border">
-      <div className="container mx-auto flex items-center justify-between h-20 px-4">
+      <div className="container mx-auto flex items-center justify-between h-20 px-4 ">
         <a href="#" className="flex items-center gap-2">
-          <img src={logo} alt="NextGen Business Advisors" className="h-14 w-auto" />
+          <img
+            src={logo}
+            alt="NextGen Business Advisors"
+            className="h-48 w-auto"
+          />
         </a>
         <div className="hidden md:flex items-center gap-8">
           {siteConfig.nav.links.map((l) => (
@@ -22,14 +26,20 @@ const Navbar = () => {
               {l.label}
             </a>
           ))}
-          <a
-            href="#contact"
-            className="bg-primary text-primary-foreground text-sm font-semibold px-5 py-2.5 rounded-lg hover:bg-primary/90 transition-colors"
-          >
-            {siteConfig.nav.cta}
-          </a>
+          <div className="">
+            <a
+              href="#contact"
+              className="bg-primary text-primary-foreground text-sm font-semibold px-5 py-2.5 rounded-lg hover:bg-primary/90 transition-colors"
+            >
+              {siteConfig.nav.cta}
+            </a>
+          </div>
         </div>
-        <button className="md:hidden text-foreground" onClick={() => setOpen(!open)}>
+
+        <button
+          className="md:hidden text-foreground"
+          onClick={() => setOpen(!open)}
+        >
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
@@ -55,7 +65,7 @@ const Navbar = () => {
         </div>
       )}
     </nav>
-  );
+  )
 };
 
 export default Navbar;

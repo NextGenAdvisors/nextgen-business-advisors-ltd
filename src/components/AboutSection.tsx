@@ -19,7 +19,7 @@ const AboutSection = () => (
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: true, margin: '-100px' }}
         className="max-w-6xl mx-auto mb-24"
       >
         <div className="grid lg:grid-cols-2 gap-14 items-center">
@@ -34,17 +34,19 @@ const AboutSection = () => (
                   loading="lazy"
                 />
               </div>
-              <div className="absolute -bottom-6 -right-6 w-44 h-44 rounded-xl overflow-hidden shadow-card border-4 border-background">
+              <div className="absolute -bottom-6 -right-6 w-44 h-44 rounded-xl overflow-hidden shadow-card border-4 border-primary">
                 <img
                   src={siteConfig.about.whyChooseUs.images.sub}
                   alt="Office collaboration"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover "
                   loading="lazy"
                 />
               </div>
               {/* Floating count */}
               <div className="absolute top-6 -left-4 bg-primary text-primary-foreground rounded-xl px-5 py-3 shadow-elevated text-center">
-                <p className="text-xl font-bold leading-none">{siteConfig.about.whyChooseUs.floatingBadge.number}</p>
+                <p className="text-xl font-bold leading-none">
+                  {siteConfig.about.whyChooseUs.floatingBadge.number}
+                </p>
                 <p className="text-[10px] uppercase tracking-wider mt-0.5 opacity-80">
                   {siteConfig.about.whyChooseUs.floatingBadge.label}
                 </p>
@@ -138,7 +140,10 @@ const AboutSection = () => (
           <ul className="text-muted-foreground text-sm leading-relaxed space-y-2">
             {siteConfig.about.mission.points.map((point) => (
               <li key={point} className="flex items-start gap-2">
-                <CheckCircle className="text-primary mt-0.5 shrink-0" size={14} />
+                <CheckCircle
+                  className="text-primary mt-0.5 shrink-0"
+                  size={14}
+                />
                 {point}
               </li>
             ))}
@@ -150,7 +155,7 @@ const AboutSection = () => (
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: true, margin: '-100px' }}
         className="max-w-4xl mx-auto"
       >
         <motion.div variants={fadeUp} custom={0} className="text-center mb-12">
@@ -180,6 +185,6 @@ const AboutSection = () => (
       </motion.div>
     </div>
   </section>
-);
+)
 
 export default AboutSection;

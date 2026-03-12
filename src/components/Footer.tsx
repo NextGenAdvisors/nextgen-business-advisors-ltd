@@ -13,7 +13,7 @@ const Footer = () => (
             <img
               src={logo}
               alt={siteConfig.global.name}
-              className="h-14 w-auto brightness-200"
+              className="h-48 w-auto brightness-200"
             />
           </a>
           <p className="text-sm text-primary-foreground/60 leading-relaxed mb-4">
@@ -83,10 +83,7 @@ const Footer = () => (
               </span>
             </li>
             <li className="flex items-start gap-3">
-              <Mail
-                size={16}
-                className="text-primary-light mt-0.5 shrink-0"
-              />
+              <Mail size={16} className="text-primary-light mt-0.5 shrink-0" />
               <a
                 href={`mailto:${siteConfig.global.email}`}
                 className="text-sm text-primary-foreground/60 hover:text-primary-foreground/90 transition-colors"
@@ -95,11 +92,10 @@ const Footer = () => (
               </a>
             </li>
             <li className="flex items-start gap-3">
-              <Phone
-                size={16}
-                className="text-primary-light mt-0.5 shrink-0"
-              />
-              <span className="text-sm text-primary-foreground/60">{siteConfig.global.phone}</span>
+              <Phone size={16} className="text-primary-light mt-0.5 shrink-0" />
+              <span className="text-sm text-primary-foreground/60">
+                {siteConfig.global.phone}
+              </span>
             </li>
           </ul>
         </div>
@@ -125,6 +121,6 @@ const Footer = () => (
       </div>
     </div>
   </footer>
-);
+)
 
 export default Footer;

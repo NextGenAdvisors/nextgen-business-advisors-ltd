@@ -34,7 +34,7 @@ const TeamSection = () => (
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "-80px" }}
+        viewport={{ once: true, margin: '-80px' }}
         className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto"
       >
         {siteConfig.team.members.map((m, i) => (
@@ -56,14 +56,16 @@ const TeamSection = () => (
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
                 <div className="flex gap-3">
                   <a
-                    href="#"
+                    href={m.memberLinkedInUrl}
+                    target="_blank"
                     className="w-9 h-9 rounded-full bg-white/20 backdrop-blur flex items-center justify-center text-white hover:bg-primary transition-colors"
                     aria-label="LinkedIn"
                   >
                     <Linkedin size={16} />
                   </a>
                   <a
-                    href="#"
+                    href={`mailto:${m.memberEmailAddress}`}
+                    target="_blank"
                     className="w-9 h-9 rounded-full bg-white/20 backdrop-blur flex items-center justify-center text-white hover:bg-primary transition-colors"
                     aria-label="Email"
                   >
@@ -76,13 +78,15 @@ const TeamSection = () => (
             <div className="p-6">
               <h3 className="text-lg font-bold text-foreground">{m.name}</h3>
               <p className="text-sm text-primary font-medium mb-2">{m.role}</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">{m.bio}</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {m.bio}
+              </p>
             </div>
           </motion.div>
         ))}
       </motion.div>
     </div>
   </section>
-);
+)
 
 export default TeamSection;
