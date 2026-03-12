@@ -1,6 +1,6 @@
 # NextGen Business Advisors Ltd
 
-A modern, responsive corporate website for **NextGen Business Advisors Ltd** — a Nigerian business advisory firm delivering expert services in business setup, regulatory compliance, financial structuring, and investment readiness.
+A modern, responsive corporate website for **NextGen Business Advisors Ltd** by Kavara Digital Global — a Nigerian business advisory firm delivering expert services in business setup, regulatory compliance, financial structuring, and investment readiness.
 
 Built by [Kavara Digital Global](https://kavaradigital.online).
 
