@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: nextgen-email-server
+    env: node
+    buildCommand: bun install && bun run build
+    startCommand: bun run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: RESEND_API_KEY
+        sync: false
