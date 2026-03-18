@@ -98,8 +98,8 @@ const HeroSection = () => (
                 className="bg-primary text-primary-foreground text-base px-8 py-6 font-semibold hover:bg-primary/90 shadow-elevated"
                 asChild
               >
-                <a href="#contact">
-                  {siteConfig.hero.ctaMain} <ArrowRight className="ml-1" size={18} />
+                <a href={siteConfig.hero.cta1.href}>
+                  {siteConfig.hero.cta1.label} <ArrowRight className="ml-1" size={18} />
                 </a>
               </Button>
               <Button
@@ -108,8 +108,8 @@ const HeroSection = () => (
                 className="text-base px-8 py-6"
                 asChild
               >
-                <a href="#contact">
-                  <Phone className="mr-1" size={18} /> {siteConfig.hero.ctaSecondary}
+                <a href={siteConfig.hero.cta2.href}>
+                  <Phone className="mr-1" size={18} /> {siteConfig.hero.cta2.label}
                 </a>
               </Button>
             </div>
@@ -153,7 +153,7 @@ const HeroSection = () => (
     </div>
 
     {/* Stats Bar */}
-    <div className="gradient-dark-band py-10">
+    {/* <div className="gradient-dark-band py-10">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {siteConfig.hero.stats.map((s) => (
@@ -161,7 +161,7 @@ const HeroSection = () => (
           ))}
         </div>
       </div>
-    </div>
+    </div> */}
   </section>
 );
 

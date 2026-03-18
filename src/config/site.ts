@@ -39,8 +39,14 @@ export const siteConfig = {
       'Helping Diaspora Investors, Foreign Corporations, and Entrepreneurs Build Sustainable and Compliant Businesses.',
     description2:
       'NextGen Business Advisors Ltd delivers expert advisory services for business setup, regulatory compliance, financial structuring, and investment readiness in Nigeria.',
-    ctaMain: 'Book a Consultation',
-    ctaSecondary: 'Speak With Our Advisors',
+    cta1: {
+      label: 'Book a Consultation',
+      href: '#contact'
+    },
+    cta2: {
+      label: 'Speak With Our Advisors',
+      href: '#contact'
+    },
     images: {
       main: '/images/hero-skyline.jpg',
       sub: '/images/consulting.jpg'
@@ -89,7 +95,7 @@ export const siteConfig = {
         {
           icon: Lightbulb,
           title: 'Institutional-Grade',
-          desc: 'Led by a licensed ICAN member with CFO and C-suite advisory experience.'
+          desc: 'Led by licensed ICAN professionals with CFO and C-suite advisory experience.'
         }
       ]
     },
@@ -266,14 +272,14 @@ export const siteConfig = {
           'From business registration to tax advisory, the team was professional and extremely knowledgeable. They truly understand cross-border business.',
         name: 'Oluwaseun Ojo',
         title: 'Director, Diaspora Capital Group',
-        avatar: '/images/team-member-2.png'
+        avatar: '/images/testimonial-avatar.png'
       },
       {
         quote:
           'We needed a structured financial model and bank-ready documentation. NextGen delivered beyond expectations and helped us secure our first institutional loan.',
         name: 'Amina Bello',
         title: 'Founder, GreenLeaf Agritech',
-        avatar: '/images/team-member-3.png'
+        avatar: '/images/testimonial-avatar.png'
       }
     ]
   },
