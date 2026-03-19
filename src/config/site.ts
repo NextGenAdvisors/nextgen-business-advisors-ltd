@@ -36,9 +36,9 @@ export const siteConfig = {
     headingMain: 'Structured, Compliant, Business Solutions',
     headingHighlight: 'in Nigeria',
     description1:
-      'Helping Diaspora Investors, Foreign Corporations, and Entrepreneurs Build Sustainable and Compliant Businesses.',
+      'NextGen Business Advisors Ltd delivers expert advisory services for business setup, regulatory compliance, accounting solutions, financial structuring, and investment readiness, while also assisting businesses with bank loan facilitation, business proposals, cash flow projections, and feasibility studies required for accessing institutional financing in Nigeria.',
     description2:
-      'NextGen Business Advisors Ltd delivers expert advisory services for business setup, regulatory compliance, financial structuring, and investment readiness in Nigeria.',
+      'We combine professional excellence, international exposure, and practical business insight to deliver structured advisory solutions for diaspora investors, foreign corporations, and entrepreneurs.',
     cta1: {
       label: 'Book a Consultation',
       href: '#contact'
@@ -65,37 +65,37 @@ export const siteConfig = {
   about: {
     whyChooseUs: {
       badge: 'Why Choose Us',
-      heading: 'The Only Source of Knowledge is Experience',
+      heading: 'Why Clients Trust NextGen Business Advisors Ltd',
       description:
-        'With decades of combined experience in finance, regulation, and cross-border advisory, NextGen Business Advisors delivers institutional-level expertise to every engagement.',
+        'We combine professional excellence, international exposure, and practical business insight. Led by Joy Ozua, a licensed member of the Institute of Chartered Accountants of Nigeria with over 15 years of experience in audit, taxation, governance, and strategic advisory. Our team brings experience from globally connected firms and international business institutions.',
       images: {
         main: '/images/team-meeting.jpg',
         sub: '/images/office-work.jpg'
       },
       floatingBadge: {
-        number: '500+',
-        label: 'Clients'
+        number: '15+',
+        label: 'Years'
       },
       features: [
         {
-          icon: ShieldCheck,
-          title: 'Regulatory Expertise',
-          desc: 'Deep knowledge of Nigerian business regulations, tax laws, and compliance frameworks.'
+          icon: Award,
+          title: 'Professional Expertise',
+          desc: 'Led by a licensed ICAN member with 15+ years in audit, tax, governance, and business advisory.'
         },
         {
-          icon: TrendingUp,
-          title: 'Growth Strategy',
-          desc: 'Sustainable financial structuring and investment readiness advisory.'
+          icon: Globe,
+          title: 'International Professional Exposure',
+          desc: 'Experience with globally connected firms like Parker Randall Offor and Moore Bishop & Rooks.'
         },
         {
           icon: Handshake,
-          title: 'Cross-Border Experience',
-          desc: 'Facilitating diaspora investment and foreign corporation market entry.'
+          title: 'Cross-Border Business Insight',
+          desc: 'Leadership experience at Nigerian-German Chamber of Commerce, understanding diaspora and foreign company needs.'
         },
         {
-          icon: Lightbulb,
-          title: 'Institutional-Grade',
-          desc: 'Led by licensed ICAN professionals with CFO and C-suite advisory experience.'
+          icon: TrendingUp,
+          title: 'Practical Banking & Business Knowledge',
+          desc: 'Background in banking operations, credit, and marketing to guide clients in structuring and accessing funding.'
         }
       ]
     },
@@ -146,93 +146,92 @@ export const siteConfig = {
   },
   services: {
     featureBand: {
-      badge: 'Why Our Clients Trust Us',
-      heading: 'We Are Qualified In Every Department',
+      badge: 'Our Approach',
+      heading: 'A Structured Path to Sustainable Operations',
       description:
-        'From regulatory compliance and financial governance to cross-border advisory, our multidisciplinary team brings institutional-grade expertise to every engagement.',
+        'We begin by understanding client objectives and evaluating the regulatory and financial landscape. We guide clients through business establishment, compliance structuring, and sound accounting systems. Our advisory supports investment readiness through business proposals, feasibility studies, financial projections, and bank loan facilitation.',
       image: '/images/business-team.png',
       items: [
-        'Chartered Accountants (ICAN)',
-        'Tax & Regulatory Specialists',
-        'Banking & Investment Experts',
-        'Cross-Border Advisory'
+        'Client Objective Assessment',
+        'Regulatory & Financial Landscape Evaluation',
+        'Business Establishment & Compliance',
+        'Accounting Systems & Investment Readiness'
       ]
     },
     main: {
-      badge: 'What We Do',
-      heading: 'Our Services',
+      badge: 'Our Expertise Services',
+      heading: 'Comprehensive Advisory Solutions',
       description:
-        'Comprehensive advisory solutions designed to help you establish, grow, and sustain your business in Nigeria.',
+        'At NextGen Business Advisors, we combine international best practices with local insights to help businesses thrive in Nigeria.',
       servicesList: [
         {
           icon: Building2,
           title: 'Business Setup & Market Entry',
           items: [
-            'Company registration and branch setup',
-            'Market research and feasibility support',
-            'Regulatory guidance'
+            'Seamless company and branch registration',
+            'Market research and feasibility insights',
+            'Regulatory guidance for confident market entry'
           ]
         },
         {
           icon: FileCheck,
-          title: 'Tax & Compliance Advisory',
+          title: 'Tax Advisory & Compliance',
           items: [
-            'Tax registration and advisory',
-            'Compliance with Nigerian regulations',
-            'Ongoing monitoring support'
+            'Strategic tax planning and optimization',
+            'Full tax registration and advisory support',
+            'Ongoing compliance monitoring with Nigerian regulations'
           ]
         },
         {
           icon: Calculator,
-          title: 'Accounting & Financial Structuring',
+          title: 'Accounting, Bookkeeping & Financial Structuring',
           items: [
-            'Accounting system setup',
-            'Cash flow management',
-            'Internal controls for sustainable operations'
+            'Customized accounting systems',
+            'Bookkeeping and financial reporting services',
+            'Cash flow management and internal controls',
+            'Stock-taking and business valuation'
           ]
         },
         {
           icon: Landmark,
           title: 'Loan & Investment Facilitation',
           items: [
-            'Business proposals and funding documents',
-            'Cash flow projections and feasibility studies',
-            'Bank-ready financial documentation',
-            'Advisory for institutional financing'
+            'Bank-ready business proposals and financial documentation',
+            'Feasibility studies and cash flow projections',
+            'Advisory support for institutional financing'
           ]
         },
         {
           icon: Building,
           title: 'Banking & Institutional Liaison',
           items: [
-            'Corporate banking setup support',
-            'Liaison with regulatory institutions'
+            'Corporate banking setup and management',
+            'Liaison with regulators and institutional partners'
           ]
         },
         {
           icon: RefreshCw,
           title: 'Ongoing Advisory & Retainer Services',
           items: [
-            'Monthly compliance oversight',
-            'Financial health review',
-            'Strategic advisory support',
-            'Governance strengthening'
+            'Strategic advisory for growth and governance',
+            'Monthly compliance and financial health reviews',
+            'Governance strengthening and long-term planning'
           ]
         }
       ]
     }
   },
   team: {
-    badge: 'Our People',
-    heading: 'Meet The Expert Team Members',
+    badge: 'Our Team',
+    heading: 'Meet Our Expert Team',
     description:
-      'A multidisciplinary team with deep expertise in accounting, tax, finance, and cross-border business advisory.',
+      'NextGen Business Advisors Ltd is supported by a team of qualified professionals across accounting, compliance, financial analysis, and strategic advisory. Our multidisciplinary expertise enables integrated services across all business advisory needs.',
     members: [
       {
         name: 'Joy Ozua',
         role: 'Managing Director / Lead Consultant',
         photo: '/images/team-lead.png',
-        bio: 'Licensed ICAN member, former CFO & Acting DG of the Nigerian-German Chamber of Commerce.',
+        bio: 'Licensed member of the Institute of Chartered Accountants of Nigeria with 15+ years of experience in audit, taxation, governance, and strategic advisory. Former CFO and Acting DG of Nigerian-German Chamber of Commerce. Experience with globally connected firms including Parker Randall Offor and Moore Bishop & Rooks.',
         memberLinkedInUrl: 'https://www.linkedin.com/in/joy-ozua-10ba25117',
         memberEmailAddress: 'ozua@nextgenadvisorsltd.com'
       },
@@ -255,10 +254,10 @@ export const siteConfig = {
     ]
   },
   testimonials: {
-    badge: 'Testimonials',
-    heading: 'What Our Customers Have to Say',
+    badge: 'Client Success Stories',
+    heading: 'What Our Clients Say',
     description:
-      'Trusted by diaspora investors, entrepreneurs, and foreign corporations building businesses in Nigeria.',
+      'Trusted by diaspora investors, foreign corporations, entrepreneurs, and SMEs who are building sustainable, compliant businesses in Nigeria.',
     reviews: [
       {
         quote:
@@ -284,13 +283,13 @@ export const siteConfig = {
     ]
   },
   contact: {
-    badge: "Let's Talk",
-    heading: 'Get in Touch',
+    badge: "Ready to Get Started?",
+    heading: 'Get in Touch With Our Team',
     description:
-      'We help diaspora investors, foreign corporations, and entrepreneurs build compliant, structured, and growth-ready businesses in Nigeria.',
+      'Whether you\'re a diaspora investor, foreign corporation, or entrepreneur, we\'re here to guide you toward compliant, structured, and growth-ready operations in Nigeria.',
     image: '/images/consulting.jpg',
     quote:
-      '"Structured businesses attract sustainable success — let us help you build yours the right way."',
+      '"Structured businesses attract sustainable success. Let NextGen Business Advisors help you build yours the right way."',
     formServices: [
       { value: 'setup', label: 'Business Setup' },
       { value: 'tax', label: 'Tax & Compliance' },
@@ -301,17 +300,17 @@ export const siteConfig = {
     ]
   },
   ctaBanner: {
-    heading: 'Ready to Build a Structured and Compliant Business in Nigeria?',
+    heading: 'Build a Compliant, Structured, and Investment-Ready Business in Nigeria',
     description:
-      'Let our expert team guide you from setup to sustainable growth. Book your free consultation today.',
-    primaryButtonText: 'Get Started Today',
+      'From market entry guidance to investment readiness, let our expert team help you establish and grow a sustainable business. We bring global perspective, structured approach, and hands-on expertise.',
+    primaryButtonText: 'Book Your Consultation',
     primaryButtonLink: '#contact',
-    secondaryButtonText: 'Explore Our Services',
+    secondaryButtonText: 'Learn More',
     secondaryButtonLink: '#services'
   },
   footer: {
     description:
-      'Helping businesses establish strong, compliant, and sustainable operations in Nigeria.',
+      'NextGen Business Advisors Ltd helps diaspora investors, foreign corporations, and entrepreneurs establish strong, compliant, and sustainable businesses in Nigeria through expert advisory in setup, compliance, accounting, and investment readiness.',
     quickLinks: [
       { label: 'Home', href: '#' },
       { label: 'About Us', href: '#about' },
@@ -330,6 +329,124 @@ export const siteConfig = {
     legalLinks: [
       { label: 'Privacy Policy', href: '#' },
       { label: 'Terms of Service', href: '#' }
+    ]
+  },
+  industriesServed: {
+    badge: 'Our Reach',
+    heading: 'Industries We Serve',
+    description:
+      'NextGen Business Advisors Ltd works across sectors to support different business types and growth stages:',
+    industries: [
+      {
+        title: 'SMEs & Entrepreneurs',
+        description: 'Structured business setup and growth advisory'
+      },
+      {
+        title: 'Diaspora Investors',
+        description: 'Local guidance for investment success'
+      },
+      {
+        title: 'Foreign Companies',
+        description: 'Market entry, compliance, and corporate setup'
+      },
+      {
+        title: 'Professional Services',
+        description: 'Accounting, governance, and operational support'
+      },
+      {
+        title: 'Trade & Bilateral Organizations',
+        description: 'Cross-border advisory, SME programs, governance'
+      },
+      {
+        title: 'Growing Corporates',
+        description: 'Financial governance, investment readiness, and strategic planning'
+      }
+    ]
+  },
+  whyNigeria: {
+    badge: 'Market Opportunity',
+    heading: 'Why Invest in Nigeria',
+    description:
+      'Nigeria is a high-opportunity market for investors with compelling advantages:',
+    opportunities: [
+      {
+        title: 'Large Consumer Market',
+        description: 'Africa\'s largest economy and population'
+      },
+      {
+        title: 'Strategic Gateway',
+        description: 'Access to West African markets'
+      },
+      {
+        title: 'Entrepreneurial Ecosystem',
+        description: 'Growing SMEs, innovation, and digital transformation'
+      },
+      {
+        title: 'Government Incentives',
+        description: 'Policies supporting foreign investment'
+      }
+    ],
+    support: [
+      'Market entry strategy',
+      'Regulatory compliance',
+      'Investment structuring',
+      'Institutional partnerships'
+    ]
+  },
+  strategicAdvantage: {
+    badge: 'Our Competitive Edge',
+    heading: 'Our Strategic Advantage',
+    advantages: [
+      {
+        title: 'Real-World Expertise',
+        description: 'Over 15 years of experience in audit, banking, and advisory'
+      },
+      {
+        title: 'International Standards, Local Insight',
+        description: 'Global firm exposure combined with Nigerian market understanding'
+      },
+      {
+        title: 'Full-Spectrum Advisory',
+        description: 'From setup to financing and governance'
+      },
+      {
+        title: 'Tailored for Investors',
+        description: 'Diaspora and foreign companies receive practical, compliant guidance'
+      },
+      {
+        title: 'Long-Term Partnership',
+        description: 'Helping clients build sustainable, structured, and investment-ready businesses'
+      }
+    ]
+  },
+  legal: {
+    badge: 'Legal & Compliance',
+    heading: 'Legal, Terms & Privacy',
+    sections: [
+      {
+        title: 'Terms of Service',
+        description: 'Use of website and professional services governed by engagement agreements'
+      },
+      {
+        title: 'Privacy Policy',
+        description: 'All client and website data is confidential and never sold'
+      },
+      {
+        title: 'Disclaimer',
+        description: 'Website content is informational; professional services are provided only after formal engagement'
+      },
+      {
+        title: 'Limitation of Liability',
+        description: 'Advisory services guide decisions; outcomes depend on client action and regulatory compliance'
+      },
+      {
+        title: 'Intellectual Property',
+        description: 'All documents, reports, and advisory materials belong to NextGen unless agreed otherwise'
+      },
+      {
+        title: 'Governing Law',
+        description: 'Federal Republic of Nigeria'
+      }
     ]
   }
 }
