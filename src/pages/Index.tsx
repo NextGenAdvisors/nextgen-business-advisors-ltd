@@ -8,6 +8,7 @@ import ContactSection from "@/components/ContactSection";
 import CTABanner from "@/components/CTABanner";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
+import WhatsAppFloatingButton from '@/components/WhatsAppFloatingButton'
 
 const Index = () => (
   <>
@@ -21,7 +22,8 @@ const Index = () => (
     <CTABanner />
     <Footer />
     <BackToTop />
+    <WhatsAppFloatingButton />
   </>
-);
+)
 
 export default Index;

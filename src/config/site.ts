@@ -41,11 +41,11 @@ export const siteConfig = {
       'We combine professional excellence, international exposure, and practical business insight to deliver structured advisory solutions for diaspora investors, foreign corporations, and entrepreneurs.',
     cta1: {
       label: 'Book a Consultation',
-      href: '#contact'
+      href: 'https://calendly.com/nextgenadvisorsltd-info/30min'
     },
     cta2: {
       label: 'Speak With Our Advisors',
-      href: '#contact'
+      href: 'tel:+2348037345051'
     },
     images: {
       main: '/images/hero-skyline.jpg',
@@ -167,55 +167,164 @@ export const siteConfig = {
         {
           icon: Building2,
           title: 'Business Setup & Market Entry',
+          image: '/images/services/business-setup.svg',
           items: [
             'Seamless company and branch registration',
             'Market research and feasibility insights',
             'Regulatory guidance for confident market entry'
+          ],
+          details: [
+            {
+              title: 'Seamless company and branch registration',
+              description:
+                'We guide you through the entire incorporation journey, from name reservation to CAC registration, ensuring smooth and compliant setup for your business entity or branch.'
+            },
+            {
+              title: 'Market research and feasibility insights',
+              description:
+                'Our research helps you understand market demand, competition, and potential risks so you can enter with confidence and the right strategic positioning.'
+            },
+            {
+              title: 'Regulatory guidance for confident market entry',
+              description:
+                'We provide practical advice on licensing, permits, and industry-specific regulations so you can avoid common regulatory hurdles in Nigeria.'
+            }
           ]
         },
         {
           icon: FileCheck,
           title: 'Tax Advisory & Compliance',
+          image: '/images/services/tax-advisory.svg',
           items: [
             'Strategic tax planning and optimization',
             'Full tax registration and advisory support',
             'Ongoing compliance monitoring with Nigerian regulations'
+          ],
+          details: [
+            {
+              title: 'Strategic tax planning and optimization',
+              description:
+                'We design tax strategies that align with your business model and growth goals to help you minimize liabilities while remaining compliant.'
+            },
+            {
+              title: 'Full tax registration and advisory support',
+              description:
+                'From TIN registration to annual filings, we support you with accurate tax returns, filings, and expert advice for every stage of your business.'
+            },
+            {
+              title: 'Ongoing compliance monitoring with Nigerian regulations',
+              description:
+                'We keep you informed about regulatory changes and ensure your processes remain aligned with FIRS, CITA, and other relevant authorities.'
+            }
           ]
         },
         {
           icon: Calculator,
           title: 'Accounting, Bookkeeping & Financial Structuring',
+          image: '/images/services/accounting.svg',
           items: [
             'Customized accounting systems',
             'Bookkeeping and financial reporting services',
             'Cash flow management and internal controls',
             'Stock-taking and business valuation'
+          ],
+          details: [
+            {
+              title: 'Customized accounting systems',
+              description:
+                'We implement accounting workflows and systems tailored to your operations, whether you need simple bookkeeping or a full ERP-backed finance function.'
+            },
+            {
+              title: 'Bookkeeping and financial reporting services',
+              description:
+                'Accurate ledgers, timely reports, and meaningful metrics help you make informed decisions and maintain stakeholder confidence.'
+            },
+            {
+              title: 'Cash flow management and internal controls',
+              description:
+                'We help you design cash management processes and controls that mitigate risk and improve predictability across your business.'
+            },
+            {
+              title: 'Stock-taking and business valuation',
+              description:
+                'Our teams support physical inventory audits and valuation exercises to keep your balance sheet accurate and investment-ready.'
+            }
           ]
         },
         {
           icon: Landmark,
           title: 'Loan & Investment Facilitation',
+          image: '/images/services/loan-investment.svg',
           items: [
             'Bank-ready business proposals and financial documentation',
             'Feasibility studies and cash flow projections',
             'Advisory support for institutional financing'
+          ],
+          details: [
+            {
+              title:
+                'Bank-ready business proposals and financial documentation',
+              description:
+                'We prepare investor-grade proposals and financial packages that meet the expectations of banks, DFIs, and other funding partners.'
+            },
+            {
+              title: 'Feasibility studies and cash flow projections',
+              description:
+                'Our analyses provide realistic forecasts and pricing models that demonstrate the viability of your project or expansion plans.'
+            },
+            {
+              title: 'Advisory support for institutional financing',
+              description:
+                'We support negotiations and structure financing terms that align with your capital strategy and long-term objectives.'
+            }
           ]
         },
         {
           icon: Building,
           title: 'Banking & Institutional Liaison',
+          image: '/images/services/banking-liaison.svg',
           items: [
             'Corporate banking setup and management',
             'Liaison with regulators and institutional partners'
+          ],
+          details: [
+            {
+              title: 'Corporate banking setup and management',
+              description:
+                'We help you establish the right banking relationships, accounts, and cash management structures to support your day-to-day operations and growth.'
+            },
+            {
+              title: 'Liaison with regulators and institutional partners',
+              description:
+                'We act as your trusted point of contact with banks, regulators, and other institutions to keep processes moving and reduce friction.'
+            }
           ]
         },
         {
           icon: RefreshCw,
           title: 'Ongoing Advisory & Retainer Services',
+          image: '/images/services/retainer.svg',
           items: [
             'Strategic advisory for growth and governance',
             'Monthly compliance and financial health reviews',
             'Governance strengthening and long-term planning'
+          ],
+          details: [
+            {
+              title: 'Strategic advisory for growth and governance',
+              description:
+                'We offer recurring guidance on strategy, performance, governance, and risk management to keep your business on track.'
+            },
+            {
+              title: 'Monthly compliance and financial health reviews',
+              description:
+                'Regular reviews help you maintain compliance, spot issues early, and ensure your finances remain healthy as you scale.'
+            },
+            {
+              title: 'Governance strengthening and long-term planning',
+              description:
+                'We support governance frameworks and planning processes that create sustainability and resilience in your organization.'
+            }
           ]
         }
       ]
@@ -240,16 +349,17 @@ export const siteConfig = {
         role: 'Chartered Accountant & Virtual CFO',
         photo: '/images/team-member-2.png',
         bio: 'Chartered Accountant with 20+ years experience, Certified Management Consultant (CMC), and Founder of CloudERP Accounting & Business Solutions. Specializes in virtual CFO services, forensic accounting, and cloud ERP implementations for hospitality, fintech, real estate, and high-growth startups. Delivers clean books, compliant taxes, investor-ready financials, with proven results in on-time reporting, budgeting accuracy, and cost reductions.',
-        memberLinkedInUrl: '#',
-        memberEmailAddress: '#'
+        memberLinkedInUrl: 'https://www.linkedin.com/in/desmondabollo/',
+        memberEmailAddress: 'info@nextgenadvisorsltd.com'
       },
       {
-        name: 'Chinelo Nwosu',
-        role: 'Financial Analyst',
+        name: 'Bukola Lawal',
+        role: 'Lead Consultant, Accounting Services MBA, ACCA, ACTI',
         photo: '/images/team-member-3.png',
-        bio: 'Expert in cash-flow modelling, investment readiness, and financial structuring for SMEs.',
-        memberLinkedInUrl: '#',
-        memberEmailAddress: '#'
+        bio: 'Bukola Lawal is a Chartered Accountant and Taxation Professional with over seven years of experience delivering high-impact accounting and financial solutions. She specializes in financial reporting, tax compliance, payroll management, and internal controls, helping businesses strengthen financial systems and operate with clarity and confidence.',
+        memberLinkedInUrl:
+          'https://www.linkedin.com/in/bukola-lawal-acca-22612534/',
+        memberEmailAddress: 'info@nextgenadvisorsltd.com'
       }
     ]
   },

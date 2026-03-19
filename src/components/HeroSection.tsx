@@ -82,9 +82,10 @@ const HeroSection = () => (
               {siteConfig.hero.badge}
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-6">
-              {siteConfig.hero.headingMain}{" "}
+              {siteConfig.hero.headingMain}{' '}
               <span className="text-primary-light block">
-                {siteConfig.hero.headingHighlight}</span>
+                {siteConfig.hero.headingHighlight}
+              </span>
             </h1>
             <p className="text-lg md:text-xl text-primary-foreground/70 mb-4 max-w-2xl">
               {siteConfig.hero.description1}
@@ -98,8 +99,9 @@ const HeroSection = () => (
                 className="bg-primary text-primary-foreground text-base px-8 py-6 font-semibold hover:bg-primary/90 shadow-elevated"
                 asChild
               >
-                <a href={siteConfig.hero.cta1.href}>
-                  {siteConfig.hero.cta1.label} <ArrowRight className="ml-1" size={18} />
+                <a href={siteConfig.hero.cta1.href} target="_blank">
+                  {siteConfig.hero.cta1.label}{' '}
+                  <ArrowRight className="ml-1" size={18} />
                 </a>
               </Button>
               <Button
@@ -108,8 +110,9 @@ const HeroSection = () => (
                 className="text-base px-8 py-6"
                 asChild
               >
-                <a href={siteConfig.hero.cta2.href}>
-                  <Phone className="mr-1" size={18} /> {siteConfig.hero.cta2.label}
+                <a href={siteConfig.hero.cta2.href} target="_blank">
+                  <Phone className="mr-1" size={18} />{' '}
+                  {siteConfig.hero.cta2.label}
                 </a>
               </Button>
             </div>
@@ -141,7 +144,9 @@ const HeroSection = () => (
               </div>
               {/* Floating accent badge */}
               <div className="absolute -top-4 -right-4 bg-primary text-primary-foreground rounded-xl px-5 py-3 shadow-elevated text-center">
-                <p className="text-2xl font-bold leading-none">{siteConfig.hero.floatingBadge.number}</p>
+                <p className="text-2xl font-bold leading-none">
+                  {siteConfig.hero.floatingBadge.number}
+                </p>
                 <p className="text-[10px] uppercase tracking-wider mt-0.5 opacity-80">
                   {siteConfig.hero.floatingBadge.label}
                 </p>
@@ -163,6 +168,6 @@ const HeroSection = () => (
       </div>
     </div> */}
   </section>
-);
+)
 
 export default HeroSection;
