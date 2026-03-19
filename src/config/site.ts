@@ -236,10 +236,10 @@ export const siteConfig = {
         memberEmailAddress: 'ozua@nextgenadvisorsltd.com'
       },
       {
-        name: 'Adeyemi Oladipo',
-        role: 'Tax & Compliance Officer',
+        name: 'Desmond Abollo',
+        role: 'Chartered Accountant & Virtual CFO',
         photo: '/images/team-member-2.png',
-        bio: 'Specialist in Nigerian tax regulation, corporate compliance, and audit governance.',
+        bio: 'Chartered Accountant with 20+ years experience, Certified Management Consultant (CMC), and Founder of CloudERP Accounting & Business Solutions. Specializes in virtual CFO services, forensic accounting, and cloud ERP implementations for hospitality, fintech, real estate, and high-growth startups. Delivers clean books, compliant taxes, investor-ready financials, with proven results in on-time reporting, budgeting accuracy, and cost reductions.',
         memberLinkedInUrl: '#',
         memberEmailAddress: '#'
       },
@@ -283,10 +283,10 @@ export const siteConfig = {
     ]
   },
   contact: {
-    badge: "Ready to Get Started?",
+    badge: 'Ready to Get Started?',
     heading: 'Get in Touch With Our Team',
     description:
-      'Whether you\'re a diaspora investor, foreign corporation, or entrepreneur, we\'re here to guide you toward compliant, structured, and growth-ready operations in Nigeria.',
+      "Whether you're a diaspora investor, foreign corporation, or entrepreneur, we're here to guide you toward compliant, structured, and growth-ready operations in Nigeria.",
     image: '/images/consulting.jpg',
     quote:
       '"Structured businesses attract sustainable success. Let NextGen Business Advisors help you build yours the right way."',
@@ -300,7 +300,8 @@ export const siteConfig = {
     ]
   },
   ctaBanner: {
-    heading: 'Build a Compliant, Structured, and Investment-Ready Business in Nigeria',
+    heading:
+      'Build a Compliant, Structured, and Investment-Ready Business in Nigeria',
     description:
       'From market entry guidance to investment readiness, let our expert team help you establish and grow a sustainable business. We bring global perspective, structured approach, and hands-on expertise.',
     primaryButtonText: 'Book Your Consultation',
@@ -359,7 +360,8 @@ export const siteConfig = {
       },
       {
         title: 'Growing Corporates',
-        description: 'Financial governance, investment readiness, and strategic planning'
+        description:
+          'Financial governance, investment readiness, and strategic planning'
       }
     ]
   },
@@ -371,7 +373,7 @@ export const siteConfig = {
     opportunities: [
       {
         title: 'Large Consumer Market',
-        description: 'Africa\'s largest economy and population'
+        description: "Africa's largest economy and population"
       },
       {
         title: 'Strategic Gateway',
@@ -399,11 +401,13 @@ export const siteConfig = {
     advantages: [
       {
         title: 'Real-World Expertise',
-        description: 'Over 15 years of experience in audit, banking, and advisory'
+        description:
+          'Over 15 years of experience in audit, banking, and advisory'
       },
       {
         title: 'International Standards, Local Insight',
-        description: 'Global firm exposure combined with Nigerian market understanding'
+        description:
+          'Global firm exposure combined with Nigerian market understanding'
       },
       {
         title: 'Full-Spectrum Advisory',
@@ -411,11 +415,13 @@ export const siteConfig = {
       },
       {
         title: 'Tailored for Investors',
-        description: 'Diaspora and foreign companies receive practical, compliant guidance'
+        description:
+          'Diaspora and foreign companies receive practical, compliant guidance'
       },
       {
         title: 'Long-Term Partnership',
-        description: 'Helping clients build sustainable, structured, and investment-ready businesses'
+        description:
+          'Helping clients build sustainable, structured, and investment-ready businesses'
       }
     ]
   },
@@ -425,23 +431,28 @@ export const siteConfig = {
     sections: [
       {
         title: 'Terms of Service',
-        description: 'Use of website and professional services governed by engagement agreements'
+        description:
+          'Use of website and professional services governed by engagement agreements'
       },
       {
         title: 'Privacy Policy',
-        description: 'All client and website data is confidential and never sold'
+        description:
+          'All client and website data is confidential and never sold'
       },
       {
         title: 'Disclaimer',
-        description: 'Website content is informational; professional services are provided only after formal engagement'
+        description:
+          'Website content is informational; professional services are provided only after formal engagement'
       },
       {
         title: 'Limitation of Liability',
-        description: 'Advisory services guide decisions; outcomes depend on client action and regulatory compliance'
+        description:
+          'Advisory services guide decisions; outcomes depend on client action and regulatory compliance'
       },
       {
         title: 'Intellectual Property',
-        description: 'All documents, reports, and advisory materials belong to NextGen unless agreed otherwise'
+        description:
+          'All documents, reports, and advisory materials belong to NextGen unless agreed otherwise'
       },
       {
         title: 'Governing Law',
