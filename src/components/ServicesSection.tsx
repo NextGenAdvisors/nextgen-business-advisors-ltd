@@ -166,8 +166,8 @@ const ServicesSection = () => {
         open={isOpen}
         onOpenChange={(open) => (open ? setIsOpen(true) : closeModal())}
       >
-        <DialogContent className="max-w-5xl p-0">
-          <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
+        <DialogContent className="max-w-5xl p-0 overflow-hidden border-0 bg-transparent shadow-2xl sm:rounded-2xl">
+          <div className="grid lg:grid-cols-[1.4fr_1fr]">
             <div className="rounded-t-2xl lg:rounded-l-2xl lg:rounded-tr-none bg-white p-8 lg:p-10">
               <DialogHeader>
                 <DialogTitle className="text-xl sm:text-2xl">
@@ -209,21 +209,19 @@ const ServicesSection = () => {
               </DialogFooter>
             </div>
 
-            <div className="hidden lg:flex items-center justify-center rounded-b-2xl lg:rounded-r-2xl lg:rounded-bl-none bg-gradient-to-br from-primary/10 via-white to-primary/5 p-8">
-              <div className="relative w-full max-w-md aspect-video rounded-2xl shadow-xl overflow-hidden border-4 border-white">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-60 mix-blend-multiply z-10 pointer-events-none" />
-                {activeService?.image ? (
-                  <img
-                    src={activeService.image}
-                    alt={activeService.title}
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-105"
-                  />
-                ) : (
-                  <div className="absolute inset-0 flex items-center justify-center bg-white/60">
-                    <ArrowRight className="h-12 w-12 text-primary" />
-                  </div>
-                )}
-              </div>
+            <div className="relative hidden lg:block rounded-b-2xl lg:rounded-r-2xl lg:rounded-bl-none overflow-hidden bg-gradient-to-br from-primary/10 via-white to-primary/5">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/40 via-transparent to-transparent opacity-60 mix-blend-multiply z-10 pointer-events-none" />
+              {activeService?.image ? (
+                <img
+                  src={activeService.image}
+                  alt={activeService.title}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                />
+              ) : (
+                <div className="absolute inset-0 flex items-center justify-center bg-white/60">
+                  <ArrowRight className="h-12 w-12 text-primary" />
+                </div>
+              )}
             </div>
           </div>
         </DialogContent>
