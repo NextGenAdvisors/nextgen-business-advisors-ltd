@@ -167,7 +167,7 @@ export const siteConfig = {
         {
           icon: Building2,
           title: 'Business Setup & Market Entry',
-          image: '/images/services/business-setup.svg',
+          image: '/images/services/business-setup.png',
           items: [
             'Seamless company and branch registration',
             'Market research and feasibility insights',
@@ -194,7 +194,7 @@ export const siteConfig = {
         {
           icon: FileCheck,
           title: 'Tax Advisory & Compliance',
-          image: '/images/services/tax-advisory.svg',
+          image: '/images/services/tax-advisory.png',
           items: [
             'Strategic tax planning and optimization',
             'Full tax registration and advisory support',
@@ -221,7 +221,7 @@ export const siteConfig = {
         {
           icon: Calculator,
           title: 'Accounting, Bookkeeping & Financial Structuring',
-          image: '/images/services/accounting.svg',
+          image: '/images/services/accounting.png',
           items: [
             'Customized accounting systems',
             'Bookkeeping and financial reporting services',
@@ -254,7 +254,7 @@ export const siteConfig = {
         {
           icon: Landmark,
           title: 'Loan & Investment Facilitation',
-          image: '/images/services/loan-investment.svg',
+          image: '/images/services/loan-investment.png',
           items: [
             'Bank-ready business proposals and financial documentation',
             'Feasibility studies and cash flow projections',
@@ -282,7 +282,7 @@ export const siteConfig = {
         {
           icon: Building,
           title: 'Banking & Institutional Liaison',
-          image: '/images/services/banking-liaison.svg',
+          image: '/images/services/banking-liaison.png',
           items: [
             'Corporate banking setup and management',
             'Liaison with regulators and institutional partners'
@@ -303,7 +303,7 @@ export const siteConfig = {
         {
           icon: RefreshCw,
           title: 'Ongoing Advisory & Retainer Services',
-          image: '/images/services/retainer.svg',
+          image: '/images/services/retainer.png',
           items: [
             'Strategic advisory for growth and governance',
             'Monthly compliance and financial health reviews',

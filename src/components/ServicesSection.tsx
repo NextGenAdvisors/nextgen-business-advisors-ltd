@@ -210,21 +210,19 @@ const ServicesSection = () => {
             </div>
 
             <div className="hidden lg:flex items-center justify-center rounded-b-2xl lg:rounded-r-2xl lg:rounded-bl-none bg-gradient-to-br from-primary/10 via-white to-primary/5 p-8">
-              <div className="relative w-full max-w-sm">
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/20 via-transparent to-transparent opacity-60 mix-blend-multiply" />
-                <div className="relative flex h-52 w-full items-center justify-center">
-                  {activeService?.image ? (
-                    <img
-                      src={activeService.image}
-                      alt={activeService.title}
-                      className="h-full w-full max-w-xs rounded-xl object-contain shadow-lg"
-                    />
-                  ) : (
-                    <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white/60 shadow-sm">
-                      <ArrowRight className="h-8 w-8 text-primary" />
-                    </div>
-                  )}
-                </div>
+              <div className="relative w-full max-w-md aspect-video rounded-2xl shadow-xl overflow-hidden border-4 border-white">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-60 mix-blend-multiply z-10 pointer-events-none" />
+                {activeService?.image ? (
+                  <img
+                    src={activeService.image}
+                    alt={activeService.title}
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center bg-white/60">
+                    <ArrowRight className="h-12 w-12 text-primary" />
+                  </div>
+                )}
               </div>
             </div>
           </div>
