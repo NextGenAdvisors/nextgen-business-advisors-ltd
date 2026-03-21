@@ -415,7 +415,7 @@ export const siteConfig = {
     description:
       'From market entry guidance to investment readiness, let our expert team help you establish and grow a sustainable business. We bring global perspective, structured approach, and hands-on expertise.',
     primaryButtonText: 'Book Your Consultation',
-    primaryButtonLink: '#contact',
+    primaryButtonLink: 'https://calendly.com/nextgenadvisorsltd-info/30min',
     secondaryButtonText: 'Learn More',
     secondaryButtonLink: '#services'
   },

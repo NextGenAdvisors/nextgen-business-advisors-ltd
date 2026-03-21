@@ -37,7 +37,7 @@ const CTABanner = () => (
           <Button
             size="lg"
             variant="outline"
-            className="border-white/40 text-white font-semibold text-base px-8 py-6 hover:bg-white/10"
+            className="border-white/40 bg-transparent ext-white font-semibold text-base px-8 py-6 hover:bg-white/10"
             asChild
           >
             <a href={siteConfig.ctaBanner.secondaryButtonLink}>{siteConfig.ctaBanner.secondaryButtonText}</a>
