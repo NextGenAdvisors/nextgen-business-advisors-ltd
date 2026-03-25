@@ -14,7 +14,7 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import { MapPin, Mail, Phone, Send } from "lucide-react";
+import { MapPin, Mail, Phone, Send, ExternalLink } from "lucide-react";
 import { toast } from "sonner";
 import { siteConfig } from "@/config/site";
 
@@ -78,7 +78,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20 md:py-28 bg-background">
+    <section id="contact" className="pt-20 md:pt-28 bg-background">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -294,6 +294,56 @@ const ContactSection = () => {
           </motion.div>
         </div>
       </div>
+
+      {/* ── Full-width interactive map ── */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="mt-20"
+      >
+        {/* Header band */}
+        <div className="bg-primary/5 border-y border-border py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-3 px-4 md:px-8">
+            <div className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center shrink-0">
+              <MapPin className="text-primary-foreground" size={16} />
+            </div>
+            <div>
+              <p className="text-xs font-semibold text-secondary uppercase tracking-wider">
+                Our Location
+              </p>
+              <p className="text-sm font-medium text-foreground">
+                {siteConfig.global.location}
+              </p>
+            </div>
+          </div>
+          <a
+            href={siteConfig.global.mapsDirectionsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 transition-colors px-4 md:px-8"
+          >
+            <ExternalLink size={14} />
+            Get Directions
+          </a>
+        </div>
+
+        {/* Map iframe */}
+        <div className="relative w-full" style={{ height: "420px" }}>
+          <iframe
+            title={`NextGen Business Advisors – ${siteConfig.global.location}`}
+            src={siteConfig.global.mapsEmbedUrl}
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="absolute inset-0"
+          />
+        </div>
+      </motion.div>
     </section>
   );
 };

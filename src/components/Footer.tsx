@@ -7,14 +7,14 @@ const Footer = () => (
   <footer className="gradient-hero pt-16 pb-8">
     <div className="container mx-auto px-4">
       {/* Main Grid */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12 mb-12">
         {/* Company */}
-        <div>
+        <div className="col-span-2 lg:col-span-1">
           <Link to="/" className="inline-block mb-5">
             <img
               src={logo}
               alt={siteConfig.global.name}
-              className="h-48 w-auto brightness-200"
+              className="h-16 w-auto brightness-200"
             />
           </Link>
           <p className="text-sm text-primary-foreground/60 leading-relaxed mb-4">
@@ -23,7 +23,7 @@ const Footer = () => (
         </div>
 
         {/* Quick Links */}
-        <div>
+        <div className="col-span-1">
           <h4 className="text-white font-bold text-base mb-5 font-body">
             Quick Links
           </h4>
@@ -46,7 +46,7 @@ const Footer = () => (
         </div>
 
         {/* Services */}
-        <div>
+        <div className="col-span-1">
           <h4 className="text-white font-bold text-base mb-5 font-body">
             Our Services
           </h4>
@@ -69,7 +69,7 @@ const Footer = () => (
         </div>
 
         {/* Contact Info */}
-        <div>
+        <div className="col-span-2 lg:col-span-1">
           <h4 className="text-white font-bold text-base mb-5 font-body">
             Contact Us
           </h4>
@@ -106,7 +106,12 @@ const Footer = () => (
       <div className="border-t border-primary-foreground/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
         <p className="text-xs text-primary-foreground/40">
           © {new Date().getFullYear()} {siteConfig.global.name}. All rights
-          reserved.
+          reserved.{" "}
+          | Website Developed By{" "}
+          <a href={siteConfig.global.developer.link } target="_blank" className="text-primary-foreground/60 hover:text-primary-foreground/90 transition-colors" rel="noopener noreferrer">
+          
+          {siteConfig.global.developer.label}
+          </a>
         </p>
         <div className="flex gap-6">
           {siteConfig.footer.legalLinks.map((l) => (

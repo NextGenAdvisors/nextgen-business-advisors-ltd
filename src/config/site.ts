@@ -19,8 +19,23 @@ export const siteConfig = {
   global: {
     name: 'NextGen Business Advisors Ltd',
     location: 'Lagos, Nigeria',
+    city: 'Lagos',
+    country: 'Nigeria',
     email: 'info@nextgenadvisors.com',
-    phone: '+234 803 734 5051'
+    phone: '+234 803 734 5051',
+    whatsapp: '+2348037345051',
+    /**
+     * Paste a fresh Google Maps embed URL here whenever the office moves.
+     * To get one: Google Maps → share → Embed a map → copy the src URL.
+     */
+    mapsEmbedUrl:
+      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9869.927415408383!2d3.449704144847996!3d6.459473024128256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bf4f359e067ad%3A0xa08df7cee2d4046c!2sBanana%20Island%2C%20Lekki%20106104%2C%20Lagos!5e1!3m2!1sen!2sng!4v1774460884646!5m2!1sen!2sng',
+    /** Direct link that opens Google Maps in a new tab for directions. */
+    mapsDirectionsUrl: 'https://www.google.com/maps/place/Banana+Island,+Lekki+106104,+Lagos',
+    developer: {
+      label: 'Kavara Digital',
+      link: 'https://www.kavaradigital.online'
+    }
   },
   nav: {
     links: [
@@ -61,8 +76,15 @@ export const siteConfig = {
       { end: 500, suffix: '+', label: 'Clients Served', icon: Users },
       { end: 15, suffix: '+', label: 'Countries Represented', icon: Globe },
       { end: 98, suffix: '%', label: 'Client Satisfaction', icon: Award },
-      { end: 20, suffix: '+', label: 'Years of Experience', icon: Clock }
     ]
+  },
+  pages: {
+    financialStrategy: {
+      heroImage: '/images/financial_strategy.png',
+    },
+    auditTaxation: {
+      heroImage: '/images/hero-skyline.jpg',
+    }
   },
   about: {
     whyChooseUs: {

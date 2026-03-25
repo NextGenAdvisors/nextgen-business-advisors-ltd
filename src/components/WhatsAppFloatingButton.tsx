@@ -1,11 +1,13 @@
 import { MessageCircle } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { siteConfig } from '@/config/site'
 
 const WhatsAppFloatingButton = () => {
   const message = encodeURIComponent(
     'Hi team, I’m reaching out from the website to learn more about your services.'
   )
-  const href = `https://wa.me/2348037345051?text=${message}`
+  const whatsappNumber = siteConfig.global.whatsapp.replace(/\D/g, '')
+  const href = `https://wa.me/${whatsappNumber}?text=${message}`
 
   return (
     <motion.a
@@ -13,11 +15,11 @@ const WhatsAppFloatingButton = () => {
       target="_blank"
       rel="noreferrer noopener"
       whileTap={{ scale: 0.95 }}
-      className="fixed bottom-8 left-6 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-600 text-white shadow-elevated hover:bg-emerald-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
+      className="fixed bottom-8 left-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-emerald-600 text-white shadow-elevated hover:bg-emerald-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
       aria-label="Chat with us on WhatsApp"
     >
       <svg
-        className="h-12 w-12"
+        className="h-8 w-8"
         viewBox="0 0 192 192"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

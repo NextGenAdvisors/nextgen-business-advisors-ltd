@@ -9,16 +9,17 @@ import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
 import { Button } from "@/components/ui/button";
 import PageTransition from "@/components/PageTransition";
 import SEO from "@/components/SEO";
+import { siteConfig } from "@/config/site";
 
 const strategySchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "NextGen Business Advisors — Financial Strategy & Business Transformation",
+  name: `NextGen Business Advisors — Financial Strategy & Business Transformation`,
   description:
-    "Fix the structure, fix the business. Expert financial cleanup, IFRS restatements, investment readiness, and business transformation advisory for SMEs in Nigeria.",
+    `Fix the structure, fix the business. Expert financial cleanup, IFRS restatements, investment readiness, and business transformation advisory for SMEs in ${siteConfig.global.country}.`,
   url: "https://nextgenbusinessadvisors.com/financial-strategy",
-  areaServed: "Nigeria",
-  serviceType: ["Financial Strategy", "Business Transformation", "Investment Readiness", "SME Accounting", "Business Advisory Nigeria"],
+  areaServed: siteConfig.global.country,
+  serviceType: ["Financial Strategy", "Business Transformation", "Investment Readiness", "SME Accounting", `Business Advisory ${siteConfig.global.country}`],
 };
 
 const FinancialStrategy = () => {
@@ -29,9 +30,9 @@ const FinancialStrategy = () => {
   return (
     <PageTransition>
       <SEO
-        title="Financial Strategy & Business Transformation — Nigeria SME Advisors"
-        description="Fix the structure, fix the business. NextGen Business Advisors and Joy Ozua & Co. deliver financial cleanup, IFRS restatements, CFO advisory, investment readiness, and SME accounting services in Nigeria. Are you struggling with unreconciled accounts or unclear financial records? We turn numbers into clarity."
-        keywords="financial strategy Nigeria, SME accounting services Nigeria, business advisory services Nigeria, IFRS financial reporting Nigeria, investment readiness Nigeria, business transformation advisory, unreconciled accounts Nigeria"
+        title={`Financial Strategy & Business Transformation — ${siteConfig.global.country} SME Advisors`}
+        description={`Fix the structure, fix the business. NextGen Business Advisors and Joy Ozua & Co. deliver financial cleanup, IFRS restatements, CFO advisory, investment readiness, and SME accounting services in ${siteConfig.global.country}. Are you struggling with unreconciled accounts or unclear financial records? We turn numbers into clarity.`}
+        keywords={`financial strategy ${siteConfig.global.country}, SME accounting services ${siteConfig.global.country}, business advisory services ${siteConfig.global.country}, IFRS financial reporting ${siteConfig.global.country}, investment readiness ${siteConfig.global.country}, business transformation advisory, unreconciled accounts ${siteConfig.global.country}`}
         canonical="/financial-strategy"
         schema={strategySchema}
       />
@@ -39,9 +40,9 @@ const FinancialStrategy = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden gradient-hero">
+        <section className="relative lg:mt-40 pt-40 pb-20 lg:pt-[254px] lg:pb-32 overflow-hidden gradient-hero min-h-[75vh] flex flex-col">
         <div className="absolute inset-0 z-0">
-          <img src="/images/financial_strategy.png" alt="Financial Strategy Background" className="w-full h-full object-cover opacity-20 mix-blend-luminosity" />
+          <img src={siteConfig.pages.financialStrategy.heroImage} alt="Financial Strategy Background" className="w-full h-full object-cover opacity-20 mix-blend-luminosity" />
         </div>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/30 via-transparent to-transparent z-0"></div>
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 z-0"></div>

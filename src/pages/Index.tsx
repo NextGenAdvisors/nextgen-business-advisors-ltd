@@ -13,24 +13,25 @@ import PageTransition from "@/components/PageTransition";
 import SEO from "@/components/SEO";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { siteConfig } from "@/config/site";
 
 const PRIMARY_KW =
-  "audit firm in Nigeria, chartered accountants in Lagos, tax advisory services Nigeria, financial audit services Nigeria, SME accounting services Nigeria";
+  `audit firm in ${siteConfig.global.country}, chartered accountants in ${siteConfig.global.city}, tax advisory services ${siteConfig.global.country}, financial audit services ${siteConfig.global.country}, SME accounting services ${siteConfig.global.country}`;
 const SECONDARY_KW =
-  "IFRS financial reporting Nigeria, VAT and WHT compliance Nigeria, FIRS tax consultants, business advisory services Nigeria, internal audit services Nigeria";
+  `IFRS financial reporting ${siteConfig.global.country}, VAT and WHT compliance ${siteConfig.global.country}, FIRS tax consultants, business advisory services ${siteConfig.global.country}, internal audit services ${siteConfig.global.country}`;
 
 const homeSchema = {
   "@context": "https://schema.org",
   "@type": "AccountingService",
-  name: "NextGen Business Advisors Ltd",
+  name: siteConfig.global.name,
   description:
     "We turn numbers into clarity. Professional audit, tax, and business advisory services in Nigeria.",
   url: "https://nextgenbusinessadvisors.com",
-  areaServed: "Nigeria",
+  areaServed: siteConfig.global.country,
   address: {
     "@type": "PostalAddress",
     addressCountry: "NG",
-    addressLocality: "Lagos",
+    addressLocality: siteConfig.global.city,
   },
   serviceType: [
     "Audit Services",

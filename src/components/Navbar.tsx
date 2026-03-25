@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronRight } from "lucide-react";
+import { Menu, X, ChevronRight, Phone, Mail, MapPin, Clock } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo-alt.png";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
@@ -11,8 +11,16 @@ const SECTION_IDS = HASH_LINKS.map((l) => l.href.replace("/#", ""));
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
   const location = useLocation();
+
+  // Shrink navbar on scroll
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // Track which section is in the viewport via IntersectionObserver
   useEffect(() => {
@@ -34,9 +42,7 @@ const Navbar = () => {
           }
         },
         {
-          // Trigger when the section occupies ≥ 40% of the viewport
           threshold: 0.4,
-          // Shrink top margin to account for fixed navbar height
           rootMargin: "-80px 0px 0px 0px",
         }
       );
@@ -48,19 +54,13 @@ const Navbar = () => {
     return () => observers.forEach((o) => o.disconnect());
   }, [location.pathname]);
 
-  // Reset activeSection when hash changes via scroll-jump (e.g., direct link)
+  // Reset activeSection when hash changes via scroll-jump
   useEffect(() => {
     if (location.hash) {
       setActiveSection(location.hash.replace("#", ""));
     }
   }, [location.hash]);
 
-  /**
-   * Returns true when a nav link should be highlighted.
-   *
-   * - Hash links  (e.g. /#about)  → active when on "/" AND the section is in view
-   * - Page links  (e.g. /audit-taxation) → active when pathname matches exactly
-   */
   const isActive = (href: string) => {
     if (href.startsWith("/#")) {
       if (location.pathname !== "/") return false;
@@ -72,87 +72,176 @@ const Navbar = () => {
 
   // Lock body scroll when drawer is open
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
   }, [open]);
 
   // Close drawer on route change
-  useEffect(() => {
-    setOpen(false);
-  }, [location]);
+  useEffect(() => { setOpen(false); }, [location]);
 
   const close = () => setOpen(false);
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-lg border-b border-border">
-        <div className="container mx-auto flex items-center justify-between h-20 px-4">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-2" onClick={close}>
-            <img
-              src={logo}
-              alt="NextGen Business Advisors"
-              className="h-48 w-auto"
-            />
-          </Link>
+      {/* ═══════════════════════════════════════════════
+          DESKTOP NAVBAR — 3-tier layout (lg and above)
+          Mobile/Tablet — single-bar + drawer
+          ═══════════════════════════════════════════════ */}
+      <header
+        className={cn(
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+          scrolled ? "shadow-elevated" : ""
+        )}
+      >
+        {/* ─── TIER 1: Top announcement bar (desktop only) ─── */}
+        <div
+          className={cn(
+            "hidden lg:block bg-primary text-white text-xs transition-all duration-500 overflow-hidden",
+            scrolled ? "max-h-0 py-0 opacity-0" : "max-h-10 py-2 opacity-100"
+          )}
+        >
+          <div className="container mx-auto px-4 flex items-center justify-between">
+            <p className="font-medium tracking-wide">
+              Expert Business Advisory Services in Nigeria —{" "}
+              <span className="text-primary-light font-semibold">
+                Audit · Tax · Strategy · Compliance
+              </span>
+            </p>
+            <div className="flex items-center gap-1.5 text-white/80">
+              <Clock size={13} className="text-primary-light" />
+              <span>Mon–Fri: 08:00am – 6:00pm WAT</span>
+            </div>
+          </div>
+        </div>
 
-          {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-8">
-            {siteConfig.nav.links.map((l) => (
-              <Link
-                key={l.href}
-                to={l.href}
-                className={cn(
-                  "relative text-sm font-medium transition-colors pb-0.5",
-                  "after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:rounded-full after:transition-all after:duration-300",
-                  isActive(l.href)
-                    ? "text-primary font-semibold after:bg-primary after:opacity-100"
-                    : "text-muted-foreground hover:text-primary after:bg-primary after:opacity-0 hover:after:opacity-40"
-                )}
-              >
-                {l.label}
-              </Link>
-            ))}
-            <Link
-              to="/#contact"
-              className="bg-primary text-primary-foreground text-sm font-semibold px-5 py-2.5 rounded-lg hover:bg-primary/90 transition-colors"
-            >
-              {siteConfig.nav.cta}
+        {/* ─── TIER 2: Logo + Contact info bar (desktop only) ─── */}
+        <div
+          className={cn(
+            "hidden lg:block gradient-hero transition-all duration-500 overflow-hidden",
+            scrolled ? "max-h-0 py-0 opacity-0" : "max-h-24 py-4 opacity-100"
+          )}
+        >
+          <div className="container mx-auto px-4 flex items-center justify-between gap-8">
+            {/* Logo */}
+            <Link to="/" className="flex-shrink-0" onClick={close}>
+              <img
+                src={logo}
+                alt="NextGen Business Advisors"
+                className="h-14 w-auto brightness-[1.15] drop-shadow-md"
+              />
             </Link>
+
+            {/* Contact blocks */}
+            <div className="flex items-center gap-6 ml-auto">
+              {/* Phone */}
+              <a
+                href={`tel:${siteConfig.global.phone.replace(/\s/g, "")}`}
+                className="flex items-center gap-3 group"
+              >
+                <div className="w-10 h-10 rounded-full bg-white/15 border border-white/20 flex items-center justify-center group-hover:bg-white/25 transition-colors flex-shrink-0">
+                  <Phone size={16} className="text-white" />
+                </div>
+                <div>
+                  <p className="text-white/60 text-[10px] uppercase tracking-widest font-semibold">Call Us 24/7</p>
+                  <p className="text-white font-bold text-sm leading-tight">{siteConfig.global.phone}</p>
+                </div>
+              </a>
+
+              {/* Divider */}
+              <div className="h-10 w-px bg-white/20" />
+
+              {/* Email */}
+              <a
+                href={`mailto:${siteConfig.global.email}`}
+                className="flex items-center gap-3 group"
+              >
+                <div className="w-10 h-10 rounded-full bg-white/15 border border-white/20 flex items-center justify-center group-hover:bg-white/25 transition-colors flex-shrink-0">
+                  <Mail size={16} className="text-white" />
+                </div>
+                <div>
+                  <p className="text-white/60 text-[10px] uppercase tracking-widest font-semibold">Mail for Support</p>
+                  <p className="text-white font-bold text-sm leading-tight">{siteConfig.global.email}</p>
+                </div>
+              </a>
+
+              {/* Divider */}
+              <div className="h-10 w-px bg-white/20" />
+
+              {/* Address */}
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-white/15 border border-white/20 flex items-center justify-center flex-shrink-0">
+                  <MapPin size={16} className="text-white" />
+                </div>
+                <div>
+                  <p className="text-white/60 text-[10px] uppercase tracking-widest font-semibold">Office Address</p>
+                  <p className="text-white font-bold text-sm leading-tight">{siteConfig.global.location}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ─── TIER 3 / MOBILE BAR: Nav links + CTA ─── */}
+        <div
+          className={cn(
+            "bg-card/95 backdrop-blur-lg border-b border-border transition-all duration-500",
+            scrolled ? "shadow-card" : ""
+          )}
+        >
+          {/* Mobile single-row */}
+          <div className="container mx-auto px-4 flex items-center justify-between h-16 lg:hidden">
+            <Link to="/" onClick={close}>
+              <img src={logo} alt="NextGen Business Advisors" className="h-12 w-auto" />
+            </Link>
+            <button
+              className="relative z-[60] flex items-center justify-center w-10 h-10 rounded-md text-white hover:bg-muted/50 transition-colors"
+              onClick={() => setOpen((prev) => !prev)}
+              aria-label="Toggle menu"
+            >
+              <span className={cn("absolute transition-all duration-300", open ? "opacity-100 rotate-0" : "opacity-0 rotate-90")}>
+                <X size={22} />
+              </span>
+              <span className={cn("absolute transition-all duration-300", open ? "opacity-0 -rotate-90" : "opacity-100 rotate-0")}>
+                <Menu size={22} />
+              </span>
+            </button>
           </div>
 
-          {/* Hamburger — visible below lg */}
-          <button
-            className="lg:hidden relative z-[60] flex items-center justify-center w-10 h-10 rounded-md text-foreground hover:bg-muted/50 transition-colors"
-            onClick={() => setOpen((prev) => !prev)}
-            aria-label="Toggle menu"
-          >
-            <span
-              className={cn(
-                "absolute transition-all duration-300",
-                open ? "opacity-100 rotate-0" : "opacity-0 rotate-90"
-              )}
-            >
-              <X size={22} />
-            </span>
-            <span
-              className={cn(
-                "absolute transition-all duration-300",
-                open ? "opacity-0 -rotate-90" : "opacity-100 rotate-0"
-              )}
-            >
-              <Menu size={22} />
-            </span>
-          </button>
-        </div>
-      </nav>
+          {/* Desktop nav-link row */}
+          <div className="hidden lg:block">
+            <div className="container mx-auto px-4 flex items-center justify-between h-14">
+              {/* Nav links */}
+              <nav className="flex items-center gap-1">
+                {siteConfig.nav.links.map((l) => (
+                  <Link
+                    key={l.href}
+                    to={l.href}
+                    className={cn(
+                      "relative px-4 py-2 text-sm font-semibold uppercase tracking-wide transition-colors rounded-sm",
+                      "after:absolute after:bottom-0 after:left-4 after:right-4 after:h-[2px] after:rounded-full after:transition-all after:duration-300",
+                      isActive(l.href)
+                        ? "text-primary after:bg-primary after:opacity-100"
+                        : "text-muted-foreground hover:text-primary after:bg-primary after:opacity-0 hover:after:opacity-50"
+                    )}
+                  >
+                    {l.label}
+                  </Link>
+                ))}
+              </nav>
 
+              {/* CTA */}
+              <Link
+                to="/#contact"
+                className="bg-primary hover:bg-primary/90 text-white text-sm font-bold px-6 py-2.5 rounded-lg transition-all duration-200 shadow-md shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-px"
+              >
+                {siteConfig.nav.cta}
+              </Link>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* ========== Mobile Drawer ========== */}
       {/* Backdrop */}
       <div
         onClick={close}
@@ -172,21 +261,31 @@ const Navbar = () => {
         )}
       >
         {/* Drawer Header */}
-        <div className="flex items-center justify-between px-6 py-5 border-b border-border">
+        <div className="flex items-center justify-between px-6 py-5 border-b border-border gradient-hero ">
           <Link to="/" onClick={close}>
             <img
               src={logo}
               alt="NextGen Business Advisors"
-              className="h-36 w-auto brightness-110"
+              className="h-10 w-auto brightness-110"
             />
           </Link>
           <button
             onClick={close}
-            className="flex items-center justify-center w-9 h-9 rounded-full bg-muted/60 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+            className="flex items-center justify-center w-9 h-9 rounded-full bg-white/20 text-white hover:bg-white/30 transition-colors"
             aria-label="Close menu"
           >
             <X size={18} />
           </button>
+        </div>
+
+        {/* Quick contact strip in drawer */}
+        <div className="px-5 py-3 bg-muted/40 border-b border-border flex flex-col gap-1.5">
+          <a href={`tel:${siteConfig.global.phone.replace(/\s/g, "")}`} className="flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors">
+            <Phone size={12} /> {siteConfig.global.phone}
+          </a>
+          <a href={`mailto:${siteConfig.global.email}`} className="flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors">
+            <Mail size={12} /> {siteConfig.global.email}
+          </a>
         </div>
 
         {/* Nav Links */}
@@ -223,9 +322,6 @@ const Navbar = () => {
             {siteConfig.nav.cta}
             <ChevronRight size={16} />
           </Link>
-          <p className="text-center text-xs text-muted-foreground/60 pt-1">
-            {siteConfig.global.phone}
-          </p>
         </div>
       </aside>
     </>

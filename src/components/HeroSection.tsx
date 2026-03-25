@@ -63,7 +63,7 @@ const Counter = ({ end, suffix = "", label, icon: Icon }: CounterProps) => {
 const HeroSection = () => (
   <section className="relative">
     {/* Main Hero */}
-    <div className="relative gradient-hero min-h-[92vh] flex items-center overflow-hidden pt-20">
+    <div className="relative gradient-hero min-h-[92vh] flex flex-col overflow-hidden pt-40 pb-20 lg:pt-[254px] lg:pb-32">
       {/* Decorative blurs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 right-[-10%] w-[500px] h-[500px] rounded-full bg-primary/5 blur-3xl" />

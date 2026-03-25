@@ -9,15 +9,16 @@ import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
 import { Button } from "@/components/ui/button";
 import PageTransition from "@/components/PageTransition";
 import SEO from "@/components/SEO";
+import { siteConfig } from "@/config/site";
 
 const auditSchema = {
   "@context": "https://schema.org",
   "@type": "AccountingService",
   name: "Joy Ozua & Co. — Audit, Taxation & Statutory Compliance",
   description:
-    "Compliance is not enough — clarity is key. Statutory audit, FIRS tax advisory, VAT/WHT compliance, and CAC filings by chartered accountants in Lagos, Nigeria.",
+    `Compliance is not enough — clarity is key. Statutory audit, FIRS tax advisory, VAT/WHT compliance, and CAC filings by chartered accountants in ${siteConfig.global.city}, ${siteConfig.global.country}.`,
   url: "https://nextgenbusinessadvisors.com/audit-taxation",
-  areaServed: "Nigeria",
+  areaServed: siteConfig.global.country,
   serviceType: ["Statutory Audit", "Tax Advisory", "FIRS Tax Consulting", "CAC Compliance", "IFRS Financial Reporting"],
 };
 
@@ -29,9 +30,9 @@ const AuditTaxation = () => {
   return (
     <PageTransition>
       <SEO
-        title="Audit, Taxation & Statutory Compliance — Chartered Accountants Nigeria"
-        description="Compliance is not enough — clarity is key. Joy Ozua & Co. provides statutory audit, FIRS tax advisory, VAT and WHT compliance, IFRS financial reporting, and CAC corporate filings. Expert chartered accountants and FIRS tax consultants in Lagos, Nigeria. Your numbers should tell the truth."
-        keywords="audit firm in Nigeria, chartered accountants in Lagos, tax advisory services Nigeria, financial audit services Nigeria, IFRS financial reporting Nigeria, VAT and WHT compliance Nigeria, FIRS tax consultants, internal audit services Nigeria"
+        title={`Audit, Taxation & Statutory Compliance — Chartered Accountants ${siteConfig.global.country}`}
+        description={`Compliance is not enough — clarity is key. Joy Ozua & Co. provides statutory audit, FIRS tax advisory, VAT and WHT compliance, IFRS financial reporting, and CAC corporate filings. Expert chartered accountants and FIRS tax consultants in ${siteConfig.global.city}, ${siteConfig.global.country}. Your numbers should tell the truth.`}
+        keywords={`audit firm in ${siteConfig.global.country}, chartered accountants in ${siteConfig.global.city}, tax advisory services ${siteConfig.global.country}, financial audit services ${siteConfig.global.country}, IFRS financial reporting ${siteConfig.global.country}, VAT and WHT compliance ${siteConfig.global.country}, FIRS tax consultants, internal audit services ${siteConfig.global.country}`}
         canonical="/audit-taxation"
         schema={auditSchema}
       />
@@ -39,8 +40,11 @@ const AuditTaxation = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden gradient-hero">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/30 via-transparent to-transparent"></div>
+      <section className="relative lg:mt-40 pt-40 pb-20 lg:pt-[254px] lg:pb-32 overflow-hidden gradient-hero min-h-[75vh] flex flex-col">
+        <div className="absolute inset-0 z-0">
+          <img src={siteConfig.pages.auditTaxation.heroImage} alt="Audit & Taxation Background" className="w-full h-full object-cover opacity-20 mix-blend-luminosity" />
+        </div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/30 via-transparent to-transparent z-0"></div>
         <div className="container relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white mb-6 leading-tight animate-fade-up" style={{ animationDelay: "0.1s" }}>
@@ -186,9 +190,9 @@ const AuditTaxation = () => {
                 <div className="aspect-square md:aspect-[4/3] rounded-2xl overflow-hidden shadow-lg relative bg-white flex items-center justify-center border border-border/50 group">
                   <div className="absolute inset-0 bg-primary/10 mix-blend-multiply z-10 transition-opacity group-hover:opacity-0"></div>
                   <img src="/images/audit_team.png" alt="Audit Team Professionals" className="w-full h-full object-cover relative z-0 transition-transform duration-700 group-hover:scale-105" />
-                  <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md p-6 rounded-xl shadow-lg z-20 transform translate-y-2 opacity-90 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                     <h3 className="text-xl font-display font-bold text-foreground mb-1">Joy Ozua &amp; Co.</h3>
-                     <p className="text-primary font-medium text-sm">Chartered Accountants • Expert Audit Team</p>
+                  <div className="absolute bottom-6 left-6 right-6 bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-xl shadow-lg z-20 transform translate-y-2 opacity-90 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                     <h3 className="text-xl text-white font-display font-bold text-foreground mb-1">Joy Ozua &amp; Co.</h3>
+                     <p className="text-white font-medium text-sm">Chartered Accountants • Expert Audit Team</p>
                   </div>
                 </div>
               </div>
