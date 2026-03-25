@@ -167,37 +167,43 @@ const ServicesSection = () => {
         onOpenChange={(open) => (open ? setIsOpen(true) : closeModal())}
       >
         <DialogContent className="max-w-5xl p-0">
-          <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
-            <div className="rounded-t-2xl lg:rounded-l-2xl lg:rounded-tr-none bg-white p-8 lg:p-10">
-              <DialogHeader>
-                <DialogTitle className="text-xl sm:text-2xl">
-                  {activeService?.title}
-                </DialogTitle>
-                <DialogDescription className="text-sm sm:text-base">
-                  {activeService
-                    ? `More about ${activeService.title.toLowerCase()}.`
-                    : 'Select a service for more details.'}
-                </DialogDescription>
-              </DialogHeader>
+          <div className="grid lg:grid-cols-[1.2fr_1fr] overflow-hidden rounded-2xl">
+            <div className="bg-white p-8 lg:p-10 flex flex-col justify-between">
+              <div>
+                <DialogHeader>
+                  <DialogTitle className="text-xl sm:text-2xl font-bold">
+                    {activeService?.title}
+                  </DialogTitle>
+                  <DialogDescription className="text-sm sm:text-base mt-2">
+                    {activeService
+                      ? `More about ${activeService.title.toLowerCase()}.`
+                      : 'Select a service for more details.'}
+                  </DialogDescription>
+                </DialogHeader>
 
-              <div className="space-y-5 mt-6">
-                {activeService?.details?.map((detail) => (
-                  <div key={detail.title} className="space-y-2">
-                    <h4 className="text-sm font-semibold text-foreground">
-                      {detail.title}
-                    </h4>
-                    <p className="text-sm text-muted-foreground">
-                      {detail.description}
-                    </p>
-                  </div>
-                ))}
+                <div className="space-y-6 mt-8">
+                  {activeService?.details?.map((detail) => (
+                    <div key={detail.title} className="space-y-2">
+                      <h4 className="text-base font-bold text-foreground font-body">
+                        {detail.title}
+                      </h4>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {detail.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              <DialogFooter className="mt-8 justify-end gap-3">
-                <Button variant="secondary" onClick={closeModal}>
+              <DialogFooter className="mt-10 justify-start gap-3">
+                <Button 
+                  variant="destructive" 
+                  onClick={closeModal}
+                  className="px-8"
+                >
                   Close
                 </Button>
-                <Button asChild>
+                <Button asChild className="px-8 shadow-button hover:shadow-button-hover transition-all">
                   <a
                     href="https://wa.me/2348037345051?text=Hi%20team%2C%20I%20am%20interested%20in%20your%20services"
                     target="_blank"
@@ -209,23 +215,20 @@ const ServicesSection = () => {
               </DialogFooter>
             </div>
 
-            <div className="hidden lg:flex items-center justify-center rounded-b-2xl lg:rounded-r-2xl lg:rounded-bl-none bg-gradient-to-br from-primary/10 via-white to-primary/5 p-8">
-              <div className="relative w-full max-w-sm">
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/20 via-transparent to-transparent opacity-60 mix-blend-multiply" />
-                <div className="relative flex h-52 w-full items-center justify-center">
-                  {activeService?.image ? (
-                    <img
-                      src={activeService.image}
-                      alt={activeService.title}
-                      className="h-full w-full max-w-xs rounded-xl object-contain shadow-lg"
-                    />
-                  ) : (
-                    <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white/60 shadow-sm">
-                      <ArrowRight className="h-8 w-8 text-primary" />
-                    </div>
-                  )}
+            <div className="hidden lg:block relative bg-muted/30">
+              {activeService?.image ? (
+                <img
+                  src={activeService.image}
+                  alt={activeService.title}
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+              ) : (
+                <div className="flex h-full w-full items-center justify-center">
+                  <ArrowRight className="h-12 w-12 text-primary/20" />
                 </div>
-              </div>
+              )}
+              {/* Optional: Add a subtle overlay to the image to ensure close button visibility if needed */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
             </div>
           </div>
         </DialogContent>

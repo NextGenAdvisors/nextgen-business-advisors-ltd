@@ -24,10 +24,12 @@ export const siteConfig = {
   },
   nav: {
     links: [
-      { label: 'About', href: '#about' },
-      { label: 'Services', href: '#services' },
-      { label: 'Team', href: '#team' },
-      { label: 'Contact', href: '#contact' }
+      { label: 'About', href: '/#about' },
+      { label: 'Services', href: '/#services' },
+      { label: 'Audit & Tax', href: '/audit-taxation' },
+      { label: 'Financial Strategy', href: '/financial-strategy' },
+      { label: 'Team', href: '/#team' },
+      { label: 'Contact', href: '/#contact' }
     ],
     cta: 'Book a Consultation'
   },
@@ -167,7 +169,7 @@ export const siteConfig = {
         {
           icon: Building2,
           title: 'Business Setup & Market Entry',
-          image: '/images/services/business-setup.svg',
+          image: '/images/services/business-setup.jpg',
           items: [
             'Seamless company and branch registration',
             'Market research and feasibility insights',
@@ -194,7 +196,7 @@ export const siteConfig = {
         {
           icon: FileCheck,
           title: 'Tax Advisory & Compliance',
-          image: '/images/services/tax-advisory.svg',
+          image: '/images/services/tax-advisory.jpg',
           items: [
             'Strategic tax planning and optimization',
             'Full tax registration and advisory support',
@@ -221,7 +223,7 @@ export const siteConfig = {
         {
           icon: Calculator,
           title: 'Accounting, Bookkeeping & Financial Structuring',
-          image: '/images/services/accounting.svg',
+          image: '/images/services/accounting.jpg',
           items: [
             'Customized accounting systems',
             'Bookkeeping and financial reporting services',
@@ -254,7 +256,7 @@ export const siteConfig = {
         {
           icon: Landmark,
           title: 'Loan & Investment Facilitation',
-          image: '/images/services/loan-investment.svg',
+          image: '/images/services/loan-investment.jpg',
           items: [
             'Bank-ready business proposals and financial documentation',
             'Feasibility studies and cash flow projections',
@@ -282,7 +284,7 @@ export const siteConfig = {
         {
           icon: Building,
           title: 'Banking & Institutional Liaison',
-          image: '/images/services/banking-liaison.svg',
+          image: '/images/services/banking-liaison.jpg',
           items: [
             'Corporate banking setup and management',
             'Liaison with regulators and institutional partners'
@@ -303,7 +305,7 @@ export const siteConfig = {
         {
           icon: RefreshCw,
           title: 'Ongoing Advisory & Retainer Services',
-          image: '/images/services/retainer.svg',
+          image: '/images/services/retainer.jpg',
           items: [
             'Strategic advisory for growth and governance',
             'Monthly compliance and financial health reviews',
@@ -417,25 +419,27 @@ export const siteConfig = {
     primaryButtonText: 'Book Your Consultation',
     primaryButtonLink: 'https://calendly.com/nextgenadvisorsltd-info/30min',
     secondaryButtonText: 'Learn More',
-    secondaryButtonLink: '#services'
+    secondaryButtonLink: '/#services'
   },
   footer: {
     description:
       'NextGen Business Advisors Ltd helps diaspora investors, foreign corporations, and entrepreneurs establish strong, compliant, and sustainable businesses in Nigeria through expert advisory in setup, compliance, accounting, and investment readiness.',
     quickLinks: [
-      { label: 'Home', href: '#' },
-      { label: 'About Us', href: '#about' },
-      { label: 'Services', href: '#services' },
-      { label: 'Our Team', href: '#team' },
-      { label: 'Contact', href: '#contact' }
+      { label: 'Home', href: '/' },
+      { label: 'About Us', href: '/#about' },
+      { label: 'Audit & Tax', href: '/audit-taxation' },
+      { label: 'Financial Strategy', href: '/financial-strategy' },
+      { label: 'Services', href: '/#services' },
+      { label: 'Our Team', href: '/#team' },
+      { label: 'Contact', href: '/#contact' }
     ],
     serviceLinks: [
-      { label: 'Business Setup', href: '#services' },
-      { label: 'Tax & Compliance', href: '#services' },
-      { label: 'Accounting', href: '#services' },
-      { label: 'Loan Facilitation', href: '#services' },
-      { label: 'Banking Liaison', href: '#services' },
-      { label: 'Advisory Services', href: '#services' }
+      { label: 'Business Setup', href: '/#services' },
+      { label: 'Tax & Compliance', href: '/#services' },
+      { label: 'Accounting', href: '/#services' },
+      { label: 'Loan Facilitation', href: '/#services' },
+      { label: 'Banking Liaison', href: '/#services' },
+      { label: 'Advisory Services', href: '/#services' }
     ],
     legalLinks: [
       { label: 'Privacy Policy', href: '#' },

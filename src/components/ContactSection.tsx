@@ -48,7 +48,7 @@ const ContactSection = () => {
 
   const onSubmit = async (values: FormValues) => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3001";
+      const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3000";
       const response = await fetch(`${apiUrl}/api/send-email`, {
         method: "POST",
         headers: {
