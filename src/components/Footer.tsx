@@ -1,6 +1,7 @@
 import logo from "@/assets/logo.png";
 import { MapPin, Mail, Phone, ArrowRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { Link } from "react-router-dom";
 
 const Footer = () => (
   <footer className="gradient-hero pt-16 pb-8">
@@ -9,13 +10,13 @@ const Footer = () => (
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
         {/* Company */}
         <div>
-          <a href="#" className="inline-block mb-5">
+          <Link to="/" className="inline-block mb-5">
             <img
               src={logo}
               alt={siteConfig.global.name}
               className="h-48 w-auto brightness-200"
             />
-          </a>
+          </Link>
           <p className="text-sm text-primary-foreground/60 leading-relaxed mb-4">
             {siteConfig.footer.description}
           </p>
@@ -29,8 +30,8 @@ const Footer = () => (
           <ul className="space-y-3">
             {siteConfig.footer.quickLinks.map((l) => (
               <li key={l.label}>
-                <a
-                  href={l.href}
+                <Link
+                  to={l.href}
                   className="group text-sm text-primary-foreground/60 hover:text-primary-foreground/90 transition-colors flex items-center gap-1"
                 >
                   <ArrowRight
@@ -38,7 +39,7 @@ const Footer = () => (
                     className="opacity-0 group-hover:opacity-100 transition-opacity -ml-4 group-hover:ml-0"
                   />
                   {l.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -52,8 +53,8 @@ const Footer = () => (
           <ul className="space-y-3">
             {siteConfig.footer.serviceLinks.map((l) => (
               <li key={l.label}>
-                <a
-                  href={l.href}
+                <Link
+                  to={l.href}
                   className="group text-sm text-primary-foreground/60 hover:text-primary-foreground/90 transition-colors flex items-center gap-1"
                 >
                   <ArrowRight
@@ -61,7 +62,7 @@ const Footer = () => (
                     className="opacity-0 group-hover:opacity-100 transition-opacity -ml-4 group-hover:ml-0"
                   />
                   {l.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -109,13 +110,13 @@ const Footer = () => (
         </p>
         <div className="flex gap-6">
           {siteConfig.footer.legalLinks.map((l) => (
-            <a
+            <Link
               key={l.label}
-              href={l.href}
+              to={l.href}
               className="text-xs text-primary-foreground/40 hover:text-primary-foreground/70 transition-colors"
             >
               {l.label}
-            </a>
+            </Link>
           ))}
         </div>
       </div>

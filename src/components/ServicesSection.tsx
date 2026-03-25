@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import {
   Building2,
   FileCheck,
@@ -7,17 +7,10 @@ import {
   Landmark,
   Building,
   RefreshCw,
-  ArrowRight
+  ArrowRight,
+  X
 } from 'lucide-react'
 import { siteConfig } from '@/config/site'
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle
-} from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
 
 type Service = (typeof siteConfig.services.main.servicesList)[number]
@@ -162,77 +155,108 @@ const ServicesSection = () => {
         </div>
       </section>
 
-      <Dialog
-        open={isOpen}
-        onOpenChange={(open) => (open ? setIsOpen(true) : closeModal())}
-      >
-        <DialogContent className="max-w-5xl p-0">
-          <div className="grid lg:grid-cols-[1.2fr_1fr] overflow-hidden rounded-2xl">
-            <div className="bg-white p-8 lg:p-10 flex flex-col justify-between">
-              <div>
-                <DialogHeader>
-                  <DialogTitle className="text-xl sm:text-2xl font-bold">
-                    {activeService?.title}
-                  </DialogTitle>
-                  <DialogDescription className="text-sm sm:text-base mt-2">
-                    {activeService
-                      ? `More about ${activeService.title.toLowerCase()}.`
-                      : 'Select a service for more details.'}
-                  </DialogDescription>
-                </DialogHeader>
-
-                <div className="space-y-6 mt-8">
-                  {activeService?.details?.map((detail) => (
-                    <div key={detail.title} className="space-y-2">
-                      <h4 className="text-base font-bold text-foreground font-body">
-                        {detail.title}
-                      </h4>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {detail.description}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <DialogFooter className="mt-10 justify-start gap-3">
-                <Button 
-                  variant="destructive" 
+      {/* Custom animated modal */}
+      <AnimatePresence>
+        {isOpen && activeService && (
+          <>
+            {/* Single overlay — backdrop + click-outside handler */}
+            <motion.div
+              key="overlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+              onClick={closeModal}
+            >
+              <motion.div
+                key="modal"
+                initial={{ opacity: 0, scale: 0.92, y: 24 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.92, y: 24 }}
+                transition={{ type: 'spring', stiffness: 340, damping: 28 }}
+                className="relative w-full max-w-5xl rounded-2xl overflow-hidden shadow-2xl"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Close button */}
+                <button
                   onClick={closeModal}
-                  className="px-8"
+                  className="absolute top-4 right-4 z-10 flex items-center justify-center w-8 h-8 rounded-full bg-black/20 hover:bg-black/40 text-white transition-colors"
+                  aria-label="Close"
                 >
-                  Close
-                </Button>
-                <Button asChild className="px-8 shadow-button hover:shadow-button-hover transition-all">
-                  <a
-                    href="https://wa.me/2348037345051?text=Hi%20team%2C%20I%20am%20interested%20in%20your%20services"
-                    target="_blank"
-                    rel="noreferrer noopener"
-                  >
-                    WhatsApp Us
-                  </a>
-                </Button>
-              </DialogFooter>
-            </div>
+                  <X size={16} />
+                </button>
 
-            <div className="hidden lg:block relative bg-muted/30">
-              {activeService?.image ? (
-                <img
-                  src={activeService.image}
-                  alt={activeService.title}
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
-              ) : (
-                <div className="flex h-full w-full items-center justify-center">
-                  <ArrowRight className="h-12 w-12 text-primary/20" />
+                <div className="grid lg:grid-cols-[1.2fr_1fr]">
+                  {/* Content side */}
+                  <div className="bg-white p-8 lg:p-10 flex flex-col justify-between">
+                    <div>
+                      <h2 className="text-xl sm:text-2xl font-bold text-foreground">
+                        {activeService.title}
+                      </h2>
+                      <p className="text-sm sm:text-base text-muted-foreground mt-2">
+                        {`More about ${activeService.title.toLowerCase()}.`}
+                      </p>
+
+                      <div className="space-y-6 mt-8">
+                        {activeService.details?.map((detail) => (
+                          <div key={detail.title} className="space-y-1.5">
+                            <h4 className="text-base font-bold text-foreground font-body">
+                              {detail.title}
+                            </h4>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
+                              {detail.description}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Footer — left-aligned */}
+                    <div className="mt-10 flex items-center gap-3">
+                      <Button
+                        variant="destructive"
+                        onClick={closeModal}
+                        className="px-6"
+                      >
+                        See more services
+                      </Button>
+                      <Button
+                        asChild
+                        className="px-6 shadow-button hover:shadow-button-hover transition-all"
+                      >
+                        <a
+                          href="https://wa.me/2348037345051?text=Hi%20team%2C%20I%20am%20interested%20in%20your%20services"
+                          target="_blank"
+                          rel="noreferrer noopener"
+                        >
+                          Chat on WhatsApp
+                        </a>
+                      </Button>
+                    </div>
+                  </div>
+
+                  {/* Image side */}
+                  <div className="hidden lg:block relative bg-muted/30 min-h-[420px]">
+                    {activeService.image ? (
+                      <img
+                        src={activeService.image}
+                        alt={activeService.title}
+                        className="absolute inset-0 h-full w-full object-cover"
+                      />
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center">
+                        <ArrowRight className="h-12 w-12 text-primary/20" />
+                      </div>
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
+                  </div>
                 </div>
-              )}
-              {/* Optional: Add a subtle overlay to the image to ensure close button visibility if needed */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
-            </div>
-          </div>
-        </DialogContent>
-      </Dialog>
+              </motion.div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </>
   )
 }
