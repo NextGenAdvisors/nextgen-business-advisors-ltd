@@ -17,6 +17,7 @@ import {
 import { MapPin, Mail, Phone, Send, ExternalLink } from "lucide-react";
 import { toast } from "sonner";
 import { siteConfig } from "@/config/site";
+import { supabase } from "@/integrations/supabase/client";
 
 const formSchema = z.object({
   fullName: z.string().min(2, "Name must be at least 2 characters."),
@@ -48,18 +49,12 @@ const ContactSection = () => {
 
   const onSubmit = async (values: FormValues) => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3000";
-      const response = await fetch(`${apiUrl}/api/send-email`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(values),
+      const { data, error } = await supabase.functions.invoke("contact-form-email", {
+        body: values,
       });
 
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => null);
-        throw new Error(errorData?.error || "Failed to send message");
+      if (error) {
+        throw new Error(error.message || "Failed to send message via edge function");
       }
 
       toast.success("Thank you! We'll be in touch shortly.");
@@ -72,7 +67,7 @@ const ContactSection = () => {
         message: "",
       });
     } catch (error: any) {
-      console.error("Error from email server:", error);
+      console.error("Error from Supabase Edge Function:", error);
       toast.error(error.message || "Failed to send message. Please try again later.");
     }
   };
