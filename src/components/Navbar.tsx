@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronRight, Phone, Mail, MapPin, Clock } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import logo from "@/assets/logo-alt.png";
+import logoAlt from "@/assets/logo-alt.png";
+import logoMain from "@/assets/logo.png";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
@@ -125,7 +126,7 @@ const Navbar = () => {
             {/* Logo */}
             <Link to="/" className="flex-shrink-0" onClick={close}>
               <img
-                src={logo}
+                src={logoAlt}
                 alt="NextGen Business Advisors"
                 className="h-14 w-auto brightness-[1.15] drop-shadow-md"
               />
@@ -191,18 +192,18 @@ const Navbar = () => {
           {/* Mobile single-row */}
           <div className="container mx-auto px-4 flex items-center justify-between h-16 lg:hidden">
             <Link to="/" onClick={close}>
-              <img src={logo} alt="NextGen Business Advisors" className="h-12 w-auto" />
+              <img src={logoMain} alt="NextGen Business Advisors" className="h-12 w-auto" />
             </Link>
             <button
-              className="relative z-[60] flex items-center justify-center w-10 h-10 rounded-md text-white hover:bg-muted/50 transition-colors"
+              className="relative z-[60] flex items-center justify-center w-11 h-11 rounded-full bg-foreground text-white hover:bg-foreground/90 transition-colors shadow-sm"
               onClick={() => setOpen((prev) => !prev)}
               aria-label="Toggle menu"
             >
               <span className={cn("absolute transition-all duration-300", open ? "opacity-100 rotate-0" : "opacity-0 rotate-90")}>
-                <X size={22} />
+                <X size={20} strokeWidth={2} />
               </span>
               <span className={cn("absolute transition-all duration-300", open ? "opacity-0 -rotate-90" : "opacity-100 rotate-0")}>
-                <Menu size={22} />
+                <Menu size={20} strokeWidth={2} />
               </span>
             </button>
           </div>
@@ -264,7 +265,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between px-6 py-5 border-b border-border gradient-hero ">
           <Link to="/" onClick={close}>
             <img
-              src={logo}
+              src={logoAlt}
               alt="NextGen Business Advisors"
               className="h-10 w-auto brightness-110"
             />
