@@ -12,6 +12,7 @@ import {
 } from 'lucide-react'
 import { siteConfig } from '@/config/site'
 import { Button } from '@/components/ui/button'
+import { AnimatedSVGBackground } from '@/components/FloatingShapes'
 
 type Service = (typeof siteConfig.services.main.servicesList)[number]
 
@@ -89,8 +90,10 @@ const ServicesSection = () => {
       </section>
 
       {/* Service Cards */}
-      <section id="services" className="py-20 md:py-28 bg-muted/50">
-        <div className="container mx-auto px-4">
+      <section id="services" className="py-20 md:py-28 relative overflow-hidden radial-bg">
+        <AnimatedSVGBackground variant="light" />
+        <div className="absolute inset-0 dot-grid opacity-40 pointer-events-none" />
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -116,7 +119,7 @@ const ServicesSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.5 }}
-                className="bg-card rounded-2xl overflow-hidden border border-border shadow-card hover:shadow-elevated transition-all group hover:-translate-y-1"
+                className="bg-card rounded-2xl overflow-hidden border border-border shadow-card hover:shadow-elevated transition-all group hover:-translate-y-1 shimmer-hover"
               >
                 {/* Top accent bar */}
                 <div className="h-1 bg-primary group-hover:h-1.5 transition-all" />
