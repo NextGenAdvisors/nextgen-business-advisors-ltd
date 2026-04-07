@@ -18,6 +18,7 @@ import { MapPin, Mail, Phone, Send, ExternalLink } from "lucide-react";
 import { toast } from "sonner";
 import { siteConfig } from "@/config/site";
 import { supabase } from "@/integrations/supabase/client";
+import { AnimatedSVGBackground } from "@/components/FloatingShapes";
 
 const formSchema = z.object({
   fullName: z.string().min(2, "Name must be at least 2 characters."),
@@ -73,8 +74,10 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="pt-20 md:pt-28 bg-background">
-      <div className="container mx-auto px-4">
+    <section id="contact" className="pt-20 md:pt-28 relative overflow-hidden radial-bg">
+      <AnimatedSVGBackground variant="light" />
+      <div className="absolute inset-0 dot-grid opacity-30 pointer-events-none" />
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

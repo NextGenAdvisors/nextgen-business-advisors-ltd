@@ -48,7 +48,7 @@ const AuditTaxation = () => {
         <div className="container relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white mb-6 leading-tight animate-fade-up" style={{ animationDelay: "0.1s" }}>
-              Professional Assurance &amp; Regulatory Excellence
+              Professional Assurance &amp; Regulatory Compliance
             </h1>
             <p className="text-lg md:text-xl text-white/80 mb-10 max-w-3xl mx-auto leading-relaxed animate-fade-up" style={{ animationDelay: "0.2s" }}>
               Joy Ozua &amp; Co. (Chartered Accountants) provides independent audit, tax, and advisory services delivered by a team of licensed professionals. As a strategic affiliate of NextGen Business Advisors, we bring collective decades of experience to Nigeria's complex regulatory landscape.

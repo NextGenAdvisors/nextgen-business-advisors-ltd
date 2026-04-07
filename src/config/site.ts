@@ -50,12 +50,11 @@ export const siteConfig = {
   },
   hero: {
     badge: 'Business Growth & Strategy',
-    headingMain: 'Structured, Compliant, Business Solutions',
+    headingMain: 'Strategic Business Advisory',
     headingHighlight: 'in Nigeria',
     description1:
-      'NextGen Business Advisors Ltd delivers expert advisory services for business setup, regulatory compliance, accounting solutions, financial structuring, and investment readiness, while also assisting businesses with bank loan facilitation, business proposals, cash flow projections, and feasibility studies required for accessing institutional financing in Nigeria.',
-    description2:
-      'We combine professional excellence, international exposure, and practical business insight to deliver structured advisory solutions for diaspora investors, foreign corporations, and entrepreneurs.',
+      'From market entry to financial structuring, we deliver expert compliance and advisory services. We help diaspora investors and foreign businesses secure financing and scale sustainably.',
+    description2: '',
     cta1: {
       label: 'Book a Consultation',
       href: 'https://calendly.com/nextgenadvisorsltd-info/30min'

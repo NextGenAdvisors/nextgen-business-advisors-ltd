@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Linkedin, Mail } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { AnimatedSVGBackground } from "@/components/FloatingShapes";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -11,9 +13,79 @@ const fadeUp = {
   }),
 };
 
+const TeamCard = ({ m, i }: { m: any; i: number }) => {
+  const [expanded, setExpanded] = useState(false);
+  const words = m.bio.split(" ");
+  const isLong = words.length > 20;
+  const shortBio = isLong ? words.slice(0, 20).join(" ") + "..." : m.bio;
+
+  return (
+    <motion.div
+      variants={fadeUp}
+      custom={i}
+      className="group flex flex-col items-center bg-transparent rounded-[3rem] overflow-hidden hover:bg-primary/10 transition-colors duration-500 ease-out h-full p-6 md:p-8"
+    >
+      {/* Photo */}
+      <div className="relative w-48 h-48 sm:w-56 sm:h-56 shrink-0 rounded-[2.5rem] overflow-hidden mb-6 shadow-sm group-hover:shadow-md transition-shadow">
+        <img
+          src={m.photo}
+          alt={m.name}
+          className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-in-out"
+          loading="lazy"
+        />
+      </div>
+      
+      {/* Info */}
+      <div className="flex flex-col flex-grow items-center w-full">
+        <p className="text-sm text-primary/80 font-semibold mb-2 lowercase tracking-wide">
+          {m.role}
+        </p>
+        <h3 className="text-2xl font-bold text-foreground mb-4">
+          {m.name}
+        </h3>
+        
+        <div className="flex flex-col flex-grow items-center">
+          <p className="text-sm text-muted-foreground leading-relaxed transition-all text-center">
+            {expanded ? m.bio : shortBio}
+          </p>
+          {isLong && (
+            <button
+              onClick={() => setExpanded(!expanded)}
+              className="mt-2 text-xs font-semibold px-3 py-1.5 rounded-md hover:bg-background/50 text-foreground/80 hover:text-foreground transition-colors"
+            >
+              {expanded ? "Read less" : "Read more"}
+            </button>
+          )}
+        </div>
+        
+        {/* Always visible icons */}
+        <div className="flex gap-4 mt-6 pt-2 shrink-0 justify-center">
+          <a
+            href={m.memberLinkedInUrl}
+            target="_blank"
+            className="text-foreground/80 hover:text-primary transition-colors"
+            aria-label="LinkedIn"
+          >
+            <Linkedin size={20} strokeWidth={2} />
+          </a>
+          <a
+            href={`mailto:${m.memberEmailAddress}`}
+            target="_blank"
+            className="text-foreground/80 hover:text-primary transition-colors"
+            aria-label="Email"
+          >
+            <Mail size={20} strokeWidth={2} />
+          </a>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
 const TeamSection = () => (
-  <section id="team" className="py-20 md:py-28 bg-background">
-    <div className="container mx-auto px-4">
+  <section id="team" className="py-20 md:py-28 relative overflow-hidden radial-bg">
+    <AnimatedSVGBackground variant="light" />
+    <div className="container mx-auto px-4 relative z-10">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -35,58 +107,14 @@ const TeamSection = () => (
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: '-80px' }}
-        className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto"
+        className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto items-stretch"
       >
         {siteConfig.team.members.map((m, i) => (
-          <motion.div
-            key={m.name}
-            variants={fadeUp}
-            custom={i}
-            className="group bg-card rounded-2xl overflow-hidden border border-border shadow-card hover:shadow-elevated transition-shadow"
-          >
-            {/* Photo */}
-            <div className="relative overflow-hidden h-72">
-              <img
-                src={m.photo}
-                alt={m.name}
-                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-              />
-              {/* Overlay on hover */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
-                <div className="flex gap-3">
-                  <a
-                    href={m.memberLinkedInUrl}
-                    target="_blank"
-                    className="w-9 h-9 rounded-full bg-white/20 backdrop-blur flex items-center justify-center text-white hover:bg-primary transition-colors"
-                    aria-label="LinkedIn"
-                  >
-                    <Linkedin size={16} />
-                  </a>
-                  <a
-                    href={`mailto:${m.memberEmailAddress}`}
-                    target="_blank"
-                    className="w-9 h-9 rounded-full bg-white/20 backdrop-blur flex items-center justify-center text-white hover:bg-primary transition-colors"
-                    aria-label="Email"
-                  >
-                    <Mail size={16} />
-                  </a>
-                </div>
-              </div>
-            </div>
-            {/* Info */}
-            <div className="p-6">
-              <h3 className="text-lg font-bold text-foreground">{m.name}</h3>
-              <p className="text-sm text-primary font-medium mb-2">{m.role}</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {m.bio}
-              </p>
-            </div>
-          </motion.div>
+          <TeamCard key={m.name} m={m} i={i} />
         ))}
       </motion.div>
     </div>
   </section>
-)
+);
 
 export default TeamSection;
