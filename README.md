@@ -56,6 +56,15 @@ This project uses **Brevo** as its email service provider to handle transactiona
 
 ---
 
+## 📡 Uptime & Monitoring (Keep-Alive)
+
+To prevent the Supabase Free Tier project from being paused due to inactivity, we use **UptimeRobot** to constantly ping the application and database endpoints. This ensures the database and associated Edge Functions remain "warm" and accessible at all times without cold start delays.
+
+You can publicly monitor the site's uptime status here:
+**[UptimeRobot Status Page](https://stats.uptimerobot.com/WYZYHGX5XP)**
+
+---
+
 ## 📁 Project Structure
 
 ```text
