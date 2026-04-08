@@ -3,6 +3,9 @@ import { motion } from "framer-motion";
 import { Linkedin, Mail } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { AnimatedSVGBackground } from "@/components/FloatingShapes";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
+import { ChevronDown, ChevronUp } from "lucide-react" 
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -51,9 +54,10 @@ const TeamCard = ({ m, i }: { m: any; i: number }) => {
           {isLong && (
             <button
               onClick={() => setExpanded(!expanded)}
-              className="mt-2 text-xs font-semibold px-3 py-1.5 rounded-md hover:bg-background/50 text-foreground/80 hover:text-foreground transition-colors"
+              className="mt-2 text-xs flex items-center gap-1 font-semibold px-3 py-1.5 rounded-md hover:bg-background/50 text-foreground/80 hover:text-foreground transition-colors"
             >
               {expanded ? "Read less" : "Read more"}
+              {expanded ? <ChevronUp size={14} strokeWidth={2.5} /> : <ChevronDown size={14} strokeWidth={2.5} />}
             </button>
           )}
         </div>
@@ -82,39 +86,75 @@ const TeamCard = ({ m, i }: { m: any; i: number }) => {
   );
 };
 
-const TeamSection = () => (
-  <section id="team" className="py-20 md:py-28 relative overflow-hidden radial-bg">
-    <AnimatedSVGBackground variant="light" />
-    <div className="container mx-auto px-4 relative z-10">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="text-center mb-16"
-      >
-        <span className="inline-block text-sm font-semibold text-secondary uppercase tracking-wider mb-3">
-          {siteConfig.team.badge}
-        </span>
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-          {siteConfig.team.heading}
-        </h2>
-        <p className="text-muted-foreground max-w-2xl mx-auto">
-          {siteConfig.team.description}
-        </p>
-      </motion.div>
+const TeamSection = () => {
+  const { data: teamMembers, isLoading } = useQuery({
+    queryKey: ["team_members"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("team_members")
+        .select("*")
+        .eq("is_active", true)
+        .order("display_order", { ascending: true });
 
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-80px' }}
-        className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto items-stretch"
-      >
-        {siteConfig.team.members.map((m, i) => (
-          <TeamCard key={m.name} m={m} i={i} />
-        ))}
-      </motion.div>
-    </div>
-  </section>
-);
+      if (error) {
+        console.error("Error fetching team members:", error);
+        throw error;
+      }
+      return data;
+    },
+  });
+
+  const displayMembers = teamMembers && teamMembers.length > 0
+    ? teamMembers.map((m) => ({
+        name: m.full_name,
+        role: m.role,
+        bio: m.bio || "",
+        photo: m.image_url,
+        memberLinkedInUrl: m.linkedin_url || "#",
+        memberEmailAddress: m.email || "info@nextgenadvisorsltd.com",
+      }))
+    : siteConfig.team.members;
+
+  return (
+    <section id="team" className="py-20 md:py-28 relative overflow-hidden radial-bg">
+      <AnimatedSVGBackground variant="light" />
+      <div className="container mx-auto px-4 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <span className="inline-block text-sm font-semibold text-secondary uppercase tracking-wider mb-3">
+            {siteConfig.team.badge}
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            {siteConfig.team.heading}
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            {siteConfig.team.description}
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-80px' }}
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto items-stretch"
+        >
+          {isLoading ? (
+            Array.from({ length: 3 }).map((_, i) => (
+              <div key={i} className="animate-pulse bg-primary/10 rounded-[3rem] h-[500px] w-full" />
+            ))
+          ) : (
+            displayMembers.map((m, i) => (
+              <TeamCard key={m.name} m={m} i={i} />
+            ))
+          )}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
 
 export default TeamSection;
