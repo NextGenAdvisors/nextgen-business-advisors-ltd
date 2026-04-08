@@ -32,11 +32,11 @@ const Footer = () => (
               <li key={l.label}>
                 <Link
                   to={l.href}
-                  className="group text-sm text-primary-foreground/60 hover:text-primary-foreground/90 transition-colors flex items-center gap-1"
+                  className="group text-sm text-primary-foreground/60 hover:text-primary-foreground/90 transition-all duration-200  flex items-center gap-1"
                 >
                   <ArrowRight
                     size={12}
-                    className="opacity-0 group-hover:opacity-100 transition-opacity -ml-4 group-hover:ml-0"
+                    className="opacity-0 group-hover:opacity-100 transition-all -ml-4 group-hover:ml-0"
                   />
                   {l.label}
                 </Link>
@@ -55,11 +55,11 @@ const Footer = () => (
               <li key={l.label}>
                 <Link
                   to={l.href}
-                  className="group text-sm text-primary-foreground/60 hover:text-primary-foreground/90 transition-colors flex items-center gap-1"
+                  className="group text-sm text-primary-foreground/60 hover:text-primary-foreground/90 transition-all duration-200  flex items-center gap-1"
                 >
                   <ArrowRight
                     size={12}
-                    className="opacity-0 group-hover:opacity-100 transition-opacity -ml-4 group-hover:ml-0"
+                    className="opacity-0 group-hover:opacity-100 transition-all -ml-4 group-hover:ml-0"
                   />
                   {l.label}
                 </Link>
@@ -94,21 +94,24 @@ const Footer = () => (
             </li>
             <li className="flex items-start gap-3">
               <Phone size={16} className="text-primary-light mt-0.5 shrink-0" />
-              <span className="text-sm text-primary-foreground/60">
+              <a href={`tel:${siteConfig.global.phone}`} className="text-sm text-primary-foreground/60 hover:text-primary-foreground/90 transition-colors">
                 {siteConfig.global.phone}
-              </span>
+              </a>
             </li>
           </ul>
         </div>
       </div>
 
       {/* Divider */}
-      <div className="border-t border-primary-foreground/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
-        <p className="text-xs text-primary-foreground/40">
-          © {new Date().getFullYear()} {siteConfig.global.name}. All rights
+      <div className="border-t border-primary-foreground/10 pt-6 flex flex-col  items-center justify-center gap-4">
+        <p className="text-xs text-white">
+          © {new Date().getFullYear()} {' ' }
+          <Link to="/">
+            {siteConfig.global.name}. All rights
+          </Link>
           reserved.{" "}
           | Website Developed By{" "}
-          <a href={siteConfig.global.developer.link } target="_blank" className="text-primary-foreground/60 hover:text-primary-foreground/90 transition-colors" rel="noopener noreferrer">
+          <a href={siteConfig.global.developer.link } target="_blank" className="text-red-400 hover:text-primary-foreground/90 transition-colors" rel="noopener noreferrer">
           
           {siteConfig.global.developer.label}
           </a>

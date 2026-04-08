@@ -14,20 +14,19 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import { MapPin, Mail, Phone, Send, ExternalLink } from "lucide-react";
+import { Send } from "lucide-react";
 import { toast } from "sonner";
 import { siteConfig } from "@/config/site";
 import { supabase } from "@/integrations/supabase/client";
-import { AnimatedSVGBackground } from "@/components/FloatingShapes";
 
 const formSchema = z.object({
   fullName: z.string().min(2, "Name must be at least 2 characters."),
   company: z.string().optional(),
   email: z.string().email("Invalid email address."),
-  phone: z.string().optional(),
   service: z.string({
-    required_error: "Please select a service required.",
+    required_error: "Please select a topic to discuss.",
   }),
+  phone: z.string().min(5, "Phone number is required."),
   message: z.string().min(10, "Message must be at least 10 characters."),
 });
 
@@ -40,8 +39,8 @@ const ContactSection = () => {
       fullName: "",
       company: "",
       email: "",
+      service: "",
       phone: "",
-      service: undefined, // undefined to show the placeholder initially
       message: "",
     },
   });
@@ -51,7 +50,14 @@ const ContactSection = () => {
   const onSubmit = async (values: FormValues) => {
     try {
       const { data, error } = await supabase.functions.invoke("contact-form-email", {
-        body: values,
+        body: {
+          fullName: values.fullName,
+          company: values.company,
+          email: values.email,
+          phone: values.phone,
+          service: values.service,
+          message: values.message,
+        },
       });
 
       if (error) {
@@ -59,14 +65,7 @@ const ContactSection = () => {
       }
 
       toast.success("Thank you! We'll be in touch shortly.");
-      form.reset({
-        fullName: "",
-        company: "",
-        email: "",
-        phone: "",
-        service: undefined, // undefined to show the placeholder initially
-        message: "",
-      });
+      form.reset();
     } catch (error: any) {
       console.error("Error from Supabase Edge Function:", error);
       toast.error(error.message || "Failed to send message. Please try again later.");
@@ -74,276 +73,227 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="pt-20 md:pt-28 relative overflow-hidden radial-bg">
-      <AnimatedSVGBackground variant="light" />
-      <div className="absolute inset-0 dot-grid opacity-30 pointer-events-none" />
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <span className="inline-block text-sm font-semibold text-secondary uppercase tracking-wider mb-3">
-            {siteConfig.contact.badge}
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            {siteConfig.contact.heading}
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            {siteConfig.contact.description}
-          </p>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-5 gap-12 max-w-5xl mx-auto">
-          {/* Info */}
+    <section id="contact" className="relative w-full bg-slate-50 min-h-[700px] overflow-hidden">
+      <div className="flex flex-col lg:flex-row w-full h-full min-h-[700px]">
+        {/* Left Column: Form (40%) */}
+        <div className="w-full lg:w-[45%] relative z-10 flex flex-col justify-center py-16 px-4 sm:px-8 lg:px-16 xl:px-24">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-2 space-y-8"
+            className="w-full max-w-md mx-auto lg:ml-auto lg:mr-0 bg-white rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] overflow-hidden border border-border/50"
           >
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center shrink-0">
-                <MapPin className="text-primary-foreground" size={18} />
-              </div>
-              <div>
-                <h4 className="font-semibold text-foreground font-body mb-1">
-                  Office Location
-                </h4>
-                <p className="text-sm text-muted-foreground">
-                  {siteConfig.global.location}
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center shrink-0">
-                <Mail className="text-primary-foreground" size={18} />
-              </div>
-              <div>
-                <h4 className="font-semibold text-foreground font-body mb-1">
-                  Email
-                </h4>
-                <a
-                  href={`mailto:${siteConfig.global.email}`}
-                  className="text-sm text-primary hover:underline"
-                  target="_blank"
-                >
-                  {siteConfig.global.email}
-                </a>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center shrink-0">
-                <Phone className="text-primary-foreground" size={18} />
-              </div>
-              <div>
-                <h4 className="font-semibold text-foreground font-body mb-1">
-                  Phone
-                </h4>
-                <a
-                  className="text-sm text-foreground"
-                  href={`tel:${siteConfig.global.phone}`}
-                  target="_blank"
-                >
-                  {siteConfig.global.phone}
-                </a>
-              </div>
+            {/* Header Block */}
+            <div className="bg-primary px-8 py-6">
+              <h3 className="text-white text-2xl font-bold tracking-tight">Get in touch with us today!</h3>
             </div>
 
-            {/* Consulting image */}
-            <div className="rounded-xl overflow-hidden shadow-card hidden lg:block">
-              <img
-                src={siteConfig.contact.image}
-                alt="Business consultation"
-                className="w-full h-48 object-cover"
-                loading="lazy"
-              />
-            </div>
+            {/* Form Container */}
+            <div className="p-8">
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <FormField
+                      control={form.control}
+                      name="fullName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <Input 
+                              placeholder="Your Name*" 
+                              className="h-12 bg-transparent border-input px-4 text-sm" 
+                              {...field} 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
-            <div className="pt-4 border-t border-border">
-              <p className="text-sm text-muted-foreground italic">
-                {siteConfig.contact.quote}
-              </p>
+                    <FormField
+                      control={form.control}
+                      name="company"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <Input 
+                              placeholder="Company Name (optional)" 
+                              className="h-12 bg-transparent border-input px-4 text-sm" 
+                              {...field} 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <Input 
+                              type="email"
+                              placeholder="Email Address*" 
+                              className="h-12 bg-transparent border-input px-4 text-sm" 
+                              {...field} 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="phone"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <Input 
+                              type="tel" 
+                              placeholder="Phone number*" 
+                              className="h-12 bg-transparent border-input px-4 text-sm" 
+                              {...field} 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+
+                  <FormField
+                    control={form.control}
+                    name="service"
+                    render={({ field }) => (
+                      <FormItem>
+                        <Select onValueChange={field.onChange} value={field.value || ""}>
+                          <FormControl>
+                            <SelectTrigger className="h-12 bg-transparent border-input px-4 text-sm text-muted-foreground w-full">
+                              <SelectValue placeholder="What you like to discuss?" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            {siteConfig.contact.formServices.map((s) => (
+                              <SelectItem key={s.value} value={s.value}>
+                                {s.label}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="message"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Textarea
+                            placeholder="How can we help you?"
+                            rows={4}
+                            className="bg-transparent border-input px-4 py-3 text-sm resize-none"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <div className="pt-2 flex justify-start">
+                    <Button
+                      type="submit"
+                      className="bg-primary text-primary-foreground font-bold hover:bg-primary/90 transition-all uppercase tracking-wider py-6 px-10 rounded-md shadow-sm hover:shadow-md hover:-translate-y-0.5"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? (
+                        'Sending...'
+                      ) : (
+                        'SEND REQUEST'
+                      )}
+                    </Button>
+                  </div>
+                </form>
+              </Form>
             </div>
           </motion.div>
+        </div>
 
-          {/* Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+        {/* Right Column: Visual Brand Identity (55%) */}
+        <div className="hidden lg:block w-full lg:w-[55%] relative">
+          {/* Abstract Geometric Background */}
+          <div className="absolute inset-0 bg-[#EBF3FC] overflow-hidden">
+            {/* Geometric Cuts (Masking) */}
+            <div className="absolute right-0 top-0 w-3/4 h-full bg-primary" style={{ clipPath: 'polygon(20% 0, 100% 0, 100% 100%, 0 100%)' }}></div>
+            <div className="absolute right-0 top-0 w-1/2 h-full bg-primary/90" style={{ clipPath: 'polygon(30% 0, 100% 0, 100% 100%, 0 100%)' }}></div>
+            
+            {/* Pattern Overlays */}
+            <div className="absolute right-[10%] top-[40%] text-primary/20 pointer-events-none">
+               <svg width="200" height="200" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                 {Array.from({ length: 5 }).map((_, i) => (
+                   Array.from({ length: 5 }).map((_, j) => (
+                     <path key={`${i}-${j}`} d={`M${i*20+5} ${j*20+10} L${i*20+15} ${j*20+10} M${i*20+10} ${j*20+5} L${i*20+10} ${j*20+15}`} stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                   ))
+                 ))}
+               </svg>
+            </div>
+
+            <div className="absolute left-0 bottom-[10%] text-primary/20 pointer-events-none">
+              <svg width="200" height="200" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                 <path d="M0 80 Q 25 30 50 80 T 100 80 T 150 80" stroke="currentColor" strokeWidth="1" fill="none" />
+                 <path d="M0 90 Q 25 40 50 90 T 100 90 T 150 90" stroke="currentColor" strokeWidth="1" fill="none" />
+                 <path d="M0 100 Q 25 50 50 100 T 100 100 T 150 100" stroke="currentColor" strokeWidth="1" fill="none" />
+              </svg>
+            </div>
+
+            {/* Circular Progress Indicator */}
+            <motion.div 
+              initial={{ scale: 0, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5, type: "spring" }}
+              className="absolute right-12 bottom-12 w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-lg pointer-events-none"
+            >
+               <svg className="absolute w-full h-full -rotate-90 pointer-events-none">
+                 <circle cx="48" cy="48" r="40" stroke="currentColor" strokeWidth="4" fill="none" className="text-slate-100" />
+                 <circle cx="48" cy="48" r="40" stroke="currentColor" strokeWidth="4" fill="none" className="text-primary" strokeDasharray="251" strokeDashoffset="35" strokeLinecap="round" />
+               </svg>
+               <span className="text-primary font-bold text-xl pointer-events-none">86%</span>
+            </motion.div>
+          </div>
+
+          {/* Hero Image */}
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-3 bg-card rounded-xl p-8 border border-border shadow-card"
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="absolute bottom-0 left-12 w-[85%] h-[90%] pointer-events-none"
           >
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <FormField
-                    control={form.control}
-                    name="fullName"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Input placeholder="Full Name *" className="bg-background" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="company"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Input placeholder="Company Name (optional)" className="bg-background" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
-                
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Input type="email" placeholder="Email Address *" className="bg-background" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="phone"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Input type="tel" placeholder="Phone Number" className="bg-background" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
-
-                <FormField
-                  control={form.control}
-                  name="service"
-                  render={({ field }) => (
-                    <FormItem>
-                      <Select onValueChange={field.onChange} value={field.value || ""}>
-                        <FormControl>
-                          <SelectTrigger className="bg-background">
-                            <SelectValue placeholder="Service Required" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          {siteConfig.contact.formServices.map((s) => (
-                            <SelectItem key={s.value} value={s.value}>
-                              {s.label}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <Textarea
-                          placeholder="Your Message"
-                          rows={4}
-                          className="bg-background resize-none"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? (
-                    'Sending...'
-                  ) : (
-                    <>
-                      Send Message <Send size={16} className="ml-1" />
-                    </>
-                  )}
-                </Button>
-              </form>
-            </Form>
+            <img 
+              src="/images/contact-image.png" 
+              alt="Professional business advisor" 
+              className="w-full h-full object-cover object-top drop-shadow-2xl opacity-100 mix-blend-normal rounded-lg"
+              style={{
+                clipPath: 'polygon(15% 0, 100% 0, 100% 100%, 0% 100%)',
+              }}
+              draggable="false"
+            />
           </motion.div>
         </div>
       </div>
-
-      {/* ── Full-width interactive map ── */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="mt-20"
-      >
-        {/* Header band */}
-        <div className="bg-primary/5 border-y border-border py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div className="flex items-center gap-3 px-4 md:px-8">
-            <div className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center shrink-0">
-              <MapPin className="text-primary-foreground" size={16} />
-            </div>
-            <div>
-              <p className="text-xs font-semibold text-secondary uppercase tracking-wider">
-                Our Location
-              </p>
-              <p className="text-sm font-medium text-foreground">
-                {siteConfig.global.location}
-              </p>
-            </div>
-          </div>
-          <a
-            href={siteConfig.global.mapsDirectionsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 transition-colors px-4 md:px-8"
-          >
-            <ExternalLink size={14} />
-            Get Directions
-          </a>
-        </div>
-
-        {/* Map iframe */}
-        <div className="relative w-full" style={{ height: "420px" }}>
-          <iframe
-            title={`NextGen Business Advisors – ${siteConfig.global.location}`}
-            src={siteConfig.global.mapsEmbedUrl}
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            className="absolute inset-0"
-          />
-        </div>
-      </motion.div>
     </section>
   );
 };
 
 export default ContactSection;
+

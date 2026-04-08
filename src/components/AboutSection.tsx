@@ -173,7 +173,7 @@ const AboutSection = () => (
               {/* Optional tinted overlay that fades on hover */}
               <div className="absolute inset-0 bg-primary/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-500" />
               <img 
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80" 
+                src="/images/vision-image.png" 
                 alt="Our Vision" 
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
               />
@@ -210,7 +210,7 @@ const AboutSection = () => (
             >
               <div className="absolute inset-0 bg-secondary/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-500" />
               <img 
-                src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80" 
+                src="/images/mission-image.png" 
                 alt="Our Mission" 
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
               />

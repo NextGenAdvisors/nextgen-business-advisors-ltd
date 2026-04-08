@@ -3,6 +3,9 @@ import { motion } from "framer-motion";
 import { Linkedin, Mail } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { AnimatedSVGBackground } from "@/components/FloatingShapes";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
+import { ChevronDown, ChevronUp } from "lucide-react" 
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -20,9 +23,7 @@ const TeamCard = ({ m, i }: { m: any; i: number }) => {
   const shortBio = isLong ? words.slice(0, 20).join(" ") + "..." : m.bio;
 
   return (
-    <motion.div
-      variants={fadeUp}
-      custom={i}
+    <div
       className="group flex flex-col items-center bg-transparent rounded-[3rem] overflow-hidden hover:bg-primary/10 transition-colors duration-500 ease-out h-full p-6 md:p-8"
     >
       {/* Photo */}
@@ -40,7 +41,7 @@ const TeamCard = ({ m, i }: { m: any; i: number }) => {
         <p className="text-sm text-primary/80 font-semibold mb-2 lowercase tracking-wide">
           {m.role}
         </p>
-        <h3 className="text-2xl font-bold text-foreground mb-4">
+        <h3 className="text-2xl font-bold text-foreground mb-4 text-center">
           {m.name}
         </h3>
         
@@ -51,70 +52,116 @@ const TeamCard = ({ m, i }: { m: any; i: number }) => {
           {isLong && (
             <button
               onClick={() => setExpanded(!expanded)}
-              className="mt-2 text-xs font-semibold px-3 py-1.5 rounded-md hover:bg-background/50 text-foreground/80 hover:text-foreground transition-colors"
+              className="mt-2 text-xs flex items-center gap-1 font-semibold px-3 py-1.5 rounded-md hover:bg-background/50 text-foreground/80 hover:text-foreground transition-colors"
             >
               {expanded ? "Read less" : "Read more"}
+              {expanded ? <ChevronUp size={14} strokeWidth={2.5} /> : <ChevronDown size={14} strokeWidth={2.5} />}
             </button>
           )}
         </div>
         
         {/* Always visible icons */}
         <div className="flex gap-4 mt-6 pt-2 shrink-0 justify-center">
-          <a
-            href={m.memberLinkedInUrl}
-            target="_blank"
-            className="text-foreground/80 hover:text-primary transition-colors"
-            aria-label="LinkedIn"
-          >
-            <Linkedin size={20} strokeWidth={2} />
-          </a>
-          <a
-            href={`mailto:${m.memberEmailAddress}`}
-            target="_blank"
-            className="text-foreground/80 hover:text-primary transition-colors"
-            aria-label="Email"
-          >
-            <Mail size={20} strokeWidth={2} />
-          </a>
+          {m.memberLinkedInUrl && (
+            <a
+              href={m.memberLinkedInUrl}
+              target="_blank"
+              className="text-foreground/80 hover:text-primary transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={20} strokeWidth={2} />
+            </a>
+          )}
+          {m.memberEmailAddress && (
+            <a
+              href={`mailto:${m.memberEmailAddress}`}
+              target="_blank"
+              className="text-foreground/80 hover:text-primary transition-colors"
+              aria-label="Email"
+            >
+              <Mail size={20} strokeWidth={2} />
+            </a>
+          )}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
-const TeamSection = () => (
-  <section id="team" className="py-20 md:py-28 relative overflow-hidden radial-bg">
-    <AnimatedSVGBackground variant="light" />
-    <div className="container mx-auto px-4 relative z-10">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="text-center mb-16"
-      >
-        <span className="inline-block text-sm font-semibold text-secondary uppercase tracking-wider mb-3">
-          {siteConfig.team.badge}
-        </span>
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-          {siteConfig.team.heading}
-        </h2>
-        <p className="text-muted-foreground max-w-2xl mx-auto">
-          {siteConfig.team.description}
-        </p>
-      </motion.div>
+const TeamSection = () => {
+  const { data: teamMembers, isLoading } = useQuery({
+    queryKey: ["team_members"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("team_members")
+        .select("*")
+        .eq("is_active", true)
+        .order("display_order", { ascending: true });
 
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-80px' }}
-        className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto items-stretch"
-      >
-        {siteConfig.team.members.map((m, i) => (
-          <TeamCard key={m.name} m={m} i={i} />
-        ))}
-      </motion.div>
-    </div>
-  </section>
-);
+      if (error) {
+        console.error("Error fetching team members:", error);
+        throw error;
+      }
+      return data;
+    },
+  });
+
+  const hasTeamMembers = teamMembers && Array.isArray(teamMembers) && teamMembers.length > 0;
+  
+  const displayMembers = hasTeamMembers
+    ? teamMembers.map((m) => ({
+        name: m.full_name || "Name not provided",
+        role: m.role || "Role not provided",
+        bio: m.bio || "",
+        photo: m.image_url || "/images/placeholder.png",
+        memberLinkedInUrl: m.linkedin_url || "#",
+        memberEmailAddress: m.email || "info@nextgenadvisorsltd.com",
+      }))
+    : siteConfig.team.members;
+
+  return (
+    <section id="team" className="py-20 md:py-28 relative overflow-hidden radial-bg">
+      <AnimatedSVGBackground variant="light" />
+      <div className="container mx-auto px-4 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <span className="inline-block text-sm font-semibold text-secondary uppercase tracking-wider mb-3">
+            {siteConfig.team.badge}
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            {siteConfig.team.heading}
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            {siteConfig.team.description}
+          </p>
+        </motion.div>
+       
+        <div
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto items-stretch mt-8"
+        >
+          {isLoading ? (
+            Array.from({ length: 3 }).map((_, i) => (
+              <div key={i} className="animate-pulse bg-primary/10 rounded-[3rem] h-[500px] w-full" />
+            ))
+          ) : (
+            displayMembers.length > 0 ? (
+              displayMembers.map((m, i) => (
+                <TeamCard key={m.name || i} m={m} i={i} />
+              ))
+            ) : (
+              <div className="col-span-full py-10 text-center text-muted-foreground">
+                No team members found.
+              </div>
+            )
+          )}
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default TeamSection;
