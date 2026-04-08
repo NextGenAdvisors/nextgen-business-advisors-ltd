@@ -16,7 +16,7 @@ const contactSchema = z.object({
   fullName: z.string().min(2),
   company: z.string().optional().nullable(),
   email: z.string().email(),
-  phone: z.string().optional().nullable(),
+  phone: z.string().min(5),
   service: z.string().min(1),
   message: z.string().min(10),
 })
@@ -56,19 +56,57 @@ Deno.serve(async (req: Request) => {
 
     const subject = `New contact form: ${values.service}`
     const htmlContent = `
-      <div style="font-family: Arial, sans-serif; line-height: 1.4;">
-        <h2 style="margin: 0 0 16px 0;">New contact form submission</h2>
-        <h3 style="margin: 0 0 8px 0;">Service</h3>
-        <p style="margin: 0 0 16px 0;">${escapeHtml(values.service)}</p>
-        <h3 style="margin: 0 0 8px 0;">From</h3>
-        <ul style="margin: 0; padding-left: 18px;">
-          <li><strong>Name:</strong> ${escapeHtml(values.fullName)}</li>
-          <li><strong>Company:</strong> ${escapeHtml(values.company || '-')}</li>
-          <li><strong>Email:</strong> ${escapeHtml(values.email)}</li>
-          <li><strong>Phone:</strong> ${escapeHtml(values.phone || '-')}</li>
-        </ul>
-        <h3 style="margin: 16px 0 8px 0;">Message</h3>
-        <p style="white-space: pre-wrap; margin: 0;">${escapeHtml(values.message)}</p>
+      <div style="background-color: #f8fafc; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; padding: 40px 20px; color: #334155;">
+        <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);">
+          
+          <!-- Header -->
+          <div style="background-color: #0f172a; padding: 32px 40px; text-align: center;">
+            <h1 style="color: #ffffff; margin: 0; font-size: 24px; font-weight: 600; letter-spacing: -0.5px;">New Inquiry Received</h1>
+            <p style="color: #94a3b8; font-size: 15px; margin: 8px 0 0 0;">NextGen Business Advisors Ltd</p>
+          </div>
+
+          <!-- Body -->
+          <div style="padding: 40px;">
+            <p style="font-size: 16px; margin: 0 0 24px 0; line-height: 1.6;">You have received a new contact form submission from the website. Here are the details:</p>
+            
+            <!-- Details Table -->
+            <table style="width: 100%; border-collapse: collapse; margin-bottom: 32px;">
+              <tbody>
+                <tr>
+                  <td style="padding: 12px 0; border-bottom: 1px solid #e2e8f0; width: 120px; font-weight: 600; color: #64748b; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Service</td>
+                  <td style="padding: 12px 0; border-bottom: 1px solid #e2e8f0; font-size: 16px; font-weight: 500; color: #0f172a;">${escapeHtml(values.service)}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px 0; border-bottom: 1px solid #e2e8f0; width: 120px; font-weight: 600; color: #64748b; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Name</td>
+                  <td style="padding: 12px 0; border-bottom: 1px solid #e2e8f0; font-size: 16px; color: #1e293b;">${escapeHtml(values.fullName)}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px 0; border-bottom: 1px solid #e2e8f0; width: 120px; font-weight: 600; color: #64748b; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Company</td>
+                  <td style="padding: 12px 0; border-bottom: 1px solid #e2e8f0; font-size: 16px; color: #1e293b;">${escapeHtml(values.company || '-')}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px 0; border-bottom: 1px solid #e2e8f0; width: 120px; font-weight: 600; color: #64748b; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Email</td>
+                  <td style="padding: 12px 0; border-bottom: 1px solid #e2e8f0; font-size: 16px;"><a href="mailto:${escapeHtml(values.email)}" style="color: #2563eb; text-decoration: none;">${escapeHtml(values.email)}</a></td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px 0; border-bottom: 1px solid #e2e8f0; width: 120px; font-weight: 600; color: #64748b; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Phone</td>
+                  <td style="padding: 12px 0; border-bottom: 1px solid #e2e8f0; font-size: 16px; color: #1e293b;">${escapeHtml(values.phone || '-')}</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- Message Section -->
+            <h3 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px;">Message</h3>
+            <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 20px; font-size: 15px; line-height: 1.6; color: #334155; white-space: pre-wrap;">${escapeHtml(values.message)}</div>
+            
+          </div>
+          
+          <!-- Footer -->
+          <div style="background-color: #f8fafc; padding: 24px 40px; text-align: center; border-top: 1px solid #e2e8f0;">
+            <p style="margin: 0; font-size: 13px; color: #94a3b8;">This email was sent automatically from your website's contact form.</p>
+          </div>
+
+        </div>
       </div>
     `.trim()
 
@@ -86,7 +124,7 @@ Deno.serve(async (req: Request) => {
           name: "Website Contact Form" 
         },
         to: [{ email: CONTACT_TO_EMAIL }],
-        replyTo: { email: values.email, name: values.fullName }, // Allows you to hit 'Reply' directly to the user
+        ...(values.email && { replyTo: { email: values.email, name: values.fullName } }),
         subject: subject,
         htmlContent: htmlContent,
       }),

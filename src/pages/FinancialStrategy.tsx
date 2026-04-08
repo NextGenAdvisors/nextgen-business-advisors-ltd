@@ -9,7 +9,7 @@ import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
 import { Button } from "@/components/ui/button";
 import PageTransition from "@/components/PageTransition";
 import SEO from "@/components/SEO";
-import { siteConfig } from "@/config/site";
+import { calendlyUrl, siteConfig } from "@/config/site";
 
 const strategySchema = {
   "@context": "https://schema.org",
@@ -222,7 +222,7 @@ const FinancialStrategy = () => {
             Whether your firm needs a rigorous audit, a total financial cleanup, or a path to investment readiness, our partners are ready to lead the way.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/#contact">
+            <Link to={calendlyUrl} target="_blank">
               <Button size="lg" className="h-14 px-8 text-base bg-primary hover:bg-primary/90 text-white shadow-elevated">
                 Schedule a Team Consultation
               </Button>

@@ -23,9 +23,7 @@ const TeamCard = ({ m, i }: { m: any; i: number }) => {
   const shortBio = isLong ? words.slice(0, 20).join(" ") + "..." : m.bio;
 
   return (
-    <motion.div
-      variants={fadeUp}
-      custom={i}
+    <div
       className="group flex flex-col items-center bg-transparent rounded-[3rem] overflow-hidden hover:bg-primary/10 transition-colors duration-500 ease-out h-full p-6 md:p-8"
     >
       {/* Photo */}
@@ -43,7 +41,7 @@ const TeamCard = ({ m, i }: { m: any; i: number }) => {
         <p className="text-sm text-primary/80 font-semibold mb-2 lowercase tracking-wide">
           {m.role}
         </p>
-        <h3 className="text-2xl font-bold text-foreground mb-4">
+        <h3 className="text-2xl font-bold text-foreground mb-4 text-center">
           {m.name}
         </h3>
         
@@ -64,25 +62,29 @@ const TeamCard = ({ m, i }: { m: any; i: number }) => {
         
         {/* Always visible icons */}
         <div className="flex gap-4 mt-6 pt-2 shrink-0 justify-center">
-          <a
-            href={m.memberLinkedInUrl}
-            target="_blank"
-            className="text-foreground/80 hover:text-primary transition-colors"
-            aria-label="LinkedIn"
-          >
-            <Linkedin size={20} strokeWidth={2} />
-          </a>
-          <a
-            href={`mailto:${m.memberEmailAddress}`}
-            target="_blank"
-            className="text-foreground/80 hover:text-primary transition-colors"
-            aria-label="Email"
-          >
-            <Mail size={20} strokeWidth={2} />
-          </a>
+          {m.memberLinkedInUrl && (
+            <a
+              href={m.memberLinkedInUrl}
+              target="_blank"
+              className="text-foreground/80 hover:text-primary transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={20} strokeWidth={2} />
+            </a>
+          )}
+          {m.memberEmailAddress && (
+            <a
+              href={`mailto:${m.memberEmailAddress}`}
+              target="_blank"
+              className="text-foreground/80 hover:text-primary transition-colors"
+              aria-label="Email"
+            >
+              <Mail size={20} strokeWidth={2} />
+            </a>
+          )}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
@@ -104,12 +106,14 @@ const TeamSection = () => {
     },
   });
 
-  const displayMembers = teamMembers && teamMembers.length > 0
+  const hasTeamMembers = teamMembers && Array.isArray(teamMembers) && teamMembers.length > 0;
+  
+  const displayMembers = hasTeamMembers
     ? teamMembers.map((m) => ({
-        name: m.full_name,
-        role: m.role,
+        name: m.full_name || "Name not provided",
+        role: m.role || "Role not provided",
         bio: m.bio || "",
-        photo: m.image_url,
+        photo: m.image_url || "/images/placeholder.png",
         memberLinkedInUrl: m.linkedin_url || "#",
         memberEmailAddress: m.email || "info@nextgenadvisorsltd.com",
       }))
@@ -135,23 +139,26 @@ const TeamSection = () => {
             {siteConfig.team.description}
           </p>
         </motion.div>
-
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-80px' }}
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto items-stretch"
+       
+        <div
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto items-stretch mt-8"
         >
           {isLoading ? (
             Array.from({ length: 3 }).map((_, i) => (
               <div key={i} className="animate-pulse bg-primary/10 rounded-[3rem] h-[500px] w-full" />
             ))
           ) : (
-            displayMembers.map((m, i) => (
-              <TeamCard key={m.name} m={m} i={i} />
-            ))
+            displayMembers.length > 0 ? (
+              displayMembers.map((m, i) => (
+                <TeamCard key={m.name || i} m={m} i={i} />
+              ))
+            ) : (
+              <div className="col-span-full py-10 text-center text-muted-foreground">
+                No team members found.
+              </div>
+            )
           )}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

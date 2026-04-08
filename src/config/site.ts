@@ -15,6 +15,8 @@ import {
   RefreshCw,
 } from "lucide-react";
 
+export const calendlyUrl ='https://calendly.com/nextgenadvisorsltd-info/30min'
+
 export const siteConfig = {
   global: {
     name: 'NextGen Business Advisors Ltd',
@@ -24,6 +26,7 @@ export const siteConfig = {
     email: 'info@nextgenadvisors.com',
     phone: '+234 803 734 5051',
     whatsapp: '+2348037345051',
+    
     /**
      * Paste a fresh Google Maps embed URL here whenever the office moves.
      * To get one: Google Maps → share → Embed a map → copy the src URL.
@@ -57,7 +60,7 @@ export const siteConfig = {
     description2: '',
     cta1: {
       label: 'Book a Consultation',
-      href: 'https://calendly.com/nextgenadvisorsltd-info/30min'
+      href: calendlyUrl
     },
     cta2: {
       label: 'Speak With Our Advisors',
@@ -438,7 +441,7 @@ export const siteConfig = {
     description:
       'From market entry guidance to investment readiness, let our expert team help you establish and grow a sustainable business. We bring global perspective, structured approach, and hands-on expertise.',
     primaryButtonText: 'Book Your Consultation',
-    primaryButtonLink: 'https://calendly.com/nextgenadvisorsltd-info/30min',
+    primaryButtonLink: calendlyUrl,
     secondaryButtonText: 'Learn More',
     secondaryButtonLink: '/#services'
   },
