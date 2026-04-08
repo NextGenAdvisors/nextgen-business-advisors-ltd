@@ -64,7 +64,22 @@ const ContactSection = () => {
         throw new Error(error.message || "Failed to send message via edge function");
       }
 
-      toast.success("Thank you! We'll be in touch shortly.");
+      // If the admin email was successful, send the confirmation email to the user.
+      const { error: confirmationError } = await supabase.functions.invoke("user-confirmation-email", {
+        body: {
+          fullName: values.fullName,
+          email: values.email,
+          service: values.service,
+        },
+      });
+
+      if (confirmationError) {
+        // We still want to show success to the user since the admin got the email, 
+        // but log the confirmation failure for investigation.
+        console.error("Warning: Failed to send user confirmation email:", confirmationError);
+      }
+
+      toast.success("Thank you for contacting us, We'll be in touch shortly.");
       form.reset();
     } catch (error: any) {
       console.error("Error from Supabase Edge Function:", error);
