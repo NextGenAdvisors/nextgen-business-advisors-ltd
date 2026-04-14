@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { CheckCircle, Target, Eye, Heart, Sparkles } from "lucide-react";
+import { CheckCircle, Target, Eye, Heart, Sparkles, ShieldCheck, Award, Lightbulb, Handshake, Link, Leaf, type LucideIcon } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { AnimatedSVGBackground } from "@/components/FloatingShapes";
 
@@ -29,13 +29,13 @@ const staggerItem = {
 };
 
 /* ── Core-value icon map ── */
-const valueIcons: Record<string, string> = {
-  Integrity: "🛡️",
-  Excellence: "⭐",
-  Innovation: "💡",
-  "Client-Centricity": "🤝",
-  Collaboration: "🔗",
-  Sustainability: "🌱",
+const valueIcons: Record<string, LucideIcon> = {
+  Integrity: ShieldCheck,
+  Excellence: Award,
+  Innovation: Lightbulb,
+  "Client-Centricity": Handshake,
+  Collaboration: Link,
+  Sustainability: Leaf,
 };
 
 /* ---------- Component ---------- */
@@ -290,8 +290,17 @@ const AboutSection = () => (
                 custom={i + 1}
                 className="bg-card rounded-xl p-7 border border-border shadow-card hover:shadow-elevated hover:-translate-y-1 transition-all shimmer-hover group"
               >
-                <div className="text-2xl mb-3 group-hover:scale-110 transition-transform inline-block">
-                  {valueIcons[v.title] ?? "💎"}
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary transition-all duration-300 transform group-hover:rotate-6 shadow-sm">
+                  {(() => {
+                    const Icon = valueIcons[v.title] || Sparkles;
+                    return (
+                      <Icon
+                        className="text-primary group-hover:text-primary-foreground transition-colors"
+                        size={24}
+                        strokeWidth={1.5}
+                      />
+                    );
+                  })()}
                 </div>
                 <h4 className="font-bold text-foreground mb-1.5 font-body text-base">
                   {v.title}

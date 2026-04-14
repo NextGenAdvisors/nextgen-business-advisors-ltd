@@ -107,7 +107,7 @@ const ContactSection = () => {
             <div className="p-8">
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                  
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <FormField
                       control={form.control}
@@ -115,10 +115,10 @@ const ContactSection = () => {
                       render={({ field }) => (
                         <FormItem>
                           <FormControl>
-                            <Input 
-                              placeholder="Your Name*" 
-                              className="h-12 bg-transparent border-input px-4 text-sm" 
-                              {...field} 
+                            <Input
+                              placeholder="Your Name*"
+                              className="h-12 bg-transparent border-input px-4 text-sm"
+                              {...field}
                             />
                           </FormControl>
                           <FormMessage />
@@ -132,10 +132,10 @@ const ContactSection = () => {
                       render={({ field }) => (
                         <FormItem>
                           <FormControl>
-                            <Input 
-                              placeholder="Company Name (optional)" 
-                              className="h-12 bg-transparent border-input px-4 text-sm" 
-                              {...field} 
+                            <Input
+                              placeholder="Company Name (optional)"
+                              className="h-12 bg-transparent border-input px-4 text-sm"
+                              {...field}
                             />
                           </FormControl>
                           <FormMessage />
@@ -151,11 +151,11 @@ const ContactSection = () => {
                       render={({ field }) => (
                         <FormItem>
                           <FormControl>
-                            <Input 
+                            <Input
                               type="email"
-                              placeholder="Email Address*" 
-                              className="h-12 bg-transparent border-input px-4 text-sm" 
-                              {...field} 
+                              placeholder="Email Address*"
+                              className="h-12 bg-transparent border-input px-4 text-sm"
+                              {...field}
                             />
                           </FormControl>
                           <FormMessage />
@@ -169,11 +169,11 @@ const ContactSection = () => {
                       render={({ field }) => (
                         <FormItem>
                           <FormControl>
-                            <Input 
-                              type="tel" 
-                              placeholder="Phone number*" 
-                              className="h-12 bg-transparent border-input px-4 text-sm" 
-                              {...field} 
+                            <Input
+                              type="tel"
+                              placeholder="Phone number*"
+                              className="h-12 bg-transparent border-input px-4 text-sm"
+                              {...field}
                             />
                           </FormControl>
                           <FormMessage />
@@ -248,55 +248,42 @@ const ContactSection = () => {
           {/* Abstract Geometric Background */}
           <div className="absolute inset-0 bg-[#EBF3FC] overflow-hidden">
             {/* Geometric Cuts (Masking) */}
-            <div className="absolute right-0 top-0 w-3/4 h-full bg-primary" style={{ clipPath: 'polygon(20% 0, 100% 0, 100% 100%, 0 100%)' }}></div>
-            <div className="absolute right-0 top-0 w-1/2 h-full bg-primary/90" style={{ clipPath: 'polygon(30% 0, 100% 0, 100% 100%, 0 100%)' }}></div>
-            
+
+            <div className="absolute right-0 top-0 w-1/2 h-full bg-primary" style={{ clipPath: 'polygon(30% 0, 100% 0, 100% 100%, 0 100%)' }}></div>
+
             {/* Pattern Overlays */}
             <div className="absolute right-[10%] top-[40%] text-primary/20 pointer-events-none">
-               <svg width="200" height="200" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                 {Array.from({ length: 5 }).map((_, i) => (
-                   Array.from({ length: 5 }).map((_, j) => (
-                     <path key={`${i}-${j}`} d={`M${i*20+5} ${j*20+10} L${i*20+15} ${j*20+10} M${i*20+10} ${j*20+5} L${i*20+10} ${j*20+15}`} stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                   ))
-                 ))}
-               </svg>
+              <svg width="200" height="200" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  Array.from({ length: 5 }).map((_, j) => (
+                    <path key={`${i}-${j}`} d={`M${i * 20 + 5} ${j * 20 + 10} L${i * 20 + 15} ${j * 20 + 10} M${i * 20 + 10} ${j * 20 + 5} L${i * 20 + 10} ${j * 20 + 15}`} stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  ))
+                ))}
+              </svg>
             </div>
 
             <div className="absolute left-0 bottom-[10%] text-primary/20 pointer-events-none">
               <svg width="200" height="200" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                 <path d="M0 80 Q 25 30 50 80 T 100 80 T 150 80" stroke="currentColor" strokeWidth="1" fill="none" />
-                 <path d="M0 90 Q 25 40 50 90 T 100 90 T 150 90" stroke="currentColor" strokeWidth="1" fill="none" />
-                 <path d="M0 100 Q 25 50 50 100 T 100 100 T 150 100" stroke="currentColor" strokeWidth="1" fill="none" />
+                <path d="M0 80 Q 25 30 50 80 T 100 80 T 150 80" stroke="currentColor" strokeWidth="1" fill="none" />
+                <path d="M0 90 Q 25 40 50 90 T 100 90 T 150 90" stroke="currentColor" strokeWidth="1" fill="none" />
+                <path d="M0 100 Q 25 50 50 100 T 100 100 T 150 100" stroke="currentColor" strokeWidth="1" fill="none" />
               </svg>
             </div>
 
-            {/* Circular Progress Indicator */}
-            <motion.div 
-              initial={{ scale: 0, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5, type: "spring" }}
-              className="absolute right-12 bottom-12 w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-lg pointer-events-none"
-            >
-               <svg className="absolute w-full h-full -rotate-90 pointer-events-none">
-                 <circle cx="48" cy="48" r="40" stroke="currentColor" strokeWidth="4" fill="none" className="text-slate-100" />
-                 <circle cx="48" cy="48" r="40" stroke="currentColor" strokeWidth="4" fill="none" className="text-primary" strokeDasharray="251" strokeDashoffset="35" strokeLinecap="round" />
-               </svg>
-               <span className="text-primary font-bold text-xl pointer-events-none">86%</span>
-            </motion.div>
+
           </div>
 
           {/* Hero Image */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="absolute bottom-0 left-12 w-[85%] h-[90%] pointer-events-none"
           >
-            <img 
-              src="/images/contact-image.png" 
-              alt="Professional business advisor" 
+            <img
+              src="/images/contact-image.png"
+              alt="Professional business advisor"
               className="w-full h-full object-cover object-top drop-shadow-2xl opacity-100 mix-blend-normal rounded-lg"
               style={{
                 clipPath: 'polygon(15% 0, 100% 0, 100% 100%, 0% 100%)',
