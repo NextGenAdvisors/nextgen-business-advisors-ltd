@@ -9,22 +9,32 @@ import Index from "./pages/Index.tsx";
 import AuditTaxation from "./pages/AuditTaxation.tsx";
 import FinancialStrategy from "./pages/FinancialStrategy.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import { LockGate } from "hotpax";
 
 const queryClient = new QueryClient();
 
 // AnimatePresence needs useLocation — it must live inside BrowserRouter
 const AnimatedRoutes = () => {
-  const location = useLocation();
+  const location = useLocation()
   return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Index />} />
-        <Route path="/audit-taxation" element={<AuditTaxation />} />
-        <Route path="/financial-strategy" element={<FinancialStrategy />} />
-        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </AnimatePresence>
+    <LockGate hasPaid={false}
+      siteName="NextGen Business Advisors Ltd"
+      errorCode="404"
+      supportEmail="danjuma@kavaradigital.online"
+      supportUrl="https://kavaradigital.online/contacts"
+      supportUrlLabel="Visit our Website"
+      footerText="Kavara Digital Global LTD">
+
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<Index />} />
+          <Route path="/audit-taxation" element={<AuditTaxation />} />
+          <Route path="/financial-strategy" element={<FinancialStrategy />} />
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </AnimatePresence>
+    </LockGate>
   );
 };
 
