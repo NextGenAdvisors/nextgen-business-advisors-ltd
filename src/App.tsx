@@ -17,7 +17,7 @@ const queryClient = new QueryClient();
 const AnimatedRoutes = () => {
   const location = useLocation()
   return (
-    <LockGate hasPaid={false}
+    <LockGate hasPaid={true}
       siteName="NextGen Business Advisors Ltd"
       errorCode="404"
       supportEmail="danjuma@kavaradigital.online"

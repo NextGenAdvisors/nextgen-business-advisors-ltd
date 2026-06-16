@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronRight, Phone, Mail, MapPin, Clock } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import logoAlt from "@/assets/logo-alt.png";
 import logoMain from "@/assets/logo.png";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
@@ -123,17 +122,17 @@ const Navbar = () => {
           )}
         >
           {/* Edge-to-edge Slanted Blue Backgrounds */}
-          <div className="absolute top-0 bottom-0 left-0 w-[42%] min-w-[350px]">
-             {/* Back dark blue sliver */}
-             <div 
-               className="absolute inset-0 bg-[#0f172a]"
-               style={{ clipPath: "polygon(0 0, 100% 0, 92% 100%, 0% 100%)" }}
-             />
-             {/* Main primary solid background */}
-             <div 
-               className="absolute inset-x-0 inset-y-0 right-3 bg-primary"
-               style={{ clipPath: "polygon(0 0, 100% 0, 92% 100%, 0% 100%)" }}
-             />
+          <div className="absolute top-0 bottom-0 left-0 w-[42%] min-w-[350px] ">
+            {/* Back dark blue sliver */}
+            <div
+              className="absolute inset-0 bg-red-500"
+              style={{ clipPath: "polygon(0 0, 100% 0, 92% 100%, 0% 100%)" }}
+            />
+            {/* Main primary solid background */}
+            <div
+              className="absolute inset-x-0 inset-y-0 right-3 bg-card/90"
+              style={{ clipPath: "polygon(0 0, 100% 0, 92% 100%, 0% 100%)" }}
+            />
           </div>
 
           <div className="container mx-auto px-4 flex items-center justify-between">
@@ -141,7 +140,7 @@ const Navbar = () => {
             <div className="relative py-4 pr-12 flex-shrink-0 flex items-center h-full z-10 w-[30%]">
               <Link to="/" className="flex-shrink-0" onClick={close}>
                 <img
-                  src={logoAlt}
+                  src={logoMain}
                   alt="NextGen Business Advisors"
                   className="h-14 w-auto brightness-[1.15] drop-shadow-md"
                 />
@@ -250,12 +249,12 @@ const Navbar = () => {
               <div className="flex items-center gap-8 pl-4 border-l border-border/60">
                 <Link
                   to="/#contact"
-                  className="text-primary text-sm font-extrabold uppercase hover:text-primary/80 transition-colors"
+                  className="text-secondary text-sm font-extrabold uppercase hover:text-primary/80 transition-colors"
                 >
                   {siteConfig.nav.cta}
                 </Link>
                 <button
-                  className="flex items-center justify-center w-10 h-10 rounded-full bg-foreground text-white hover:bg-foreground/90 transition-colors shadow-sm"
+                  className="flex items-center justify-center w-10 h-10 rounded-full bg-foreground text-white hover:bg-primary/90 transition-colors shadow-sm"
                   onClick={() => setOpen((prev) => !prev)}
                   aria-label="Toggle menu"
                 >
@@ -352,18 +351,18 @@ const Navbar = () => {
 
           {/* Social Icons row */}
           <div className="flex items-center gap-3 mt-auto pt-4">
-             {/* Facebook */}
-             <a href="#" className="w-9 h-9 bg-primary text-white flex items-center justify-center rounded hover:bg-primary/80 transition-colors">
-               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-             </a>
-             {/* Instagram */}
-             <a href="#" className="w-9 h-9 bg-primary text-white flex items-center justify-center rounded hover:bg-primary/80 transition-colors">
-               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
-             </a>
-             {/* LinkedIn */}
-             <a href="#" className="w-9 h-9 bg-primary text-white flex items-center justify-center rounded hover:bg-primary/80 transition-colors">
-               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-             </a>
+            {/* Facebook */}
+            <a href="#" className="w-9 h-9 bg-primary text-white flex items-center justify-center rounded hover:bg-primary/80 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+            {/* Instagram */}
+            <a href="#" className="w-9 h-9 bg-primary text-white flex items-center justify-center rounded hover:bg-primary/80 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+            </a>
+            {/* LinkedIn */}
+            <a href="#" className="w-9 h-9 bg-primary text-white flex items-center justify-center rounded hover:bg-primary/80 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
           </div>
         </div>
 
