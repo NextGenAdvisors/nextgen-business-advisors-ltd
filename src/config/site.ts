@@ -400,21 +400,21 @@ export const siteConfig = {
           'NexGen Advisors made our entry into the Nigerian market seamless. Their compliance expertise saved us months and gave us confidence to invest further.',
         name: 'Michael Adebayo',
         title: 'CEO, Transatlantic Ventures',
-        avatar: '/images/testimonial-avatar.png'
+        avatar: '/favicon.png'
       },
       {
         quote:
           'From business registration to tax advisory, the team was professional and extremely knowledgeable. They truly understand cross-border business.',
         name: 'Oluwaseun Ojo',
         title: 'Director, Diaspora Capital Group',
-        avatar: '/images/testimonial-avatar.png'
+        avatar: '/favicon.png'
       },
       {
         quote:
           'We needed a structured financial model and bank-ready documentation. NexGen delivered beyond expectations and helped us secure our first institutional loan.',
         name: 'Amina Bello',
         title: 'Founder, GreenLeaf Agritech',
-        avatar: '/images/testimonial-avatar.png'
+        avatar: '/favicon.png'
       }
     ]
   },
