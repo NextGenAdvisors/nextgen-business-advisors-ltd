@@ -9,7 +9,7 @@ interface SEOProps {
   schema?: object;
 }
 
-const SITE_NAME = "NextGen Business Advisors Ltd";
+const SITE_NAME = "NexGen Business Advisors Ltd";
 const BASE_URL = "https://nextgenbusinessadvisors.com";
 const DEFAULT_IMAGE = `${BASE_URL}/images/og-default.png`;
 

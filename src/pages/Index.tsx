@@ -67,7 +67,7 @@ const Index = () => {
     <PageTransition>
       <SEO
         title="Chartered Accountants & Business Advisors in Nigeria"
-        description="NextGen Business Advisors Ltd — we turn numbers into clarity. Expert audit, tax advisory, financial compliance and SME accounting services in Lagos, Nigeria. Are you struggling with unreconciled accounts, tax compliance issues, audit delays, or unclear financial records? We fix the structure, fix the business."
+        description="NexGen Business Advisors Ltd — we turn numbers into clarity. Expert audit, tax advisory, financial compliance and SME accounting services in Lagos, Nigeria. Are you struggling with unreconciled accounts, tax compliance issues, audit delays, or unclear financial records? We fix the structure, fix the business."
         keywords={`${PRIMARY_KW}, ${SECONDARY_KW}`}
         canonical="/"
         schema={homeSchema}

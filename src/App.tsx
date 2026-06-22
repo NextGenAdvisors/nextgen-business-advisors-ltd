@@ -18,7 +18,7 @@ const AnimatedRoutes = () => {
   const location = useLocation()
   return (
     <LockGate hasPaid={true}
-      siteName="NextGen Business Advisors Ltd"
+      siteName="NexGen Business Advisors Ltd"
       errorCode="404"
       supportEmail="danjuma@kavaradigital.online"
       supportUrl="https://kavaradigital.online/contacts"

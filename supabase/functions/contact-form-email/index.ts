@@ -62,7 +62,7 @@ Deno.serve(async (req: Request) => {
           <!-- Header -->
           <div style="background-color: #0f172a; padding: 32px 40px; text-align: center;">
             <h1 style="color: #ffffff; margin: 0; font-size: 24px; font-weight: 600; letter-spacing: -0.5px;">New Inquiry Received</h1>
-            <p style="color: #94a3b8; font-size: 15px; margin: 8px 0 0 0;">NextGen Business Advisors Ltd</p>
+            <p style="color: #94a3b8; font-size: 15px; margin: 8px 0 0 0;">NexGen Business Advisors Ltd</p>
           </div>
 
           <!-- Body -->
@@ -119,9 +119,9 @@ Deno.serve(async (req: Request) => {
         'api-key': BREVO_API_KEY,
       },
       body: JSON.stringify({
-        sender: { 
+        sender: {
           email: CONTACT_FROM_EMAIL, // Must be your verified domain email
-          name: "Website Contact Form" 
+          name: "Website Contact Form"
         },
         to: [{ email: CONTACT_TO_EMAIL }],
         ...(values.email && { replyTo: { email: values.email, name: values.fullName } }),

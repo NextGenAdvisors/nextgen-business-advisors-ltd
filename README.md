@@ -1,6 +1,6 @@
-# NextGen Business Advisors Ltd !
+# NexGen Business Advisors Ltd !
 
-A modern, responsive corporate website for **NextGen Business Advisors Ltd** by Kavara Digital Global — a Nigerian business advisory firm delivering expert services in business setup, regulatory compliance, financial structuring, and investment readiness.
+A modern, responsive corporate website for **NexGen Business Advisors Ltd** by Kavara Digital Global — a Nigerian business advisory firm delivering expert services in business setup, regulatory compliance, financial structuring, and investment readiness.
 
 Built by [Kavara Digital Global](https://kavaradigital.online).
 
@@ -105,7 +105,7 @@ You can publicly monitor the site's uptime status here:
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-org/nextgen-business-advisors-ltd.git
+git clone https://github.com/NextGenAdvisors/nextgen-business-advisors-ltd.git
 
 # Navigate into the project
 cd nextgen-business-advisors-ltd
@@ -157,4 +157,4 @@ bun run lint
 
 ## 📄 License
 
-This project is proprietary software developed by **Kavara Digital Global** for **NextGen Business Advisors Ltd**. All rights reserved.
+This project is proprietary software developed by **Kavara Digital Global** for **NexGen Business Advisors Ltd**. All rights reserved.

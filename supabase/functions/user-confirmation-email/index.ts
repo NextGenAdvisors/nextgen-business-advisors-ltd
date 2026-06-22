@@ -42,7 +42,7 @@ Deno.serve(async (req: Request) => {
     const body = await req.json()
     const values = confirmationSchema.parse(body)
 
-    const subject = `Received: Your Request for ${values.service} at NextGen Business Advisors`
+    const subject = `Received: Your Request for ${values.service} at NexGen Business Advisors`
     const htmlContent = `
       <div style="background-color: #f8fafc; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; padding: 40px 20px; color: #334155;">
         <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);">
@@ -50,14 +50,14 @@ Deno.serve(async (req: Request) => {
           <!-- Header -->
           <div style="background-color: #0f172a; padding: 32px 40px; text-align: center;">
             <h1 style="color: #ffffff; margin: 0; font-size: 24px; font-weight: 600; letter-spacing: -0.5px;">Message Received</h1>
-            <p style="color: #94a3b8; font-size: 15px; margin: 8px 0 0 0;">NextGen Business Advisors Ltd</p>
+            <p style="color: #94a3b8; font-size: 15px; margin: 8px 0 0 0;">NexGen Business Advisors Ltd</p>
           </div>
 
           <!-- Body -->
           <div style="padding: 40px;">
             <h2 style="font-size: 20px; margin: 0 0 16px 0; color: #0f172a;">Hello ${escapeHtml(values.fullName)},</h2>
             <p style="font-size: 16px; margin: 0 0 24px 0; line-height: 1.6;">
-              Thank you for reaching out to NextGen Business Advisors Ltd. We have successfully received your inquiry regarding <strong>${escapeHtml(values.service)}</strong>.
+              Thank you for reaching out to NexGen Business Advisors Ltd. We have successfully received your inquiry regarding <strong>${escapeHtml(values.service)}</strong>.
             </p>
             <p style="font-size: 16px; margin: 0 0 24px 0; line-height: 1.6;">
               Our team of experts will review your details and get back to you shortly to discuss how we can assist you and your business. We aim to respond to all inquiries within 1-2 business days.
@@ -68,7 +68,7 @@ Deno.serve(async (req: Request) => {
             <!-- Outro Message -->
             <p style="font-size: 15px; margin: 0; line-height: 1.6; color: #475569;">
               Best regards,<br/>
-              <strong>The Team at NextGen Business Advisors Ltd</strong>
+              <strong>The Team at NexGen Business Advisors Ltd</strong>
             </p>
           </div>
           
@@ -76,7 +76,7 @@ Deno.serve(async (req: Request) => {
           <div style="background-color: #f8fafc; padding: 24px 40px; text-align: center; border-top: 1px solid #e2e8f0;">
             <p style="margin: 0; font-size: 13px; color: #94a3b8;">
               If you have any urgent questions, please reply directly to this email or visit our website.<br/>
-              &copy; ${new Date().getFullYear()} NextGen Business Advisors Ltd. All rights reserved.
+              &copy; ${new Date().getFullYear()} NexGen Business Advisors Ltd. All rights reserved.
             </p>
           </div>
 
@@ -93,9 +93,9 @@ Deno.serve(async (req: Request) => {
         'api-key': BREVO_API_KEY,
       },
       body: JSON.stringify({
-        sender: { 
-          email: CONTACT_FROM_EMAIL, 
-          name: "NextGen Business Advisors LTD" 
+        sender: {
+          email: CONTACT_FROM_EMAIL,
+          name: "NexGen Business Advisors LTD"
         },
         to: [{ email: values.email, name: values.fullName }],
         subject: subject,

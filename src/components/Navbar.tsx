@@ -141,7 +141,7 @@ const Navbar = () => {
               <Link to="/" className="flex-shrink-0" onClick={close}>
                 <img
                   src={logoMain}
-                  alt="NextGen Business Advisors"
+                  alt="NexGen Business Advisors"
                   className="h-14 w-auto brightness-[1.15] drop-shadow-md"
                 />
               </Link>
@@ -207,7 +207,7 @@ const Navbar = () => {
           {/* Mobile single-row */}
           <div className="container mx-auto px-4 flex items-center justify-between h-16 lg:hidden">
             <Link to="/" onClick={close}>
-              <img src={logoMain} alt="NextGen Business Advisors" className="h-12 w-auto" />
+              <img src={logoMain} alt="NexGen Business Advisors" className="h-12 w-auto" />
             </Link>
             <button
               className="relative z-[60] flex items-center justify-center w-11 h-11 rounded-full bg-foreground text-white hover:bg-foreground/90 transition-colors shadow-sm"
@@ -290,7 +290,7 @@ const Navbar = () => {
           <Link to="/" onClick={close} className="flex-1">
             <img
               src={logoMain}
-              alt="NextGen Business Advisors"
+              alt="NexGen Business Advisors"
               className="h-8 w-auto"
             />
           </Link>
@@ -308,7 +308,7 @@ const Navbar = () => {
           <div>
             <h3 className="text-2xl font-bold text-foreground mb-4">About Us</h3>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-              NextGen Business Advisors Ltd is a premier strategic advisory firm, proudly associated with Jou & Co. We provide high-impact business setup, compliance, accounting, and tax advisory services, empowering diaspora investors, foreign corporations, and SMEs with the structured guidance needed to achieve sustainable growth in Nigeria.
+              NexGen Business Advisors Ltd is a premier strategic advisory firm, proudly associated with Jou & Co. We provide high-impact business setup, compliance, accounting, and tax advisory services, empowering diaspora investors, foreign corporations, and SMEs with the structured guidance needed to achieve sustainable growth in Nigeria.
             </p>
             <Link
               to="/#contact"

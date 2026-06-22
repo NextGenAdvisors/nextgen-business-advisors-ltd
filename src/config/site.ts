@@ -15,18 +15,18 @@ import {
   RefreshCw,
 } from "lucide-react";
 
-export const calendlyUrl ='https://calendly.com/nextgenadvisorsltd-info/30min'
+export const calendlyUrl = 'https://calendly.com/nextgenadvisorsltd-info/30min'
 
 export const siteConfig = {
   global: {
-    name: 'NextGen Business Advisors Ltd',
+    name: 'NexGen Business Advisors Ltd',
     location: 'Lagos, Nigeria',
     city: 'Lagos',
     country: 'Nigeria',
     email: 'info@nextgenadvisors.com',
     phone: '+234 803 734 5051',
     whatsapp: '+2348037345051',
-    
+
     /**
      * Paste a fresh Google Maps embed URL here whenever the office moves.
      * To get one: Google Maps → share → Embed a map → copy the src URL.
@@ -91,7 +91,7 @@ export const siteConfig = {
   about: {
     whyChooseUs: {
       badge: 'Why Choose Us',
-      heading: 'Why Clients Trust NextGen Business Advisors Ltd',
+      heading: 'Why Clients Trust NexGen Business Advisors Ltd',
       description:
         'We combine professional excellence, international exposure, and practical business insight. Led by Joy Ozua, a licensed member of the Institute of Chartered Accountants of Nigeria with over 15 years of experience in audit, taxation, governance, and strategic advisory. Our team brings experience from globally connected firms and international business institutions.',
       images: {
@@ -188,7 +188,7 @@ export const siteConfig = {
       badge: 'Our Expertise Services',
       heading: 'Comprehensive Advisory Solutions',
       description:
-        'At NextGen Business Advisors, we combine international best practices with local insights to help businesses thrive in Nigeria.',
+        'At NexGen Business Advisors, we combine international best practices with local insights to help businesses thrive in Nigeria.',
       servicesList: [
         {
           icon: Building2,
@@ -360,7 +360,7 @@ export const siteConfig = {
     badge: 'Our Team',
     heading: 'Meet Our Expert Team',
     description:
-      'NextGen Business Advisors Ltd is supported by a team of qualified professionals across accounting, compliance, financial analysis, and strategic advisory. Our multidisciplinary expertise enables integrated services across all business advisory needs.',
+      'NexGen Business Advisors Ltd is supported by a team of qualified professionals across accounting, compliance, financial analysis, and strategic advisory. Our multidisciplinary expertise enables integrated services across all business advisory needs.',
     members: [
       {
         name: 'Joy Ozua',
@@ -397,7 +397,7 @@ export const siteConfig = {
     reviews: [
       {
         quote:
-          'NextGen Advisors made our entry into the Nigerian market seamless. Their compliance expertise saved us months and gave us confidence to invest further.',
+          'NexGen Advisors made our entry into the Nigerian market seamless. Their compliance expertise saved us months and gave us confidence to invest further.',
         name: 'Michael Adebayo',
         title: 'CEO, Transatlantic Ventures',
         avatar: '/images/testimonial-avatar.png'
@@ -411,7 +411,7 @@ export const siteConfig = {
       },
       {
         quote:
-          'We needed a structured financial model and bank-ready documentation. NextGen delivered beyond expectations and helped us secure our first institutional loan.',
+          'We needed a structured financial model and bank-ready documentation. NexGen delivered beyond expectations and helped us secure our first institutional loan.',
         name: 'Amina Bello',
         title: 'Founder, GreenLeaf Agritech',
         avatar: '/images/testimonial-avatar.png'
@@ -425,7 +425,7 @@ export const siteConfig = {
       "Whether you're a diaspora investor, foreign corporation, or entrepreneur, we're here to guide you toward compliant, structured, and growth-ready operations in Nigeria.",
     image: '/images/consulting.jpg',
     quote:
-      '"Structured businesses attract sustainable success. Let NextGen Business Advisors help you build yours the right way."',
+      '"Structured businesses attract sustainable success. Let NexGen Business Advisors help you build yours the right way."',
     formServices: [
       { value: 'setup', label: 'Business Setup' },
       { value: 'tax', label: 'Tax & Compliance' },
@@ -447,7 +447,7 @@ export const siteConfig = {
   },
   footer: {
     description:
-      'NextGen Business Advisors Ltd helps diaspora investors, foreign corporations, and entrepreneurs establish strong, compliant, and sustainable businesses in Nigeria through expert advisory in setup, compliance, accounting, and investment readiness.',
+      'NexGen Business Advisors Ltd helps diaspora investors, foreign corporations, and entrepreneurs establish strong, compliant, and sustainable businesses in Nigeria through expert advisory in setup, compliance, accounting, and investment readiness.',
     quickLinks: [
       { label: 'Home', href: '/' },
       { label: 'About Us', href: '/#about' },
@@ -474,7 +474,7 @@ export const siteConfig = {
     badge: 'Our Reach',
     heading: 'Industries We Serve',
     description:
-      'NextGen Business Advisors Ltd works across sectors to support different business types and growth stages:',
+      'NexGen Business Advisors Ltd works across sectors to support different business types and growth stages:',
     industries: [
       {
         title: 'SMEs & Entrepreneurs',
@@ -590,7 +590,7 @@ export const siteConfig = {
       {
         title: 'Intellectual Property',
         description:
-          'All documents, reports, and advisory materials belong to NextGen unless agreed otherwise'
+          'All documents, reports, and advisory materials belong to NexGen unless agreed otherwise'
       },
       {
         title: 'Governing Law',
