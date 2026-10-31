@@ -436,6 +436,91 @@ export const siteConfig = {
     secondaryButtonText: 'Learn More',
     secondaryButtonLink: '/#services'
   },
+  faq: {
+    badge: 'Frequently Asked Questions',
+    heading: 'Setting Up and Running a Business in Nigeria',
+    description:
+      'Straight answers to the questions diaspora investors, foreign companies, and Nigerian SMEs ask us most about registration, tax, and compliance.',
+    items: [
+      {
+        question:
+          'Can a Nigerian living abroad register a company in Nigeria without travelling home?',
+        answer:
+          'Yes. Company registration with the Corporate Affairs Commission (CAC) is done online, and NexGen Business Advisors acts as your local representative for name reservation, filing, and post-incorporation steps. You only need a valid means of identification, a passport photograph, and signed consent forms. No physical presence in Nigeria is required.'
+      },
+      {
+        question: 'How long does company registration with the CAC take?',
+        answer:
+          'Name reservation is usually approved within 1 to 2 working days, and incorporation within 3 to 10 working days once all documents are complete. Most delays come from rejected names or incomplete director details, which we check before filing.'
+      },
+      {
+        question: 'How much does it cost to register a company in Nigeria?',
+        answer:
+          'The cost depends on the company type and share capital. CAC filing fees for a small private limited company start from about ₦25,000 for ₦1 million share capital, plus stamp duty and professional fees. Companies with foreign shareholders need a minimum share capital of ₦100 million, which raises the filing and stamp duty cost.'
+      },
+      {
+        question: 'What documents do I need to register a company in Nigeria?',
+        answer:
+          'You need two proposed company names, a registered office address in Nigeria, the name, address, date of birth, and ID of each director and shareholder, the share capital and shareholding structure, and the objects of the company. Foreign shareholders provide passport data pages, and corporate shareholders provide their certificate of incorporation and a board resolution.'
+      },
+      {
+        question: 'Is CAC registration enough to start operating legally in Nigeria?',
+        answer:
+          'No. After incorporation you still need a Tax Identification Number (TIN), VAT registration with the Federal Inland Revenue Service (FIRS), PAYE registration with the state revenue service, and any sector-specific licence. Foreign-owned companies also need Nigerian Investment Promotion Commission (NIPC) registration, a business permit, and expatriate quota approval before hiring foreign staff.'
+      },
+      {
+        question: 'Which taxes does a new company in Nigeria have to register for?',
+        answer:
+          'Every company registers for Companies Income Tax, Value Added Tax, Withholding Tax, and PAYE for its employees. FIRS handles federal taxes and the state internal revenue service handles PAYE. Larger companies also pay Tertiary Education Tax, and some sectors have additional levies.'
+      },
+      {
+        question:
+          'Can a foreign company operate in Nigeria as a branch instead of a subsidiary?',
+        answer:
+          'Generally no. The Companies and Allied Matters Act requires a foreign company to incorporate a separate Nigerian entity before doing business, unless it obtains a ministerial exemption, which is granted only in limited cases such as government-approved projects. We advise on the right structure before any filing.'
+      },
+      {
+        question: 'How do I open a corporate bank account in Nigeria from abroad?',
+        answer:
+          'Nigerian banks require the CAC certificate and status report, the company TIN, a board resolution, and verified identification for every signatory. NexGen coordinates the know-your-customer process with the bank so the account is opened without repeated trips to Nigeria.'
+      },
+      {
+        question:
+          'What ongoing compliance does a Nigerian company have to meet every year?',
+        answer:
+          'Every company files annual returns with the CAC, prepares audited financial statements, files Companies Income Tax returns, remits VAT and PAYE monthly, and files withholding tax returns. Missing any of these attracts penalties and can block bank transactions, loan applications, and investor due diligence.'
+      },
+      {
+        question:
+          'How is NexGen Business Advisors different from a Big Four firm for business setup?',
+        answer:
+          'NexGen is a partner-led firm built for diaspora investors, foreign companies, and SMEs. You work directly with an ICAN-licensed lead consultant from registration through tax, accounting, and financing, with pricing and turnaround scaled to a growing business rather than a multinational.'
+      },
+      {
+        question:
+          'Do you provide statutory audit and tax filing services, or only business setup?',
+        answer:
+          'Both. Through our affiliate firm Joy Ozua & Co. (Chartered Accountants), we deliver statutory and regulatory audits, IFRS financial reporting, FIRS and state tax filings, VAT and withholding tax returns, and CAC annual returns. Many clients start with company registration and keep us as their audit, tax, and accounting partner.'
+      },
+      {
+        question:
+          'What do Nigerian banks and investors need before approving a loan or investment?',
+        answer:
+          'They expect a bank-ready business plan, a feasibility study, three to five years of cash flow projections, clean audited accounts, and evidence of tax compliance. NexGen prepares this documentation and liaises with the bank or investor so the application is not delayed by missing or inconsistent financials.'
+      },
+      {
+        question:
+          'Do you work with German and other European companies entering Nigeria?',
+        answer:
+          'Yes. Our Managing Director was CFO and Acting Director General of the Nigerian-German Chamber of Commerce, so we understand how European companies and their head offices expect compliance, reporting, and governance to be handled in Nigeria. We support market entry, subsidiary setup, NIPC registration, expatriate quota, and ongoing reporting to the parent company.'
+      },
+      {
+        question: 'Who leads NexGen Business Advisors?',
+        answer:
+          'NexGen Business Advisors Ltd is led by Joy Ozua, a licensed member of the Institute of Chartered Accountants of Nigeria (ICAN) with over 15 years in audit, taxation, governance, and strategic advisory, and former CFO and Acting Director General of the Nigerian-German Chamber of Commerce. She is supported by Desmond Abollo, a chartered accountant and virtual CFO with over 20 years of experience.'
+      }
+    ]
+  },
   footer: {
     description:
       'NexGen Business Advisors Ltd helps diaspora investors, foreign corporations, and entrepreneurs establish strong, compliant, and sustainable businesses in Nigeria through expert advisory in setup, compliance, accounting, and investment readiness.',
@@ -446,7 +531,8 @@ export const siteConfig = {
       { label: 'Financial Strategy', href: '/financial-strategy' },
       { label: 'Services', href: '/#services' },
       { label: 'Our Team', href: '/#team' },
-      { label: 'Contact', href: '/#contact' }
+      { label: 'Contact', href: '/#contact' },
+      { label: 'FAQ', href: '/#faq' }
     ],
     serviceLinks: [
       { label: 'Business Setup', href: '/#services' },

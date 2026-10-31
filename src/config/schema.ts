@@ -186,6 +186,15 @@ export const homeSchema = {
       description: about.whyChooseUs.description,
       image: siteConfig.hero.images.main,
     }),
+    {
+      "@type": "FAQPage",
+      "@id": `${BASE_URL}/#faq`,
+      mainEntity: siteConfig.faq.items.map((f) => ({
+        "@type": "Question",
+        name: f.question,
+        acceptedAnswer: { "@type": "Answer", text: f.answer },
+      })),
+    },
   ],
 };
 

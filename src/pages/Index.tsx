@@ -6,6 +6,7 @@ import TeamSection from "@/components/TeamSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
 import CTABanner from "@/components/CTABanner";
+import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
@@ -61,6 +62,7 @@ const Index = () => {
       <TestimonialsSection />
       <ContactSection />
       <CTABanner />
+      <FAQSection />
       <Footer />
       <BackToTop />
       <WhatsAppFloatingButton />
