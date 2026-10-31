@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Home page -->
+  <!-- Home page (includes FAQ section at /#faq) -->
   <url>
     <loc>https://www.nextgenadvisorsltd.com/</loc>
-    <lastmod>2026-03-25</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -12,7 +12,7 @@
   <!-- Audit & Taxation page -->
   <url>
     <loc>https://www.nextgenadvisorsltd.com/audit-taxation</loc>
-    <lastmod>2026-03-25</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -20,7 +20,7 @@
   <!-- Financial Strategy page -->
   <url>
     <loc>https://www.nextgenadvisorsltd.com/financial-strategy</loc>
-    <lastmod>2026-03-25</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>

@@ -48,6 +48,14 @@ describe("FAQSection", () => {
     expect(first.open).toBe(true);
   });
 
+  it("renders one group card per category", () => {
+    renderFAQ();
+    const categories = new Set(siteConfig.faq.items.map((i) => i.category));
+    for (const c of categories) {
+      expect(screen.getByRole("heading", { level: 3, name: c })).toBeInTheDocument();
+    }
+  });
+
   it("has the faq anchor id for /#faq links", () => {
     const { container } = renderFAQ();
     expect(container.querySelector("section#faq")).not.toBeNull();
