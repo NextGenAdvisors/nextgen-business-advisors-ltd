@@ -377,15 +377,6 @@ export const siteConfig = {
         bio: 'Chartered Accountant with 20+ years experience, Certified Management Consultant (CMC), and Founder of CloudERP Accounting & Business Solutions. Specializes in virtual CFO services, forensic accounting, and cloud ERP implementations for hospitality, fintech, real estate, and high-growth startups. Delivers clean books, compliant taxes, investor-ready financials, with proven results in on-time reporting, budgeting accuracy, and cost reductions.',
         memberLinkedInUrl: 'https://www.linkedin.com/in/desmondabollo/',
         memberEmailAddress: 'info@nextgenadvisorsltd.com'
-      },
-      {
-        name: 'Bukola Lawal',
-        role: 'Lead Consultant, Accounting Services MBA, ACCA, ACTI',
-        photo: '/images/team-member-3.png',
-        bio: 'Bukola Lawal is a Chartered Accountant and Taxation Professional with over seven years of experience delivering high-impact accounting and financial solutions. She specializes in financial reporting, tax compliance, payroll management, and internal controls, helping businesses strengthen financial systems and operate with clarity and confidence.',
-        memberLinkedInUrl:
-          'https://www.linkedin.com/in/bukola-lawal-acca-22612534/',
-        memberEmailAddress: 'info@nextgenadvisorsltd.com'
       }
     ]
   },

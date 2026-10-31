@@ -38,32 +38,10 @@ Built by [Kavara Digital Global](https://kavaradigital.online).
 
 ---
 
-## 📧 Email Integration (Brevo)
+## 🧩 Architecture
 
-### Why Brevo?
-This project uses **Brevo** as its email service provider to handle transactional emails, specifically for contact form submissions. It was chosen for its reliable deliverability, straightforward API, and generous free tier, making it an ideal drop-in solution for our contact form implementation.
+This is a fully static site with no backend. Team members and all other content live in `src/config/site.ts`, and images live in `public/images/`. The contact form currently opens the visitor's mail client with the message pre-filled; sending via Resend is planned.
 
-### How to Use It
-
-1. **Obtain an API Key**: Sign up or log into [Brevo](https://www.brevo.com/), navigate to the **SMTP & API** section, and generate a new API key.
-2. **Environment Variables**: You need to provide the necessary credentials for the Supabase Edge Function to function properly. Add the following to your environment variables or Supabase Secrets:
-   ```env
-   BREVO_API_KEY=your_brevo_api_key_here
-   CONTACT_FROM_EMAIL=your_verified_sender_email@domain.com
-   CONTACT_TO_EMAIL=destination_email_address@domain.com
-   ```
-3. **Usage in Edge Functions**: The project uses Supabase Edge Functions (`supabase/functions/contact-form-email`) to securely send requests to the Brevo API (`https://api.brevo.com/v3/smtp/email`) without exposing the API key on the frontend. The function processes the contact form payload and routes the email to the configured destination address.
-
----
-
-## 📡 Uptime & Monitoring (Keep-Alive)
-
-To prevent the Supabase Free Tier project from being paused due to inactivity, we use **UptimeRobot** to constantly ping the application and database endpoints. This ensures the database and associated Edge Functions remain "warm" and accessible at all times without cold start delays.
-
-You can publicly monitor the site's uptime status here:
-**[UptimeRobot Status Page](https://stats.uptimerobot.com/WYZYHGX5XP)**
-
----
 
 ## 📁 Project Structure
 

@@ -10,17 +10,8 @@ import { Button } from "@/components/ui/button";
 import PageTransition from "@/components/PageTransition";
 import SEO from "@/components/SEO";
 import { siteConfig } from "@/config/site";
+import { auditTaxationSchema } from "@/config/schema";
 
-const auditSchema = {
-  "@context": "https://schema.org",
-  "@type": "AccountingService",
-  name: "Joy Ozua & Co. — Audit, Taxation & Statutory Compliance",
-  description:
-    `Compliance is not enough — clarity is key. Statutory audit, FIRS tax advisory, VAT/WHT compliance, and CAC filings by chartered accountants in ${siteConfig.global.city}, ${siteConfig.global.country}.`,
-  url: "https://nextgenbusinessadvisors.com/audit-taxation",
-  areaServed: siteConfig.global.country,
-  serviceType: ["Statutory Audit", "Tax Advisory", "FIRS Tax Consulting", "CAC Compliance", "IFRS Financial Reporting"],
-};
 
 const AuditTaxation = () => {
   useEffect(() => {
@@ -34,7 +25,7 @@ const AuditTaxation = () => {
         description={`Compliance is not enough — clarity is key. Joy Ozua & Co. provides statutory audit, FIRS tax advisory, VAT and WHT compliance, IFRS financial reporting, and CAC corporate filings. Expert chartered accountants and FIRS tax consultants in ${siteConfig.global.city}, ${siteConfig.global.country}. Your numbers should tell the truth.`}
         keywords={`audit firm in ${siteConfig.global.country}, chartered accountants in ${siteConfig.global.city}, tax advisory services ${siteConfig.global.country}, financial audit services ${siteConfig.global.country}, IFRS financial reporting ${siteConfig.global.country}, VAT and WHT compliance ${siteConfig.global.country}, FIRS tax consultants, internal audit services ${siteConfig.global.country}`}
         canonical="/audit-taxation"
-        schema={auditSchema}
+        schema={auditTaxationSchema}
       />
       <div className="min-h-screen bg-background flex flex-col">
         <Navbar />

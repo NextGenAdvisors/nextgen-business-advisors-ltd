@@ -14,32 +14,13 @@ import SEO from "@/components/SEO";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { siteConfig } from "@/config/site";
+import { homeSchema } from "@/config/schema";
 
 const PRIMARY_KW =
   `audit firm in ${siteConfig.global.country}, chartered accountants in ${siteConfig.global.city}, tax advisory services ${siteConfig.global.country}, financial audit services ${siteConfig.global.country}, SME accounting services ${siteConfig.global.country}`;
 const SECONDARY_KW =
   `IFRS financial reporting ${siteConfig.global.country}, VAT and WHT compliance ${siteConfig.global.country}, FIRS tax consultants, business advisory services ${siteConfig.global.country}, internal audit services ${siteConfig.global.country}`;
 
-const homeSchema = {
-  "@context": "https://schema.org",
-  "@type": "AccountingService",
-  name: siteConfig.global.name,
-  description:
-    "We turn numbers into clarity. Professional audit, tax, and business advisory services in Nigeria.",
-  url: "https://nextgenbusinessadvisors.com",
-  areaServed: siteConfig.global.country,
-  address: {
-    "@type": "PostalAddress",
-    addressCountry: "NG",
-    addressLocality: siteConfig.global.city,
-  },
-  serviceType: [
-    "Audit Services",
-    "Tax Advisory",
-    "Business Advisory",
-    "Accounting Services",
-  ],
-};
 
 const Index = () => {
   const location = useLocation();

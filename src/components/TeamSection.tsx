@@ -2,9 +2,8 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Linkedin, Mail } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { cn } from "@/lib/utils";
 import { AnimatedSVGBackground } from "@/components/FloatingShapes";
-import { useQuery } from "@tanstack/react-query";
-import { supabase } from "@/integrations/supabase/client";
 import { ChevronDown, ChevronUp } from "lucide-react" 
 
 const fadeUp = {
@@ -16,7 +15,9 @@ const fadeUp = {
   }),
 };
 
-const TeamCard = ({ m, i }: { m: any; i: number }) => {
+type TeamMember = (typeof siteConfig.team.members)[number];
+
+const TeamCard = ({ m, i }: { m: TeamMember; i: number }) => {
   const [expanded, setExpanded] = useState(false);
   const words = m.bio.split(" ");
   const isLong = words.length > 20;
@@ -89,35 +90,7 @@ const TeamCard = ({ m, i }: { m: any; i: number }) => {
 };
 
 const TeamSection = () => {
-  const { data: teamMembers, isLoading } = useQuery({
-    queryKey: ["team_members"],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from("team_members")
-        .select("*")
-        .eq("is_active", true)
-        .order("display_order", { ascending: true });
-
-      if (error) {
-        console.error("Error fetching team members:", error);
-        throw error;
-      }
-      return data;
-    },
-  });
-
-  const hasTeamMembers = teamMembers && Array.isArray(teamMembers) && teamMembers.length > 0;
-  
-  const displayMembers = hasTeamMembers
-    ? teamMembers.map((m) => ({
-        name: m.full_name || "Name not provided",
-        role: m.role || "Role not provided",
-        bio: m.bio || "",
-        photo: m.image_url || "/images/placeholder.png",
-        memberLinkedInUrl: m.linkedin_url || "#",
-        memberEmailAddress: m.email || "info@nextgenadvisorsltd.com",
-      }))
-    : siteConfig.team.members;
+  const displayMembers = siteConfig.team.members;
 
   return (
     <section id="team" className="py-20 md:py-28 relative overflow-hidden radial-bg">
@@ -141,22 +114,21 @@ const TeamSection = () => {
         </motion.div>
        
         <div
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto items-stretch mt-8"
+          className={cn(
+            "grid gap-8 mx-auto items-stretch justify-center mt-8",
+            displayMembers.length >= 3
+              ? "sm:grid-cols-2 lg:grid-cols-3 max-w-5xl"
+              : "sm:grid-cols-2 max-w-3xl"
+          )}
         >
-          {isLoading ? (
-            Array.from({ length: 3 }).map((_, i) => (
-              <div key={i} className="animate-pulse bg-primary/10 rounded-[3rem] h-[500px] w-full" />
+          {displayMembers.length > 0 ? (
+            displayMembers.map((m, i) => (
+              <TeamCard key={m.name || i} m={m} i={i} />
             ))
           ) : (
-            displayMembers.length > 0 ? (
-              displayMembers.map((m, i) => (
-                <TeamCard key={m.name || i} m={m} i={i} />
-              ))
-            ) : (
-              <div className="col-span-full py-10 text-center text-muted-foreground">
-                No team members found.
-              </div>
-            )
+            <div className="col-span-full py-10 text-center text-muted-foreground">
+              No team members found.
+            </div>
           )}
         </div>
       </div>

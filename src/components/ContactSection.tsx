@@ -17,7 +17,6 @@ import {
 import { Send } from "lucide-react";
 import { toast } from "sonner";
 import { siteConfig } from "@/config/site";
-import { supabase } from "@/integrations/supabase/client";
 
 const formSchema = z.object({
   fullName: z.string().min(2, "Name must be at least 2 characters."),
@@ -47,43 +46,29 @@ const ContactSection = () => {
 
   const { isSubmitting } = form.formState;
 
+  // TODO: replace with Resend. Interim: hand the message to the visitor's mail client.
   const onSubmit = async (values: FormValues) => {
     try {
-      const { data, error } = await supabase.functions.invoke("contact-form-email", {
-        body: {
-          fullName: values.fullName,
-          company: values.company,
-          email: values.email,
-          phone: values.phone,
-          service: values.service,
-          message: values.message,
-        },
-      });
+      const to = siteConfig.global.email;
+      const subject = `Website enquiry: ${values.service} - ${values.fullName}`;
+      const body = [
+        `Name: ${values.fullName}`,
+        `Company: ${values.company || "-"}`,
+        `Email: ${values.email}`,
+        `Phone: ${values.phone}`,
+        `Topic: ${values.service}`,
+        "",
+        values.message,
+      ].join("\n");
 
-      if (error) {
-        throw new Error(error.message || "Failed to send message via edge function");
-      }
-
-      // If the admin email was successful, send the confirmation email to the user.
-      const { error: confirmationError } = await supabase.functions.invoke("user-confirmation-email", {
-        body: {
-          fullName: values.fullName,
-          email: values.email,
-          service: values.service,
-        },
-      });
-
-      if (confirmationError) {
-        // We still want to show success to the user since the admin got the email, 
-        // but log the confirmation failure for investigation.
-        console.error("Warning: Failed to send user confirmation email:", confirmationError);
-      }
+      window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
       toast.success("Thank you for contacting us, We'll be in touch shortly.");
       form.reset();
-    } catch (error: any) {
-      console.error("Error from Supabase Edge Function:", error);
-      toast.error(error.message || "Failed to send message. Please try again later.");
+    } catch (error) {
+      console.error("Error opening mail client:", error);
+      const message = error instanceof Error ? error.message : "";
+      toast.error(message || "Failed to send message. Please try again later.");
     }
   };
 

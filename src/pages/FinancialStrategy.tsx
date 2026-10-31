@@ -10,17 +10,8 @@ import { Button } from "@/components/ui/button";
 import PageTransition from "@/components/PageTransition";
 import SEO from "@/components/SEO";
 import { calendlyUrl, siteConfig } from "@/config/site";
+import { financialStrategySchema } from "@/config/schema";
 
-const strategySchema = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: `NexGen Business Advisors — Financial Strategy & Business Transformation`,
-  description:
-    `Fix the structure, fix the business. Expert financial cleanup, IFRS restatements, investment readiness, and business transformation advisory for SMEs in ${siteConfig.global.country}.`,
-  url: "https://nextgenbusinessadvisors.com/financial-strategy",
-  areaServed: siteConfig.global.country,
-  serviceType: ["Financial Strategy", "Business Transformation", "Investment Readiness", "SME Accounting", `Business Advisory ${siteConfig.global.country}`],
-};
 
 const FinancialStrategy = () => {
   useEffect(() => {
@@ -34,7 +25,7 @@ const FinancialStrategy = () => {
         description={`Fix the structure, fix the business. NexGen Business Advisors and Joy Ozua & Co. deliver financial cleanup, IFRS restatements, CFO advisory, investment readiness, and SME accounting services in ${siteConfig.global.country}. Are you struggling with unreconciled accounts or unclear financial records? We turn numbers into clarity.`}
         keywords={`financial strategy ${siteConfig.global.country}, SME accounting services ${siteConfig.global.country}, business advisory services ${siteConfig.global.country}, IFRS financial reporting ${siteConfig.global.country}, investment readiness ${siteConfig.global.country}, business transformation advisory, unreconciled accounts ${siteConfig.global.country}`}
         canonical="/financial-strategy"
-        schema={strategySchema}
+        schema={financialStrategySchema}
       />
       <div className="min-h-screen bg-background flex flex-col">
         <Navbar />

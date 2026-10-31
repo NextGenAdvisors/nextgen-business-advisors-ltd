@@ -10,8 +10,8 @@ interface SEOProps {
 }
 
 const SITE_NAME = "NexGen Business Advisors Ltd";
-const BASE_URL = "https://nextgenbusinessadvisors.com";
-const DEFAULT_IMAGE = `${BASE_URL}/images/og-default.png`;
+const BASE_URL = "https://www.nextgenadvisorsltd.com";
+const DEFAULT_IMAGE = `${BASE_URL}/og-default.png`;
 
 const SEO = ({
   title,
