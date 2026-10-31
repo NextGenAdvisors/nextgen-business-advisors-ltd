@@ -12,7 +12,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { calendlyUrl, siteConfig } from "@/config/site";
-import { AnimatedSVGBackground } from "@/components/FloatingShapes";
+import SectionHeading from "@/components/SectionHeading";
 import { Button } from "@/components/ui/button";
 
 export type FAQItem = { category?: string; question: string; answer: string };
@@ -57,37 +57,32 @@ const FAQSection = ({
   const groups = groupItems(items);
 
   return (
-    <section id="faq" className="py-20 md:py-28 relative overflow-hidden radial-bg">
-      <AnimatedSVGBackground variant="light" />
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12 md:mb-16"
-        >
-          <span className="inline-block text-sm font-semibold text-secondary uppercase tracking-wider mb-3">
-            {badge}
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            {heading}
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">{description}</p>
-        </motion.div>
+    <section id="faq" className="py-20 md:py-28 relative overflow-hidden bg-white">
+      <div className="container mx-auto px-4">
+        <SectionHeading
+          badge={badge}
+          title={heading}
+          description={description}
+          className="mb-12 md:mb-16"
+        />
 
         <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto items-start">
           {groups.map(([category, groupItems]) => {
             const Icon = CATEGORY_ICONS[category] ?? HelpCircle;
             return (
-              <div
+              <motion.div
                 key={category}
-                className="bg-white rounded-2xl border border-border/50 shadow-card p-6"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="bg-white border border-border border-t-4 border-t-gold shadow-card p-6 md:p-8"
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-lg gradient-brand-subtle flex items-center justify-center text-primary shrink-0">
+                  <div className="w-11 h-11 rounded-sm bg-primary flex items-center justify-center text-gold shrink-0">
                     <Icon className="h-5 w-5" aria-hidden="true" />
                   </div>
-                  <h3 className="text-lg md:text-xl font-bold text-foreground">
+                  <h3 className="text-lg md:text-xl font-extrabold text-foreground">
                     {category}
                   </h3>
                 </div>
@@ -96,12 +91,12 @@ const FAQSection = ({
                   {groupItems.map((item) => (
                     <details key={item.question} className="group py-1">
                       <summary className="flex items-center justify-between gap-4 cursor-pointer list-none py-3 [&::-webkit-details-marker]:hidden">
-                        <h4 className="text-sm md:text-base font-semibold text-foreground group-open:text-primary transition-colors">
+                        <h4 className="text-sm md:text-base font-bold text-foreground group-open:text-gold-deep group-hover:text-gold-deep transition-colors">
                           {item.question}
                         </h4>
                         <ChevronDown
                           aria-hidden="true"
-                          className="h-4 w-4 shrink-0 text-primary transition-transform duration-200 group-open:rotate-180"
+                          className="h-4 w-4 shrink-0 text-gold-deep transition-transform duration-200 group-open:rotate-180"
                         />
                       </summary>
                       <p className="pb-4 text-sm md:text-base text-muted-foreground leading-relaxed">
@@ -110,7 +105,7 @@ const FAQSection = ({
                     </details>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
@@ -126,12 +121,12 @@ const FAQSection = ({
             Still have a question about your situation?
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
-            <Button asChild variant="outline">
+            <Button asChild variant="outline" className="rounded-sm border-primary text-primary font-bold h-11">
               <Link to="/#contact">
                 Ask our team <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
-            <Button asChild>
+            <Button asChild variant="gold" className="rounded-sm h-11">
               <a href={calendlyUrl} target="_blank" rel="noopener noreferrer">
                 <CalendarDays className="mr-2 h-4 w-4" /> Book a consultation
               </a>

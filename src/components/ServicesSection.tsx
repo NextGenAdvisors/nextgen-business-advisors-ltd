@@ -1,18 +1,9 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import {
-  Building2,
-  FileCheck,
-  Calculator,
-  Landmark,
-  Building,
-  RefreshCw,
-  ArrowRight,
-  X
-} from 'lucide-react'
+import { ArrowRight, CheckCircle2, X } from 'lucide-react'
 import { siteConfig } from '@/config/site'
 import { Button } from '@/components/ui/button'
-import { AnimatedSVGBackground } from '@/components/FloatingShapes'
+import SectionHeading from '@/components/SectionHeading'
 
 type Service = (typeof siteConfig.services.main.servicesList)[number]
 
@@ -32,84 +23,71 @@ const ServicesSection = () => {
 
   return (
     <>
-      {/* Dark Feature Band */}
-      <section className="gradient-dark-band relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <img
-            src="/images/business-team.png"
-            alt=""
-            className="w-full h-full object-cover opacity-10"
-            loading="lazy"
-          />
-        </div>
-        <div className="container mx-auto px-4 py-20 md:py-28 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      {/* Our Approach — image + text split */}
+      <section className="bg-white relative overflow-hidden py-20 md:py-28">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center max-w-6xl mx-auto">
             {/* Image side */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
+              initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="hidden lg:block"
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.7 }}
+              className="relative pr-6 pt-6 sm:pr-10 sm:pt-10"
             >
-              <div className="rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10">
+              <div className="absolute right-0 top-0 w-2/3 h-2/3 bg-primary" aria-hidden="true" />
+              <div className="absolute -left-4 -bottom-4 w-28 h-28 stripe-accent" aria-hidden="true" />
+              <div className="relative overflow-hidden shadow-elevated">
                 <img
                   src={siteConfig.services.featureBand.image}
                   alt="Our qualified team"
-                  className="w-full h-[380px] object-cover"
+                  className="w-full h-[320px] sm:h-[420px] object-cover"
                   loading="lazy"
                 />
               </div>
             </motion.div>
 
             {/* Text side */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <span className="inline-block text-sm font-semibold text-primary-light uppercase tracking-wider mb-3">
-                {siteConfig.services.featureBand.badge}
-              </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                {siteConfig.services.featureBand.heading}
-              </h2>
-              <p className="text-white/70 leading-relaxed mb-6">
-                {siteConfig.services.featureBand.description}
-              </p>
-              <div className="grid sm:grid-cols-2 gap-4">
+            <div>
+              <SectionHeading
+                align="left"
+                badge={siteConfig.services.featureBand.badge}
+                title={siteConfig.services.featureBand.heading}
+                description={siteConfig.services.featureBand.description}
+                className="mb-8"
+              />
+              <motion.ul
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
+                className="grid sm:grid-cols-2 gap-x-6 gap-y-4"
+              >
                 {siteConfig.services.featureBand.items.map((item) => (
-                  <div key={item} className="flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full bg-primary shrink-0" />
-                    <span className="text-sm text-white/80">{item}</span>
-                  </div>
+                  <motion.li
+                    key={item}
+                    variants={{ hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0 } }}
+                    className="flex items-start gap-3"
+                  >
+                    <CheckCircle2 size={20} className="text-gold-deep shrink-0 mt-0.5" />
+                    <span className="text-sm font-bold text-foreground">{item}</span>
+                  </motion.li>
                 ))}
-              </div>
-            </motion.div>
+              </motion.ul>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Service Cards */}
-      <section id="services" className="py-20 md:py-28 relative overflow-hidden radial-bg">
-        <AnimatedSVGBackground variant="light" />
-        <div className="absolute inset-0 dot-grid opacity-40 pointer-events-none" />
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <span className="inline-block text-sm font-semibold text-secondary uppercase tracking-wider mb-3">
-              {siteConfig.services.main.badge}
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              {siteConfig.services.main.heading}
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              {siteConfig.services.main.description}
-            </p>
-          </motion.div>
+      {/* Service Cards — "What we provide" grid */}
+      <section id="services" className="py-20 md:py-28 relative overflow-hidden bg-muted">
+        <div className="container mx-auto px-4">
+          <SectionHeading
+            badge={siteConfig.services.main.badge}
+            title={siteConfig.services.main.heading}
+            description={siteConfig.services.main.description}
+            className="mb-16"
+          />
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {siteConfig.services.main.servicesList.map((s, i) => (
@@ -118,40 +96,38 @@ const ServicesSection = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.08, duration: 0.5 }}
-                className="bg-card rounded-2xl overflow-hidden border border-border shadow-card hover:shadow-elevated transition-all group hover:-translate-y-1 shimmer-hover"
+                transition={{ delay: (i % 3) * 0.1, duration: 0.5 }}
+                className="group relative bg-white p-8 lg:p-10 shadow-card hover:bg-primary transition-colors duration-500 flex flex-col"
               >
-                {/* Top accent bar */}
-                <div className="h-1 bg-primary group-hover:h-1.5 transition-all" />
-                <div className="p-7">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary group-hover:scale-110 transition-all">
-                    <s.icon
-                      className="text-primary group-hover:text-primary-foreground transition-colors"
-                      size={22}
-                    />
-                  </div>
-                  <h3 className="text-lg font-bold text-foreground mb-3 font-body">
-                    {s.title}
-                  </h3>
-                  <ul className="space-y-2 mb-4">
-                    {s.items.map((item) => (
-                      <li
-                        key={item}
-                        className="text-sm text-muted-foreground flex items-start gap-2"
-                      >
-                        <span className="text-primary mt-1 shrink-0">•</span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                  <button
-                    type="button"
-                    onClick={() => handleLearnMore(s)}
-                    className="inline-flex items-center text-sm font-semibold text-primary hover:gap-3 gap-1 transition-all"
-                  >
-                    Learn More <ArrowRight size={14} />
-                  </button>
-                </div>
+                {/* Gold bottom bar grows on hover */}
+                <span className="absolute left-0 bottom-0 h-1 w-0 bg-gold group-hover:w-full transition-all duration-500" aria-hidden="true" />
+
+                <s.icon
+                  className="text-gold-deep group-hover:text-gold mb-6 transition-colors duration-500"
+                  size={48}
+                  strokeWidth={1.3}
+                />
+                <h3 className="text-xl font-extrabold text-foreground group-hover:text-white mb-4 transition-colors duration-500">
+                  {s.title}
+                </h3>
+                <ul className="space-y-2 mb-6 flex-grow">
+                  {s.items.map((item) => (
+                    <li
+                      key={item}
+                      className="text-sm text-muted-foreground group-hover:text-white/75 flex items-start gap-2 transition-colors duration-500"
+                    >
+                      <span className="mt-2 w-1.5 h-1.5 rounded-full bg-gold shrink-0" aria-hidden="true" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <button
+                  type="button"
+                  onClick={() => handleLearnMore(s)}
+                  className="self-start inline-flex items-center gap-2 text-xs font-black uppercase tracking-[0.15em] text-gold-deep group-hover:text-gold hover:gap-3 transition-all"
+                >
+                  Learn More <ArrowRight size={14} />
+                </button>
               </motion.div>
             ))}
           </div>
@@ -169,7 +145,7 @@ const ServicesSection = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.25 }}
-              className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-primary-deep/70 backdrop-blur-sm"
               onClick={closeModal}
             >
               <motion.div
@@ -178,13 +154,13 @@ const ServicesSection = () => {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.92, y: 24 }}
                 transition={{ type: 'spring', stiffness: 340, damping: 28 }}
-                className="relative w-full max-w-5xl rounded-2xl overflow-hidden shadow-2xl"
+                className="relative w-full max-w-5xl max-h-[90vh] overflow-y-auto shadow-2xl border-t-4 border-gold"
                 onClick={(e) => e.stopPropagation()}
               >
                 {/* Close button */}
                 <button
                   onClick={closeModal}
-                  className="absolute top-4 right-4 z-10 flex items-center justify-center w-8 h-8 rounded-full bg-black/20 hover:bg-black/40 text-white transition-colors"
+                  className="absolute top-4 right-4 z-10 flex items-center justify-center w-9 h-9 rounded-sm bg-primary text-white hover:bg-gold hover:text-primary transition-colors"
                   aria-label="Close"
                 >
                   <X size={16} />
@@ -194,7 +170,7 @@ const ServicesSection = () => {
                   {/* Content side */}
                   <div className="bg-white p-8 lg:p-10 flex flex-col justify-between">
                     <div>
-                      <h2 className="text-xl sm:text-2xl font-bold text-foreground">
+                      <h2 className="text-xl sm:text-2xl font-extrabold text-foreground pr-10">
                         {activeService.title}
                       </h2>
                       <p className="text-sm sm:text-base text-muted-foreground mt-2">
@@ -203,8 +179,8 @@ const ServicesSection = () => {
 
                       <div className="space-y-6 mt-8">
                         {activeService.details?.map((detail) => (
-                          <div key={detail.title} className="space-y-1.5">
-                            <h4 className="text-base font-bold text-foreground font-body">
+                          <div key={detail.title} className="space-y-1.5 border-l-2 border-gold pl-4">
+                            <h4 className="text-base font-extrabold text-foreground">
                               {detail.title}
                             </h4>
                             <p className="text-sm text-muted-foreground leading-relaxed">
@@ -216,17 +192,18 @@ const ServicesSection = () => {
                     </div>
 
                     {/* Footer — left-aligned */}
-                    <div className="mt-10 flex items-center gap-3">
+                    <div className="mt-10 flex flex-wrap items-center gap-3">
                       <Button
-                        variant="destructive"
+                        variant="outline"
                         onClick={closeModal}
-                        className="px-6"
+                        className="px-6 rounded-sm border-primary text-primary font-bold"
                       >
                         See more services
                       </Button>
                       <Button
                         asChild
-                        className="px-6 shadow-button hover:shadow-button-hover transition-all"
+                        variant="gold"
+                        className="px-6 rounded-sm"
                       >
                         <a
                           href="https://wa.me/2348037345051?text=Hi%20team%2C%20I%20am%20interested%20in%20your%20services"
@@ -240,7 +217,7 @@ const ServicesSection = () => {
                   </div>
 
                   {/* Image side */}
-                  <div className="hidden lg:block relative bg-muted/30 min-h-[420px]">
+                  <div className="hidden lg:block relative bg-muted min-h-[420px]">
                     {activeService.image ? (
                       <img
                         src={activeService.image}
@@ -252,7 +229,7 @@ const ServicesSection = () => {
                         <ArrowRight className="h-12 w-12 text-primary/20" />
                       </div>
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent pointer-events-none" />
                   </div>
                 </div>
               </motion.div>

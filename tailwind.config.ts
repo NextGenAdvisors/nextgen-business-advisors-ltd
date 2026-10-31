@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['"Playfair Display"', 'Georgia', 'serif'],
-        body: ['"DM Sans"', 'system-ui', 'sans-serif'],
+        display: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        body: ['"Lato"', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -27,6 +27,11 @@ export default {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
           light: "hsl(var(--primary-light))",
+          deep: "hsl(var(--primary-deep))",
+        },
+        gold: {
+          DEFAULT: "hsl(var(--secondary))",
+          deep: "hsl(var(--gold-deep))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -106,6 +111,7 @@ export default {
         "float-slow": "float-slow 8s ease-in-out infinite",
         "shimmer": "shimmer 3s linear infinite",
         "glow-pulse": "glow-pulse 3s ease-in-out infinite",
+        "ring-pulse": "ring-pulse 1.8s ease-out infinite",
       },
     },
   },

@@ -17,6 +17,7 @@ import {
 import { Send } from "lucide-react";
 import { toast } from "sonner";
 import { siteConfig } from "@/config/site";
+import RevealText from "@/components/RevealText";
 
 const formSchema = z.object({
   fullName: z.string().min(2, "Name must be at least 2 characters."),
@@ -72,24 +73,52 @@ const ContactSection = () => {
     }
   };
 
+  const fieldClass =
+    "h-12 bg-muted border-transparent rounded-sm px-4 text-sm focus-visible:ring-gold focus-visible:bg-white";
+
   return (
-    <section id="contact" className="relative w-full bg-slate-50 min-h-[700px] overflow-hidden">
-      <div className="flex flex-col lg:flex-row w-full h-full min-h-[700px]">
-        {/* Left Column: Form (40%) */}
-        <div className="w-full lg:w-[45%] relative z-10 flex flex-col justify-center py-16 px-4 sm:px-8 lg:px-16 xl:px-24">
+    <section id="contact" className="relative w-full bg-muted overflow-hidden py-20 md:py-28">
+      <div className="container mx-auto px-4">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-0 items-center max-w-6xl mx-auto">
+          {/* Image column */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="w-full max-w-md mx-auto lg:ml-auto lg:mr-0 bg-white rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] overflow-hidden border border-border/50"
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="relative hidden lg:block pl-10 pb-10"
+          >
+            <div className="absolute left-0 bottom-0 w-3/4 h-3/4 bg-primary" aria-hidden="true" />
+            <div className="absolute right-6 -top-6 w-28 h-28 stripe-accent" aria-hidden="true" />
+            <img
+              src="/images/contact-image.png"
+              alt="Professional business advisor"
+              className="relative w-full h-[560px] object-cover object-top shadow-elevated"
+              draggable="false"
+              loading="lazy"
+            />
+          </motion.div>
+
+          {/* Form card — overlaps the image on desktop */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="relative z-10 w-full max-w-xl mx-auto lg:-ml-16 bg-white shadow-elevated border-t-4 border-gold"
           >
             {/* Header Block */}
-            <div className="bg-primary px-8 py-6">
-              <h3 className="text-white text-2xl font-bold tracking-tight">Get in touch with us today!</h3>
+            <div className="px-8 sm:px-10 pt-10">
+              <RevealText
+                as="h3"
+                text="Get in touch with us today!"
+                className="text-foreground text-2xl sm:text-3xl font-extrabold tracking-tight"
+              />
+              <span className="block h-1 w-14 bg-gold mt-4" aria-hidden="true" />
             </div>
 
             {/* Form Container */}
-            <div className="p-8">
+            <div className="p-8 sm:p-10">
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
 
@@ -102,7 +131,7 @@ const ContactSection = () => {
                           <FormControl>
                             <Input
                               placeholder="Your Name*"
-                              className="h-12 bg-transparent border-input px-4 text-sm"
+                              className={fieldClass}
                               {...field}
                             />
                           </FormControl>
@@ -119,7 +148,7 @@ const ContactSection = () => {
                           <FormControl>
                             <Input
                               placeholder="Company Name (optional)"
-                              className="h-12 bg-transparent border-input px-4 text-sm"
+                              className={fieldClass}
                               {...field}
                             />
                           </FormControl>
@@ -139,7 +168,7 @@ const ContactSection = () => {
                             <Input
                               type="email"
                               placeholder="Email Address*"
-                              className="h-12 bg-transparent border-input px-4 text-sm"
+                              className={fieldClass}
                               {...field}
                             />
                           </FormControl>
@@ -157,7 +186,7 @@ const ContactSection = () => {
                             <Input
                               type="tel"
                               placeholder="Phone number*"
-                              className="h-12 bg-transparent border-input px-4 text-sm"
+                              className={fieldClass}
                               {...field}
                             />
                           </FormControl>
@@ -174,7 +203,7 @@ const ContactSection = () => {
                       <FormItem>
                         <Select onValueChange={field.onChange} value={field.value || ""}>
                           <FormControl>
-                            <SelectTrigger className="h-12 bg-transparent border-input px-4 text-sm text-muted-foreground w-full">
+                            <SelectTrigger className={`${fieldClass} text-muted-foreground w-full`}>
                               <SelectValue placeholder="What you like to discuss?" />
                             </SelectTrigger>
                           </FormControl>
@@ -200,7 +229,7 @@ const ContactSection = () => {
                           <Textarea
                             placeholder="How can we help you?"
                             rows={4}
-                            className="bg-transparent border-input px-4 py-3 text-sm resize-none"
+                            className="bg-muted border-transparent rounded-sm px-4 py-3 text-sm resize-none focus-visible:ring-gold focus-visible:bg-white"
                             {...field}
                           />
                         </FormControl>
@@ -212,7 +241,8 @@ const ContactSection = () => {
                   <div className="pt-2 flex justify-start">
                     <Button
                       type="submit"
-                      className="bg-primary text-primary-foreground font-bold hover:bg-primary/90 transition-all uppercase tracking-wider py-6 px-10 rounded-md shadow-sm hover:shadow-md hover:-translate-y-0.5"
+                      variant="gold"
+                      className="uppercase tracking-wider h-14 px-10 rounded-sm"
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? (
@@ -225,56 +255,6 @@ const ContactSection = () => {
                 </form>
               </Form>
             </div>
-          </motion.div>
-        </div>
-
-        {/* Right Column: Visual Brand Identity (55%) */}
-        <div className="hidden lg:block w-full lg:w-[55%] relative">
-          {/* Abstract Geometric Background */}
-          <div className="absolute inset-0 bg-[#EBF3FC] overflow-hidden">
-            {/* Geometric Cuts (Masking) */}
-
-            <div className="absolute right-0 top-0 w-1/2 h-full bg-primary" style={{ clipPath: 'polygon(30% 0, 100% 0, 100% 100%, 0 100%)' }}></div>
-
-            {/* Pattern Overlays */}
-            <div className="absolute right-[10%] top-[40%] text-primary/20 pointer-events-none">
-              <svg width="200" height="200" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  Array.from({ length: 5 }).map((_, j) => (
-                    <path key={`${i}-${j}`} d={`M${i * 20 + 5} ${j * 20 + 10} L${i * 20 + 15} ${j * 20 + 10} M${i * 20 + 10} ${j * 20 + 5} L${i * 20 + 10} ${j * 20 + 15}`} stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                  ))
-                ))}
-              </svg>
-            </div>
-
-            <div className="absolute left-0 bottom-[10%] text-primary/20 pointer-events-none">
-              <svg width="200" height="200" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 80 Q 25 30 50 80 T 100 80 T 150 80" stroke="currentColor" strokeWidth="1" fill="none" />
-                <path d="M0 90 Q 25 40 50 90 T 100 90 T 150 90" stroke="currentColor" strokeWidth="1" fill="none" />
-                <path d="M0 100 Q 25 50 50 100 T 100 100 T 150 100" stroke="currentColor" strokeWidth="1" fill="none" />
-              </svg>
-            </div>
-
-
-          </div>
-
-          {/* Hero Image */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            className="absolute bottom-0 left-12 w-[85%] h-[90%] pointer-events-none"
-          >
-            <img
-              src="/images/contact-image.png"
-              alt="Professional business advisor"
-              className="w-full h-full object-cover object-top drop-shadow-2xl opacity-100 mix-blend-normal rounded-lg"
-              style={{
-                clipPath: 'polygon(15% 0, 100% 0, 100% 100%, 0% 100%)',
-              }}
-              draggable="false"
-            />
           </motion.div>
         </div>
       </div>

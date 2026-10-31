@@ -34,18 +34,18 @@ const NotFound = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="  lg:pt-40 relative z-10 max-w-2xl mx-auto flex flex-col items-center"
+          className="relative z-10 max-w-2xl mx-auto flex flex-col items-center"
         >
-          <div className="w-24 h-24 mb-8 bg-card/10 flex items-center justify-center rounded-3xl shadow-xl border border-white/10 rotate-3 backdrop-blur-sm">
+          <div className="w-24 h-24 mb-8 bg-card/10 flex items-center justify-center rounded-sm shadow-xl border border-white/10 rotate-3 backdrop-blur-sm">
             <FileQuestion className="text-primary-light w-12 h-12" />
           </div>
           
-          <span className="inline-block bg-primary/20 text-primary-light text-sm font-semibold tracking-wider uppercase px-4 py-1.5 rounded-full mb-6 border border-primary-light/20 shadow-sm">
+          <span className="inline-block bg-gold/15 text-gold text-xs font-black tracking-[0.2em] uppercase px-4 py-1.5 rounded-sm mb-6 border border-gold/30 shadow-sm">
             Error 404
           </span>
           
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-primary-foreground leading-tight mb-6">
-            Page Not <span className="text-primary-light">Found</span>
+            Page Not <span className="text-gold">Found</span>
           </h1>
           
           <p className="text-lg md:text-xl text-primary-foreground/70 mb-10 max-w-xl">
@@ -55,7 +55,8 @@ const NotFound = () => {
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
             <Button
               size="lg"
-              className="bg-primary text-primary-foreground text-base px-8 py-6 font-semibold hover:bg-primary/90 shadow-elevated w-full sm:w-auto"
+              variant="gold"
+              className="text-base px-8 h-14 rounded-sm w-full sm:w-auto"
               asChild
             >
               <Link to="/">

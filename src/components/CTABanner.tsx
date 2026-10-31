@@ -1,49 +1,59 @@
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import RevealText from "@/components/RevealText";
 
 const CTABanner = () => (
-  <section className="py-16 gradient-cta relative overflow-hidden">
-    {/* Decorative */}
-    <div className="absolute inset-0 pointer-events-none">
-      <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-white/5 blur-2xl" />
-      <div className="absolute -bottom-20 -left-20 w-60 h-60 rounded-full bg-white/5 blur-2xl" />
-    </div>
+  <section className="relative overflow-hidden py-20 md:py-28">
+    {/* Background image + navy overlay */}
+    <img
+      src="/images/team-meeting.jpg"
+      alt=""
+      aria-hidden="true"
+      className="absolute inset-0 w-full h-full object-cover"
+      loading="lazy"
+    />
+    <div className="absolute inset-0 bg-primary-deep/90" aria-hidden="true" />
+    <div className="absolute -left-10 top-0 w-48 h-48 stripe-accent opacity-25" aria-hidden="true" />
+    <div className="absolute -right-10 bottom-0 w-48 h-48 stripe-accent opacity-25" aria-hidden="true" />
 
     <div className="container mx-auto px-4 relative z-10">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="text-center max-w-3xl mx-auto"
-      >
-        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-          {siteConfig.ctaBanner.heading}
-        </h2>
-        <p className="text-lg text-white/80 mb-8">
+      <div className="text-center max-w-3xl mx-auto">
+        <RevealText
+          as="h2"
+          text={siteConfig.ctaBanner.heading}
+          className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gold leading-tight mb-6"
+        />
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="text-lg text-white/80 mb-10"
+        >
           {siteConfig.ctaBanner.description}
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button
-            size="lg"
-            className="bg-white text-primary font-semibold text-base px-8 py-6 hover:bg-white/90 shadow-elevated"
-            asChild
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.45 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center"
+        >
+          <a
+            href={siteConfig.ctaBanner.primaryButtonLink}
+            className="inline-flex items-center justify-center gap-2 bg-gold text-secondary-foreground font-extrabold text-base px-8 h-14 rounded-sm hover:bg-white transition-colors"
           >
-            <a href={siteConfig.ctaBanner.primaryButtonLink}>
-              {siteConfig.ctaBanner.primaryButtonText} <ArrowRight className="ml-1" size={18} />
-            </a>
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="border-white/40 bg-transparent ext-white font-semibold text-base px-8 py-6 hover:bg-white/10"
-            asChild
+            {siteConfig.ctaBanner.primaryButtonText} <ArrowRight size={18} />
+          </a>
+          <a
+            href={siteConfig.ctaBanner.secondaryButtonLink}
+            className="inline-flex items-center justify-center border-2 border-white/40 text-white font-extrabold text-base px-8 h-14 rounded-sm hover:border-gold hover:text-gold transition-colors"
           >
-            <a href={siteConfig.ctaBanner.secondaryButtonLink}>{siteConfig.ctaBanner.secondaryButtonText}</a>
-          </Button>
-        </div>
-      </motion.div>
+            {siteConfig.ctaBanner.secondaryButtonText}
+          </a>
+        </motion.div>
+      </div>
     </div>
   </section>
 );
